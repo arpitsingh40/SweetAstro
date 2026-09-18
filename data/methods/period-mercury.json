@@ -1,0 +1,48 @@
+{
+  "version": "0.1.0",
+  "slug": "period-mercury",
+  "method": "Malefics like Mars, Saturn, Rahu, or Ketu in the third house make a person insensitive and reactive.",
+  "source": {
+    "teacher": "Lunar Astro - Learn Astrology",
+    "channel": "Lunar Astro - Learn Astrology",
+    "basis": "YouTube video research (evidence gate: see candidate report)",
+    "confidence": "modern",
+    "research_note": "docs/research/video_method_pipeline.md#candidate-VC-d9911c1c89",
+    "label": "Malefics like Mars, Saturn, Rahu, or Ketu in the third house (modern — Lunar Astro - Learn Astrology)"
+  },
+  "enabled": false,
+  "allow_quotes": false,
+  "evidence": {
+    "candidate_id": "VC-d9911c1c89",
+    "video_id": "CgexlkMVfyk",
+    "locator": "00:01:00-00:01:20",
+    "passes": 2,
+    "extractor_confidence": "high"
+  },
+  "source_videos": [
+    {
+      "id": "CgexlkMVfyk",
+      "title": "Mercury Mahadasha Secrets & Powerful Remedies for 2025 || Mercury Mahadasha  Effects Your life 2025",
+      "locator": "00:01:00-00:01:20"
+    }
+  ],
+  "safety_rules": [
+    "Unvalidated modern method derived from video research; never presented as classical authority.",
+    "Optional, zero-cost, fallback-only: surfaced only when the engine cannot fully answer the question.",
+    "No guarantee language; verify worked examples before enabling."
+  ],
+  "topic_map": {
+    "general": {
+      "label": "Modern method for general (candidate VC-d9911c1c89)",
+      "formula": "describe the deterministic server computation here",
+      "steps": [
+        "describe step 1",
+        "describe step 2"
+      ],
+      "adapted": false,
+      "note": "",
+      "quote": "when there are malefics like Mars, Saturn, Rahu, Ketu such malefics even transit you see it becomes very straightforward I don't care who is doing what I am done with all these people and because of that a person becomes insensitive",
+      "locator": "00:01:00-00:01:20"
+    }
+  }
+}

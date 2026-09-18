@@ -1,0 +1,200 @@
+[
+  {
+    "rule_id": "MAR-0005",
+    "domain": "Marriage",
+    "category": "promise",
+    "source": {
+      "book": "Phaladeepika",
+      "chapter": 10,
+      "verse": "2",
+      "commentary": "7th house occupied by benefic or Venus in strength indicates happy union."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "Venus",
+        "condition_type": "aspects_house",
+        "target": "7"
+      }
+    ],
+    "result": "venus_blesses_7th",
+    "base_weight": 15.0,
+    "timing_capability": false,
+    "timing_resolution": "none",
+    "interpretation": "Venus aspecting the 7th house strengthens the promise of harmonious marriage."
+  },
+  {
+    "rule_id": "MAR-0006",
+    "domain": "Marriage",
+    "category": "promise",
+    "source": {
+      "book": "Jataka Parijata",
+      "chapter": 14,
+      "verse": "15",
+      "commentary": "7th lord in own sign or exaltation indicates strong marriage potential."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "7th_lord",
+        "condition_type": "dignity_is",
+        "values": ["Exalted", "Moolatrikona", "Own"]
+      }
+    ],
+    "result": "7th_lord_dignified",
+    "base_weight": 25.0,
+    "timing_capability": false,
+    "timing_resolution": "none",
+    "interpretation": "When the 7th lord is dignified (exalted, own sign, or moolatrikona), marriage is strongly promised."
+  },
+  {
+    "rule_id": "MAR-0007",
+    "domain": "Marriage",
+    "category": "promise",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "chapter": 18,
+      "verse": "5",
+      "commentary": "Venus conjunct Jupiter indicates blessed union."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "Venus",
+        "condition_type": "has_conjunction",
+        "values": ["Jupiter"]
+      }
+    ],
+    "result": "venus_jupiter_conjunction",
+    "base_weight": 20.0,
+    "timing_capability": false,
+    "timing_resolution": "none",
+    "interpretation": "Venus-Jupiter conjunction is a powerful yoga for marriage indicating wisdom and prosperity in the union."
+  },
+  {
+    "rule_id": "MAR-0008",
+    "domain": "Marriage",
+    "category": "promise",
+    "source": {
+      "book": "Sarvartha Chintamani",
+      "chapter": 6,
+      "verse": "12",
+      "commentary": "Moon in 7th house with benefic association promises marriage."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "Moon",
+        "condition_type": "in_house",
+        "values": ["7"]
+      }
+    ],
+    "result": "moon_in_7th",
+    "base_weight": 12.0,
+    "timing_capability": false,
+    "timing_resolution": "none",
+    "interpretation": "Moon in the 7th house indicates emotional fulfillment through partnership and marriage."
+  },
+  {
+    "rule_id": "MAR-0009",
+    "domain": "Marriage",
+    "category": "promise",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "chapter": 18,
+      "verse": "8",
+      "commentary": "7th house free from malefic occupation indicates timely marriage."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "7th_house",
+        "condition_type": "house_free_of_malefics",
+        "target": "7",
+        "values": ["Saturn", "Mars", "Rahu", "Ketu", "Sun"]
+      }
+    ],
+    "result": "7th_house_unafflicted",
+    "base_weight": 10.0,
+    "timing_capability": false,
+    "timing_resolution": "none",
+    "interpretation": "The 7th house being free from malefic afflictions supports timely and harmonious marriage."
+  },
+  {
+    "rule_id": "MAR-0050",
+    "domain": "Marriage",
+    "category": "promise",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "chapter": 18,
+      "verse": "10",
+      "commentary": "Jupiter aspecting 7th house removes obstacles to marriage."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "Jupiter",
+        "condition_type": "aspects_house",
+        "target": "7"
+      },
+      {
+        "entity": "Jupiter",
+        "condition_type": "dignity_is",
+        "values": ["Exalted", "Own", "Friend", "Moolatrikona"]
+      }
+    ],
+    "result": "jupiter_blessed_aspect",
+    "base_weight": 22.0,
+    "timing_capability": false,
+    "timing_resolution": "none",
+    "interpretation": "Jupiter's aspect on the 7th house, when Jupiter is dignified, provides divine protection for marriage."
+  },
+  {
+    "rule_id": "MAR-0051",
+    "domain": "Marriage",
+    "category": "promise",
+    "source": {
+      "book": "Phaladeepika",
+      "chapter": 10,
+      "verse": "3",
+      "commentary": "Multiple benefics in Kendras promise strong marital fortune."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "Venus",
+        "condition_type": "in_house",
+        "values": ["1", "4", "7", "10"]
+      }
+    ],
+    "result": "venus_kendra",
+    "base_weight": 18.0,
+    "timing_capability": false,
+    "timing_resolution": "none",
+    "interpretation": "Venus in a Kendra house (1st, 4th, 7th, or 10th) strengthens the promise of marriage and partnership."
+  },
+  {
+    "rule_id": "MAR-0052",
+    "domain": "Marriage",
+    "category": "promise",
+    "source": {
+      "book": "Jataka Parijata",
+      "chapter": 14,
+      "verse": "18",
+      "commentary": "Vargottama ascendant or 7th house indicates strong marital foundation."
+    },
+    "required_charts": ["D1", "D9"],
+    "conditions": [
+      {
+        "entity": "7th_lord_d9",
+        "condition_type": "dignity_is",
+        "values": ["Exalted", "Own", "Friend", "Moolatrikona"]
+      }
+    ],
+    "result": "d9_7th_lord_dignified",
+    "base_weight": 18.0,
+    "timing_capability": false,
+    "timing_resolution": "none",
+    "interpretation": "When the 7th lord in D9 is well-dignified, it confirms the D1 promise for marriage."
+  }
+]

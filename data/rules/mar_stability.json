@@ -1,0 +1,127 @@
+[
+  {
+    "rule_id": "MAR-0060",
+    "domain": "Marriage",
+    "category": "stability",
+    "source": {
+      "book": "Phaladeepika",
+      "chapter": 10,
+      "verse": "20",
+      "commentary": "Jupiter in 7th house or aspecting it ensures marital stability and dharma."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "Jupiter",
+        "condition_type": "in_house",
+        "values": ["7"]
+      }
+    ],
+    "result": "jupiter_7th_stability",
+    "base_weight": 20.0,
+    "timing_capability": false,
+    "timing_resolution": "none",
+    "interpretation": "Jupiter in the 7th house provides divine protection and stability to the marriage."
+  },
+  {
+    "rule_id": "MAR-0061",
+    "domain": "Marriage",
+    "category": "stability",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "chapter": 18,
+      "verse": "40",
+      "commentary": "Venus and Jupiter in mutual aspect or conjunction ensure marital harmony."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "Venus",
+        "condition_type": "has_conjunction",
+        "values": ["Jupiter"]
+      }
+    ],
+    "result": "venus_jupiter_harmony",
+    "base_weight": 18.0,
+    "timing_capability": false,
+    "timing_resolution": "none",
+    "interpretation": "Venus-Jupiter conjunction or mutual aspect ensures harmony and prosperity in marriage."
+  },
+  {
+    "rule_id": "MAR-0062",
+    "domain": "Marriage",
+    "category": "stability",
+    "source": {
+      "book": "Jataka Parijata",
+      "chapter": 14,
+      "verse": "35",
+      "commentary": "7th lord in Navamsa in own sign or exaltation ensures marital longevity."
+    },
+    "required_charts": ["D9"],
+    "conditions": [
+      {
+        "entity": "7th_lord_d9",
+        "condition_type": "dignity_is",
+        "values": ["Exalted", "Own", "Moolatrikona"]
+      }
+    ],
+    "result": "d9_7th_lord_strong",
+    "base_weight": 22.0,
+    "timing_capability": false,
+    "timing_resolution": "none",
+    "interpretation": "When the 7th lord in Navamsa is well-dignified, it ensures lasting marital stability."
+  },
+  {
+    "rule_id": "MAR-0063",
+    "domain": "Marriage",
+    "category": "stability",
+    "source": {
+      "book": "Sarvartha Chintamani",
+      "chapter": 6,
+      "verse": "25",
+      "commentary": "Moon in 7th house with Jupiter's aspect ensures emotional stability."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "Moon",
+        "condition_type": "in_house",
+        "values": ["7"]
+      },
+      {
+        "entity": "Jupiter",
+        "condition_type": "aspects_house",
+        "target": "7"
+      }
+    ],
+    "result": "moon_jupiter_7th_harmony",
+    "base_weight": 25.0,
+    "timing_capability": false,
+    "timing_resolution": "none",
+    "interpretation": "Moon in 7th house with Jupiter's aspect creates powerful emotional and spiritual harmony in marriage."
+  },
+  {
+    "rule_id": "MAR-0064",
+    "domain": "Marriage",
+    "category": "stability",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "chapter": 18,
+      "verse": "42",
+      "commentary": "Venus in own sign or exaltation in D1 ensures marital happiness."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "Venus",
+        "condition_type": "dignity_is",
+        "values": ["Exalted", "Own", "Moolatrikona"]
+      }
+    ],
+    "result": "venus_dignified_stability",
+    "base_weight": 16.0,
+    "timing_capability": false,
+    "timing_resolution": "none",
+    "interpretation": "Dignified Venus in the chart ensures marital happiness and relationship satisfaction."
+  }
+]

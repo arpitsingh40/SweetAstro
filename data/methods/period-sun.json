@@ -1,0 +1,53 @@
+{
+  "version": "0.1.0",
+  "slug": "period-sun",
+  "method": "During Sun Mahadasha, if the Sun is weak or afflicted, the native may experience health issues such as eye problems, cat",
+  "source": {
+    "teacher": "108 Astro",
+    "channel": "108 Astro",
+    "basis": "YouTube video research (evidence gate: see candidate report)",
+    "confidence": "modern",
+    "research_note": "docs/research/video_method_pipeline.md#candidate-VC-7f90add83c",
+    "label": "During Sun Mahadasha, if the Sun is weak or afflicted, the n (modern — 108 Astro)"
+  },
+  "enabled": false,
+  "allow_quotes": false,
+  "evidence": {
+    "candidate_id": "VC-7f90add83c",
+    "video_id": "c4PixDzVRx4",
+    "locator": "00:02:48-00:03:02",
+    "passes": 2,
+    "extractor_confidence": "high"
+  },
+  "source_videos": [
+    {
+      "id": "c4PixDzVRx4",
+      "title": "Sun Mahadasha Effects | What happens in Surya Mahadasha by 108 Astro #surya #sun",
+      "locator": "00:02:48-00:03:02"
+    }
+  ],
+  "safety_rules": [
+    "Unvalidated modern method derived from video research; never presented as classical authority.",
+    "Optional, zero-cost, fallback-only: surfaced only when the engine cannot fully answer the question.",
+    "No guarantee language; verify worked examples before enabling."
+  ],
+  "topic_map": {
+    "general": {
+      "label": "Modern method for general (candidate VC-7f90add83c)",
+      "formula": "describe the deterministic server computation here",
+      "steps": [
+        "describe step 1",
+        "describe step 2"
+      ],
+      "adapted": false,
+      "note": "",
+      "reason_tags": [
+        "dasha_lord_sun",
+        "sun",
+        "sun_weak"
+      ],
+      "quote": "You may have to undergo an ID operation, loss of eyesight or problems related to it, cataract or any other diseases can occur under the condition of the Sun.",
+      "locator": "00:02:48-00:03:02"
+    }
+  }
+}

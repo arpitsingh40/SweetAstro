@@ -1,0 +1,78 @@
+{
+  "planets": {
+    "Sun": {
+      "query": "sun mahadasha remedy jyotish",
+      "videos": [
+        "c4PixDzVRx4",
+        "zXjrsV2dLCY"
+      ],
+      "candidates": 3,
+      "matched_remedies": 1,
+      "top_candidate": "VC-7f90add83c",
+      "top_claim": "During Sun Mahadasha, if the Sun is weak or afflicted, the native may experience health issues such as eye problems, cataract, or need for surgery.",
+      "top_kind": "cause",
+      "pack_skeleton": "C:\\Users\\Dell -\\Documents\\Code\\SweetAstro\\data\\methods\\period-sun.json"
+    },
+    "Moon": {
+      "query": "moon mahadasha remedy jyotish",
+      "videos": [
+        "QKmNmKGr1zk",
+        "kEM2zRB7yks"
+      ],
+      "candidates": 4,
+      "matched_remedies": 2,
+      "top_candidate": "VC-8bc8146d9d",
+      "top_claim": "If the Moon is not well placed, a heavy loan may be involved in changing residence, and later eviction from the same house can occur.",
+      "top_kind": "cause",
+      "pack_skeleton": "C:\\Users\\Dell -\\Documents\\Code\\SweetAstro\\data\\methods\\period-moon.json"
+    },
+    "Mars": {
+      "query": "mars mahadasha remedy jyotish",
+      "videos": [
+        "CXbtnAjjNUk"
+      ],
+      "candidates": 3,
+      "matched_remedies": 1,
+      "top_candidate": "VC-9898683887",
+      "top_claim": "If Mars is in its debilitation sign Cancer, or in the 6th, 8th, or 12th house, and is afflicted by Rahu, Saturn, or Ketu, the Mahadasha can cause quarrels, legal disputes, accidents, blood-related problems, anger, violence, and mental unrest.",
+      "top_kind": "cause",
+      "pack_skeleton": "C:\\Users\\Dell -\\Documents\\Code\\SweetAstro\\data\\methods\\period-mars.json"
+    },
+    "Mercury": {
+      "query": "mercury mahadasha remedy jyotish",
+      "videos": [
+        "CgexlkMVfyk"
+      ],
+      "candidates": 2,
+      "matched_remedies": 0,
+      "top_candidate": "VC-d9911c1c89",
+      "top_claim": "Malefics like Mars, Saturn, Rahu, or Ketu in the third house make a person insensitive and reactive.",
+      "top_kind": "cause",
+      "pack_skeleton": "C:\\Users\\Dell -\\Documents\\Code\\SweetAstro\\data\\methods\\period-mercury.json"
+    },
+    "Jupiter": {
+      "query": "jupiter mahadasha remedy jyotish",
+      "videos": [
+        "SCsOS6tQHUM"
+      ],
+      "candidates": 2,
+      "matched_remedies": 2,
+      "top_candidate": "VC-7f9d4a56aa",
+      "top_claim": "Jupiter Mahadasha is rarely good for Capricorn ascendant because Jupiter is the lord of the 12th house for Capricorn.",
+      "top_kind": "cause",
+      "pack_skeleton": "C:\\Users\\Dell -\\Documents\\Code\\SweetAstro\\data\\methods\\period-jupiter.json"
+    },
+    "Venus": {
+      "query": "venus mahadasha remedy jyotish",
+      "videos": [
+        "zCTNA1_kLF4"
+      ],
+      "candidates": 0,
+      "matched_remedies": 0,
+      "top_candidate": "",
+      "top_claim": "",
+      "top_kind": "",
+      "pack_skeleton": ""
+    }
+  }
+}

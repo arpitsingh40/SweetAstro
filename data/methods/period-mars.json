@@ -1,0 +1,62 @@
+{
+  "version": "0.1.0",
+  "slug": "period-mars",
+  "method": "If Mars is in its debilitation sign Cancer, or in the 6th, 8th, or 12th house, and is afflicted by Rahu, Saturn, or Ketu",
+  "source": {
+    "teacher": "Jyotish Ratan Kendra",
+    "channel": "Jyotish Ratan Kendra",
+    "basis": "YouTube video research (evidence gate: see candidate report)",
+    "confidence": "modern",
+    "research_note": "docs/research/video_method_pipeline.md#candidate-VC-9898683887",
+    "label": "If Mars is in its debilitation sign Cancer, or in the 6th, 8 (modern — Jyotish Ratan Kendra)"
+  },
+  "enabled": false,
+  "allow_quotes": false,
+  "evidence": {
+    "candidate_id": "VC-9898683887",
+    "video_id": "CXbtnAjjNUk",
+    "locator": "00:03:00-00:03:15",
+    "passes": 2,
+    "extractor_confidence": "high"
+  },
+  "source_videos": [
+    {
+      "id": "CXbtnAjjNUk",
+      "title": "मंगल महादशा: प्रभाव और उपाय | Mars Mahadasha Effects | Mangal Mahadasha Ka Fal",
+      "locator": "00:03:00-00:03:15"
+    }
+  ],
+  "safety_rules": [
+    "Unvalidated modern method derived from video research; never presented as classical authority.",
+    "Optional, zero-cost, fallback-only: surfaced only when the engine cannot fully answer the question.",
+    "No guarantee language; verify worked examples before enabling."
+  ],
+  "topic_map": {
+    "general": {
+      "label": "Modern method for general (candidate VC-9898683887)",
+      "formula": "describe the deterministic server computation here",
+      "steps": [
+        "describe step 1",
+        "describe step 2"
+      ],
+      "adapted": false,
+      "note": "",
+      "reason_tags": [
+        "ketu",
+        "ketu_afflicted",
+        "mars",
+        "mars_afflicted",
+        "mars_debilitated",
+        "mars_house_12",
+        "mars_house_6",
+        "mars_house_8",
+        "rahu",
+        "rahu_afflicted",
+        "saturn",
+        "saturn_afflicted"
+      ],
+      "quote": "परंतु यदि मंगल नीच राशि कर्क में हो या छठे, आठवें, 12वें भाव में होकर राहु, शनि या केतु से पीड़ित हो तो यही महादशा, झगड़े, कानूनी विवाद, दुर्घटनाएं, रक्त संबंधित समस्याएं, क्रोध, हिंसा और मानसिक अशांति का कारण भी बन सकती हैं।",
+      "locator": "00:03:00-00:03:15"
+    }
+  }
+}

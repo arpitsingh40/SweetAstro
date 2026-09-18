@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SweetAstro · Vedic Astrology Answer Engine</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪐</text></svg>">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Vendor JS self-hosted so the UI still works when CDNs are blocked -->
+  <script src="/static/vendor/marked.min.js"></script>
+  <script src="/static/vendor/purify.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;500;600;700&display=swap');
+    .font-serif-title { font-family: 'Cinzel', serif; }
+    body { font-family: 'Inter', sans-serif; }
+    .dark-card { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(12px); }
+    .prose-astro { color: #cbd5e1; font-size: 0.875rem; line-height: 1.7; word-wrap: break-word; }
+    .prose-astro h1, .prose-astro h2, .prose-astro h3 { color: #f8fafc; font-weight: 700; margin: 1rem 0 0.5rem; font-size: 0.95rem; }
+    .prose-astro p { margin: 0.45rem 0; }
+    .prose-astro ul, .prose-astro ol { margin: 0.45rem 0 0.45rem 1.25rem; }
+    .prose-astro ul { list-style: disc; }
+    .prose-astro ol { list-style: decimal; }
+    .prose-astro li { margin: 0.2rem 0; }
+    .prose-astro strong { color: #f1f5f9; font-weight: 600; }
+    .prose-astro hr { border-color: #1e293b; margin: 0.9rem 0; }
+    .prose-astro code { background: #0f172a; border: 1px solid #1e293b; border-radius: 4px; padding: 0 4px; font-size: 0.8rem; }
+    .prose-astro blockquote { border-left: 3px solid #d4af37; padding-left: 0.75rem; color: #94a3b8; margin: 0.6rem 0; }
+    .prose-astro table { width: 100%; border-collapse: collapse; margin: 0.6rem 0; font-size: 0.78rem; }
+    .prose-astro th, .prose-astro td { border: 1px solid #1e293b; padding: 4px 8px; text-align: left; }
+    .prose-astro th { background: #0f172a; color: #e2e8f0; }
+    html { -webkit-text-size-adjust: 100%; }
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0.6rem 0; }
+    .table-wrap table { margin: 0; }
+    footer { padding-bottom: env(safe-area-inset-bottom); }
+    @media (max-width: 640px) { #composer { font-size: 16px; } }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #020617; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 8px; }
+    .dot { animation: dotPulse 1.2s infinite ease-in-out; }
+    .dot:nth-child(2) { animation-delay: 0.15s; }
+    .dot:nth-child(3) { animation-delay: 0.3s; }
+    @keyframes dotPulse { 0%, 80%, 100% { opacity: 0.25; transform: translateY(0); } 40% { opacity: 1; transform: translateY(-2px); } }
+    .thinking-text { white-space: pre-wrap; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+    .answer-toc { display: flex; flex-wrap: wrap; gap: 6px; padding-bottom: 2px; }
+    .answer-toc a { font-size: 10px; color: #fbbf24; border: 1px solid rgba(217, 119, 6, 0.35); background: rgba(217, 119, 6, 0.08); border-radius: 9999px; padding: 2px 8px; text-decoration: none; }
+    .answer-toc a:hover { background: rgba(217, 119, 6, 0.2); }
+    .answer-tools button { font-size: 11px; color: #cbd5e1; border: 1px solid #1e293b; background: rgba(15, 23, 42, 0.6); border-radius: 8px; padding: 3px 10px; cursor: pointer; }
+    .answer-tools button:hover { border-color: rgba(217, 119, 6, 0.5); color: #fbbf24; }
+    details.answer-section { border: 1px solid #1e293b; border-radius: 12px; margin: 0.6rem 0; overflow: hidden; }
+    details.answer-section > summary { cursor: pointer; padding: 8px 12px; font-size: 12px; font-weight: 600; color: #fcd34d; background: rgba(15, 23, 42, 0.65); list-style: none; }
+    details.answer-section > summary::-webkit-details-marker { display: none; }
+    details.answer-section > summary::before { content: "▸"; margin-right: 6px; display: inline-block; transition: transform 0.15s ease; }
+    details.answer-section[open] > summary::before { transform: rotate(90deg); }
+    .answer-section-body { padding: 2px 12px 8px; }
+    @media (prefers-reduced-motion: reduce) {
+      .dot { animation: none; }
+      details.answer-section > summary::before { transition: none; }
+      * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+    }
+    /* ---- Ultra polish (2026-09-13): ambience, gradients, micro-interactions ---- */
+    body { background: #020617; }
+    .cosmos { position: fixed; inset: 0; z-index: -2; pointer-events: none;
+      background:
+        radial-gradient(900px 520px at 50% -12%, rgba(245, 158, 11, .16), transparent 62%),
+        radial-gradient(700px 500px at 88% 18%, rgba(56, 189, 248, .07), transparent 60%),
+        radial-gradient(800px 600px at 8% 72%, rgba(168, 85, 247, .08), transparent 65%),
+        #020617; }
+    .cosmos-stars { position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .5;
+      background-image:
+        radial-gradient(1.4px 1.4px at 12% 22%, rgba(255, 255, 255, .55), transparent 60%),
+        radial-gradient(1.1px 1.1px at 28% 64%, rgba(255, 255, 255, .35), transparent 60%),
+        radial-gradient(1.6px 1.6px at 46% 12%, rgba(252, 211, 77, .5), transparent 60%),
+        radial-gradient(1.1px 1.1px at 64% 42%, rgba(255, 255, 255, .4), transparent 60%),
+        radial-gradient(1.5px 1.5px at 78% 76%, rgba(255, 255, 255, .35), transparent 60%),
+        radial-gradient(1.2px 1.2px at 90% 30%, rgba(252, 211, 77, .4), transparent 60%),
+        radial-gradient(1.2px 1.2px at 8% 86%, rgba(255, 255, 255, .3), transparent 60%);
+      animation: saTwinkle 9s ease-in-out infinite alternate; }
+    @keyframes saTwinkle { from { opacity: .32; } to { opacity: .62; } }
+    @keyframes saFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+    @keyframes saFadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+    .text-gradient-gold { background: linear-gradient(120deg, #fde68a 0%, #f59e0b 45%, #b45309 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero-planet { animation: saFloat 5s ease-in-out infinite;
+      box-shadow: 0 24px 60px -20px rgba(245, 158, 11, .55); }
+    .fade-up { animation: saFadeUp .5s ease-out both; }
+    .suggestion-card { transition: transform .2s ease, box-shadow .2s ease; }
+    .suggestion-card:hover { transform: translateY(-3px);
+      box-shadow: 0 20px 40px -24px rgba(245, 158, 11, .5); }
+    .bubble-user { background: linear-gradient(135deg, rgba(245, 158, 11, .22), rgba(180, 83, 9, .16));
+      box-shadow: 0 10px 24px -18px rgba(245, 158, 11, .9); }
+    .bubble-ai { box-shadow: 0 18px 40px -30px rgba(0, 0, 0, .95); }
+    .composer-shell { transition: box-shadow .2s ease, border-color .2s ease; }
+    .composer-shell:focus-within { box-shadow: 0 0 0 4px rgba(245, 158, 11, .12),
+      0 18px 40px -26px rgba(245, 158, 11, .5); }
+    .send-glow { box-shadow: 0 10px 24px -14px rgba(245, 158, 11, .8); }
+    .trust-chip { display: inline-flex; align-items: center; gap: 4px; padding: 3px 9px;
+      border-radius: 9999px; border: 1px solid rgba(148, 163, 184, .22);
+      background: rgba(15, 23, 42, .6); }
+    .brand-glow { text-shadow: 0 0 26px rgba(245, 158, 11, .45); }
+    /* Minimal fallback when the Tailwind CDN is unavailable */
+    body.no-cdn { background: #020617; color: #e2e8f0; margin: 0; }
+    body.no-cdn header, body.no-cdn footer { border: 1px solid #1e293b; background: #0f172a; padding: 10px 16px; }
+    body.no-cdn header .max-w-3xl, body.no-cdn footer .max-w-3xl, body.no-cdn main .max-w-3xl { max-width: 48rem; margin: 0 auto; }
+    body.no-cdn main { padding: 16px; }
+    body.no-cdn .dark-card { border: 1px solid #1e293b; border-radius: 16px; padding: 16px; background: rgba(15, 23, 42, 0.85); }
+    body.no-cdn .suggestion { display: block; width: 100%; margin: 8px 0; color: #cbd5e1; text-align: left; }
+    body.no-cdn button:not(.suggestion) { cursor: pointer; }
+    body.no-cdn #messages > div { margin-bottom: 24px; }
+    body.no-cdn .prose-astro { color: #cbd5e1; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 h-screen flex flex-col antialiased selection:bg-amber-500 selection:text-black">
+
+  <div class="cosmos" aria-hidden="true"></div>
+  <div class="cosmos-stars" aria-hidden="true"></div>
+
+  <!-- HEADER -->
+  <header class="border-b border-slate-800 bg-slate-900/70 sticky top-0 z-50 backdrop-blur-md shrink-0">
+    <div class="max-w-3xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-2 sm:gap-3">
+      <div class="flex items-center space-x-3 min-w-0">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-600 via-amber-400 to-amber-200 flex items-center justify-center text-slate-950 font-bold text-lg shadow-lg shadow-amber-500/20 shrink-0">
+          🪐
+        </div>
+        <div class="min-w-0">
+          <div class="flex items-center space-x-2">
+            <h1 class="text-lg font-bold tracking-tight text-gradient-gold font-serif-title truncate">SweetAstro</h1>
+            <span id="model-badge" class="hidden sm:inline text-[10px] px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/30 font-semibold tracking-wide whitespace-nowrap">deepseek-flash</span>
+          </div>
+          <p class="text-[11px] text-slate-400 truncate">Deterministic Vedic calculation · calibrated answers · optional remedies</p>
+        </div>
+      </div>
+      <div class="relative flex items-center gap-1.5 sm:gap-2 shrink-0">
+        <a href="/match" class="hidden sm:flex items-center gap-1.5 text-xs font-medium text-slate-300 border border-slate-700 hover:border-amber-500/50 hover:text-amber-300 px-2.5 py-1.5 rounded-lg transition" aria-label="Kundli Milan compatibility">
+          <i class="fa-solid fa-heart"></i><span>Match</span>
+        </a>
+        <select id="lang-select" aria-label="Reply language" class="text-[11px] bg-slate-900 border border-slate-700 text-slate-300 rounded-lg px-1.5 py-1.5 focus:outline-none focus:border-amber-500/50">
+          <option value="auto">Auto</option>
+          <option value="English">English</option>
+          <option value="Hindi">हिंदी</option>
+          <option value="Hinglish">Hinglish</option>
+        </select>
+        <button id="history-btn" class="flex items-center gap-1.5 text-xs font-medium text-slate-300 border border-slate-700 hover:border-amber-500/50 hover:text-amber-300 px-2.5 py-1.5 rounded-lg transition" aria-haspopup="true" aria-expanded="false" aria-controls="history-panel" title="Chat history" aria-label="Chat history">
+          <i class="fa-solid fa-clock-rotate-left"></i><span class="hidden sm:inline">History</span>
+        </button>
+        <button id="new-chat-btn" class="flex items-center gap-1.5 text-xs font-semibold text-slate-900 bg-amber-500 hover:bg-amber-400 px-2.5 sm:px-3 py-1.5 rounded-lg transition" aria-label="New chat">
+          <i class="fa-solid fa-plus"></i><span class="hidden sm:inline">New chat</span>
+        </button>
+        <div id="history-panel" class="hidden absolute right-0 top-full mt-2 w-72 max-w-[calc(100vw-2rem)] max-h-80 overflow-y-auto dark-card border border-slate-700 rounded-xl shadow-2xl shadow-black/40 z-50 p-1.5" role="menu" aria-label="Chat history">
+          <p id="history-empty" class="hidden text-[11px] text-slate-400 px-3 py-2">No chats yet — your sessions will appear here.</p>
+          <div id="history-list"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- KEY WARNING -->
+  <div id="key-warning" class="hidden bg-rose-950/60 border-b border-rose-800/60 text-rose-200 text-xs text-center py-2 px-4 shrink-0">
+    <i class="fa-solid fa-triangle-exclamation mr-1"></i>
+    DeepSeek API key is not configured on the server — add <code class="bg-rose-900/60 px-1 rounded">DEEPSEEK_API_KEY</code> to <code class="bg-rose-900/60 px-1 rounded">SweetAstro/.env</code> and restart.
+  </div>
+
+  <!-- CHAT SCROLL AREA -->
+  <main id="chat-scroll" class="flex-1 overflow-y-auto">
+    <div class="max-w-3xl mx-auto px-4 py-8 space-y-6">
+
+      <!-- WELCOME / EMPTY STATE -->
+      <section id="welcome" class="text-center space-y-6 pt-6 sm:pt-14 fade-up">
+        <div class="relative w-20 h-20 mx-auto">
+          <div class="absolute inset-0 rounded-3xl bg-amber-400/25 blur-2xl" aria-hidden="true"></div>
+          <div class="relative w-20 h-20 rounded-3xl bg-gradient-to-tr from-amber-600 via-amber-400 to-amber-200 flex items-center justify-center text-4xl shadow-xl shadow-amber-500/20 hero-planet ring-1 ring-amber-200/40">🪐</div>
+        </div>
+        <div class="space-y-2">
+          <h2 class="text-2xl sm:text-3xl font-bold text-gradient-gold font-serif-title">Your Vedic Jyotish answer engine</h2>
+          <p class="text-sm text-slate-400 max-w-lg mx-auto leading-relaxed">
+            Chart readings for any life topic, plus muhurta date-finding, daily panchang, vastu checks
+            and chart-specific remedies — all computed deterministically and answered with calibrated confidence.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-xl mx-auto text-left">
+          <button class="suggestion suggestion-card dark-card border border-slate-800 hover:border-amber-500/40 rounded-xl p-3.5 text-xs text-slate-300 transition text-left" data-prompt="When will I get married? I was born on 15 May 1995 at 2:30 pm in Jaipur, Rajasthan, India.">
+            <span class="text-amber-400 font-semibold block mb-1"><i class="fa-solid fa-heart mr-1"></i>Marriage timing</span>
+            “When will I get married?”
+          </button>
+          <button class="suggestion suggestion-card dark-card border border-slate-800 hover:border-amber-500/40 rounded-xl p-3.5 text-xs text-slate-300 transition text-left" data-prompt="How will my career and wealth grow? I don't know my exact birth time. I was born on 4 August 1961 in Honolulu, USA.">
+            <span class="text-amber-400 font-semibold block mb-1"><i class="fa-solid fa-chart-line mr-1"></i>Career &amp; wealth</span>
+            “How will my career and wealth grow?” (time unknown allowed)
+          </button>
+          <button class="suggestion suggestion-card dark-card border border-slate-800 hover:border-amber-500/40 rounded-xl p-3.5 text-xs text-slate-300 transition text-left" data-prompt="What remedies does my chart support for mental peace? My birth details: 21 September 1980, 08:39, Mumbai, India.">
+            <span class="text-amber-400 font-semibold block mb-1"><i class="fa-solid fa-hands-praying mr-1"></i>Remedies</span>
+            “What remedies does my chart support?”
+          </button>
+          <button class="suggestion suggestion-card dark-card border border-slate-800 hover:border-amber-500/40 rounded-xl p-3.5 text-xs text-slate-300 transition text-left" data-prompt="Please analyze my children prospects. Born 16 July 1983 at 6:40 am in Hong Kong.">
+            <span class="text-amber-400 font-semibold block mb-1"><i class="fa-solid fa-baby mr-1"></i>Children &amp; family</span>
+            “What does my chart say about children?”
+          </button>
+          <button class="suggestion suggestion-card dark-card border border-slate-800 hover:border-amber-500/40 rounded-xl p-3.5 text-xs text-slate-300 transition text-left" data-prompt="Find an auspicious muhurat for a housewarming between 1 October 2026 and 31 December 2026. We are in Jaipur, India.">
+            <span class="text-amber-400 font-semibold block mb-1"><i class="fa-solid fa-calendar-check mr-1"></i>Muhurta / auspicious date</span>
+            “Find an auspicious date for…” (wedding, griha pravesh, launch, travel)
+          </button>
+          <button class="suggestion suggestion-card dark-card border border-slate-800 hover:border-amber-500/40 rounded-xl p-3.5 text-xs text-slate-300 transition text-left" data-prompt="What is the panchang today? I am in New Delhi, India (IST +05:30).">
+            <span class="text-amber-400 font-semibold block mb-1"><i class="fa-solid fa-moon mr-1"></i>Panchang today</span>
+            “What is the panchang today?” (tithi, nakshatra, rahu kalam…)
+          </button>
+          <button class="suggestion suggestion-card dark-card border border-slate-800 hover:border-amber-500/40 rounded-xl p-3.5 text-xs text-slate-300 transition text-left" data-prompt="Please check my home layout against vastu: kitchen in the south-east, master bedroom in the south-west, toilet in the north-west, main door facing east, square plot.">
+            <span class="text-amber-400 font-semibold block mb-1"><i class="fa-solid fa-house mr-1"></i>Vastu check</span>
+            “Check my home layout for vastu…” (rooms, facing, water)
+          </button>
+          <button class="suggestion suggestion-card dark-card border border-slate-800 hover:border-amber-500/40 rounded-xl p-3.5 text-xs text-slate-300 transition text-left" data-prompt="Give me my chart basics: nakshatra, lagna and current dasha. Born 15 May 1995 at 2:30 pm in Jaipur, India.">
+            <span class="text-amber-400 font-semibold block mb-1"><i class="fa-solid fa-magnifying-glass mr-1"></i>My chart basics</span>
+            “My nakshatra, lagna and current dasha” (quick lookup)
+          </button>
+        </div>
+        <div class="flex flex-wrap justify-center gap-2 text-[11px] text-slate-400">
+          <span class="trust-chip"><i class="fa-solid fa-shield-halved text-emerald-400/80 mr-1"></i>Deterministic chart verification</span>
+          <span class="trust-chip"><i class="fa-solid fa-sliders text-amber-400/80 mr-1"></i>Calibrated confidence, never guarantees</span>
+          <span class="trust-chip"><i class="fa-solid fa-flag-checkered text-sky-400/80 mr-1"></i>You can report outcomes to improve calibration</span>
+        </div>
+        <p class="text-[11px] text-slate-400 max-w-md mx-auto">
+          Give your date of birth, exact time (or say “I don't know”), and birthplace. Without a time I use a
+          neutral noon chart and lower confidence transparently.
+        </p>
+      </section>
+
+      <!-- MESSAGES -->
+      <div id="messages" class="space-y-6" role="log" aria-live="polite" aria-relevant="additions text"></div>
+      <p id="sr-status" class="sr-only" aria-live="polite"></p>
+
+    </div>
+  </main>
+
+  <!-- COMPOSER -->
+  <footer class="border-t border-slate-800 bg-slate-950/90 backdrop-blur-md shrink-0">
+    <div class="max-w-3xl mx-auto px-4 pt-2 pb-3">
+      <div class="composer-shell flex items-end gap-2 dark-card border border-slate-800 focus-within:border-amber-500/50 rounded-2xl px-3 py-2 transition">
+        <textarea id="composer" rows="1" aria-label="Message" placeholder="Ask about marriage, career, wealth, health… include birth date, time and place."
+          class="flex-1 bg-transparent text-sm text-slate-100 placeholder-slate-500 resize-none focus:outline-none max-h-40 py-1.5"></textarea>
+        <button id="stop-btn" class="hidden items-center justify-center w-9 h-9 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 transition" title="Stop" aria-label="Stop generating">
+          <i class="fa-solid fa-stop"></i>
+        </button>
+        <button id="send-btn" class="send-glow flex items-center justify-center w-9 h-9 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 transition disabled:opacity-40 disabled:cursor-not-allowed" title="Send" aria-label="Send message">
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
+      </div>
+      <p class="text-[10px] text-slate-400 text-center mt-2">
+        Astrology is a traditional interpretive system, not established causation. Answers are optional guidance and do not replace professional advice.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // ---------------------------------------------------------------- helpers
+    const $ = (sel) => document.querySelector(sel);
+    const messagesEl = $('#messages');
+    const scrollEl = $('#chat-scroll');
+    const composer = $('#composer');
+    const sendBtn = $('#send-btn');
+    const stopBtn = $('#stop-btn');
+    const langSelect = $('#lang-select');
+    if (langSelect) {
+      langSelect.value = localStorage.getItem('sweetastro_lang') || 'auto';
+      langSelect.addEventListener('change', () => {
+        localStorage.setItem('sweetastro_lang', langSelect.value);
+      });
+    }
+    function selectedLanguage() {
+      const value = langSelect ? langSelect.value : 'auto';
+      return value === 'auto' ? null : value;
+    }
+
+    window.marked && marked.use({ breaks: true, gfm: true });
+
+    function escapeHtml(text) {
+      return (text || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+    function mdToHtml(md) {
+      if (window.marked && window.DOMPurify) {
+        try { return DOMPurify.sanitize(marked.parse(md || '')); } catch (e) {}
+      }
+      return escapeHtml(md || '').replace(/\n/g, '<br>');
+    }
+    function wrapTables(root) {
+      if (!root) return;
+      root.querySelectorAll('table').forEach((table) => {
+        if (table.parentElement && table.parentElement.classList.contains('table-wrap')) return;
+        const wrap = document.createElement('div');
+        wrap.className = 'table-wrap';
+        table.parentNode.insertBefore(wrap, table);
+        wrap.appendChild(table);
+      });
+    }
+    function scrollIfNearBottom() {
+      const distance = scrollEl.scrollHeight - scrollEl.scrollTop - scrollEl.clientHeight;
+      if (distance < 220) scrollEl.scrollTop = scrollEl.scrollHeight;
+    }
+
+    // ---------------------------------------------------------------- state
+    let sessionId = localStorage.getItem('sweetastro_session_id') || null;
+    let streaming = false;
+    let controller = null;
+    let currentTurn = null;
+
+    function persistSession(id) {
+      if (!id) return;
+      sessionId = id;
+      localStorage.setItem('sweetastro_session_id', id);
+    }
+
+    function apiHeaders() {
+      const token = localStorage.getItem('sweetastro_api_token') || '';
+      const headers = { 'Content-Type': 'application/json' };
+      if (token) headers['X-Auth-Token'] = token;
+      return headers;
+    }
+
+    async function promptForToken() {
+      const token = window.prompt('This server requires an API token. Enter it (stored only in this browser):');
+      if (token && token.trim()) {
+        localStorage.setItem('sweetastro_api_token', token.trim());
+        return true;
+      }
+      return false;
+    }
+
+    // ---------------------------------------------------------------- render
+    function hideWelcome() { const w = $('#welcome'); if (w) w.remove(); }
+
+    function addUserMessage(text) {
+      const el = document.createElement('div');
+      el.className = 'flex justify-end';
+      el.innerHTML = `<div class="bubble-user max-w-[85%] bg-amber-500/15 border border-amber-500/25 text-amber-50 rounded-2xl rounded-br-md px-4 py-2.5 text-sm whitespace-pre-wrap">${escapeHtml(text)}</div>`;
+      messagesEl.appendChild(el);
+      scrollIfNearBottom();
+    }
+
+    function createAssistantTurn() {
+      const wrap = document.createElement('div');
+      wrap.className = 'flex gap-3';
+      wrap.innerHTML = `
+        <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-amber-600 via-amber-400 to-amber-200 flex items-center justify-center text-slate-950 text-sm shrink-0 mt-1">🔮</div>
+        <div class="flex-1 min-w-0 space-y-3">
+          <div class="birth-card hidden"></div>
+          <div class="dark-card bubble-ai border border-slate-800 rounded-2xl rounded-tl-md p-4 sm:p-5 space-y-3">
+            <details class="thinking hidden">
+              <summary class="cursor-pointer text-[11px] uppercase tracking-wider text-slate-500 hover:text-slate-300 select-none">
+                <i class="fa-solid fa-brain mr-1"></i><span class="reasoning-label">Engine reasoning</span>
+              </summary>
+              <div class="thinking-text text-[11px] text-slate-500 mt-2 max-h-48 overflow-y-auto"></div>
+            </details>
+            <div class="status hidden items-center gap-2 text-xs text-amber-300/90">
+              <span class="inline-flex gap-1"><span class="dot w-1 h-1 rounded-full bg-amber-400 inline-block"></span><span class="dot w-1 h-1 rounded-full bg-amber-400 inline-block"></span><span class="dot w-1 h-1 rounded-full bg-amber-400 inline-block"></span></span>
+              <span class="status-text">Thinking…</span>
+            </div>
+            <div class="body prose-astro"></div>
+            <div class="error-box hidden text-xs text-rose-300 bg-rose-950/40 border border-rose-800/60 rounded-xl px-3 py-2" role="alert"></div>
+          </div>
+        </div>`;
+      messagesEl.appendChild(wrap);
+      scrollIfNearBottom();
+      return {
+        root: wrap,
+        body: wrap.querySelector('.body'),
+        status: wrap.querySelector('.status'),
+        statusText: wrap.querySelector('.status-text'),
+        thinking: wrap.querySelector('.thinking'),
+        thinkingText: wrap.querySelector('.thinking-text'),
+        reasoningLabel: wrap.querySelector('.reasoning-label'),
+        birthCard: wrap.querySelector('.birth-card'),
+        errorBox: wrap.querySelector('.error-box'),
+        rendered: '',
+        finalized: false,
+        statusInterval: null,
+        statusBase: '',
+        statusStarted: 0,
+      };
+    }
+
+    function setStatus(turn, text) {
+      if (!turn || !text) return;
+      if (turn.statusInterval) { clearInterval(turn.statusInterval); turn.statusInterval = null; }
+      turn.statusBase = text;
+      turn.statusStarted = Date.now();
+      turn.status.classList.remove('hidden');
+      turn.status.classList.add('flex');
+      const sr = document.getElementById('sr-status');
+      if (sr) sr.textContent = text;
+      const render = () => {
+        const secs = Math.round((Date.now() - turn.statusStarted) / 1000);
+        turn.statusText.textContent = secs >= 3 ? `${turn.statusBase} — ${secs}s` : turn.statusBase;
+      };
+      render();
+      turn.statusInterval = setInterval(render, 1000);
+      scrollIfNearBottom();
+    }
+    function clearStatus(turn) {
+      if (!turn) return;
+      if (turn.statusInterval) { clearInterval(turn.statusInterval); turn.statusInterval = null; }
+      turn.status.classList.add('hidden');
+      turn.status.classList.remove('flex');
+      const sr = document.getElementById('sr-status');
+      if (sr) sr.textContent = '';
+    }
+
+    let renderTimer = null;
+    let pendingRender = '';
+    function scheduleRender(turn, text) {
+      turn.rendered = text;
+      pendingRender = text;
+      if (renderTimer) return;
+      // Throttle markdown+DOMPurify to ~11 fps: long answers no longer re-sanitize every frame.
+      renderTimer = setTimeout(() => {
+        renderTimer = null;
+        if (turn && !turn.finalized) {
+          turn.body.innerHTML = mdToHtml(pendingRender);
+          wrapTables(turn.body);
+          scrollIfNearBottom();
+        }
+      }, 90);
+    }
+
+    function renderBirthCard(turn, data) {
+      if (!turn || !data) return;
+      const mode = data.mode || 'chart';
+      const unreliable = data.time_reliable === false;
+      const needsConfirm = !unreliable && data.needs_confirmation === true;
+      let badge;
+      if (needsConfirm) {
+        badge = '<span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-700/50">please confirm details</span>';
+      } else if (unreliable) {
+        badge = '<span class="text-[10px] px-2 py-0.5 rounded-full bg-rose-500/15 text-rose-300 border border-rose-700/50">birth time uncertain — reduced confidence</span>';
+      } else if (mode === 'chart') {
+        badge = '<span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-700/50">birth time reliable</span>';
+      } else {
+        badge = '<span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-700/50">deterministic engine output</span>';
+      }
+
+      const tzText = data.tz_offset != null
+        ? `${data.tz_offset >= 0 ? '+' : ''}${data.tz_offset}h${data.tz_estimated ? ' (est.)' : ''}`
+        : '—';
+
+      let title = 'Verified chart basis';
+      let rows;
+      if (mode === 'muhurta') {
+        title = 'Verified muhurta basis';
+        rows = [
+          ['Event', data.event || '—'],
+          ['Search range', data.range || '—'],
+          ['Suitable days', data.suitable_days != null ? String(data.suitable_days) : '—'],
+          ['Birth note', data.birth_note || '—'],
+          ['Place', data.place || data.place_query || '—'],
+        ];
+      } else if (mode === 'vastu') {
+        title = 'Vastu assessment basis';
+        rows = [
+          ['Score', data.score != null ? `${data.score}/100` : '—'],
+          ['Rooms assessed', data.rooms_assessed != null ? String(data.rooms_assessed) : '—'],
+          ['Water points', data.water_assessed != null ? String(data.water_assessed) : '—'],
+          ['Defects flagged', data.defect_count != null ? String(data.defect_count) : '—'],
+        ];
+      } else if (mode === 'panchanga') {
+        title = 'Verified panchanga basis';
+        rows = [
+          ['Date', data.date || '—'],
+          ['Place', data.place || data.place_query || '—'],
+          ['Time zone', tzText],
+        ];
+      } else {
+        rows = [
+          ['Name', data.name || 'Native'],
+          ['Date of birth', data.dob || '—'],
+          ['Birth time', data.tob || 'not provided'],
+          ['Place', data.place || data.place_query || '—'],
+          ['Time zone', tzText],
+          ['Ascendant', data.ascendant || '—'],
+          ['Moon', data.moon || '—'],
+          ['Current dasha', data.dasha || '—'],
+        ];
+      }
+      const editRow = mode === 'chart'
+        ? '<div class="mt-2.5 border-t border-slate-800/70 pt-2 flex justify-end"><button type="button" class="card-edit-btn text-[10px] text-slate-400 hover:text-amber-300 border border-slate-700 hover:border-amber-500/40 rounded-lg px-2 py-1 transition"><i class="fa-solid fa-pen mr-1"></i>Edit birth details</button></div>'
+        : '';
+      turn.birthCard.classList.remove('hidden');
+      turn.birthCard.innerHTML = `
+        <div class="dark-card border border-amber-500/25 rounded-2xl rounded-tl-md p-4">
+          <div class="flex items-center justify-between gap-2 mb-2.5">
+            <span class="text-[11px] uppercase tracking-wider text-amber-300 font-semibold"><i class="fa-solid fa-compass-drafting mr-1"></i>${title}</span>
+            ${badge}
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-2 text-[11px]">
+            ${rows.map(([k, v]) => `<div class="min-w-0"><div class="text-slate-500 uppercase tracking-wide text-[9px]">${k}</div><div class="text-slate-200 font-medium truncate" title="${escapeHtml(String(v))}">${escapeHtml(String(v))}</div></div>`).join('')}
+          </div>
+          ${data.geo_note ? `<div class="text-[10px] text-slate-500 mt-2.5 border-t border-slate-800/70 pt-2">${escapeHtml(data.geo_note)}</div>` : ''}
+          ${editRow}
+        </div>`;
+      const editBtn = turn.birthCard.querySelector('.card-edit-btn');
+      if (editBtn) {
+        editBtn.addEventListener('click', () => {
+          composer.value = 'Correction to my birth details: ';
+          composer.focus();
+          autoGrow();
+        });
+      }
+      scrollIfNearBottom();
+    }
+
+    const SECTION_HINTS = [
+      'bottom line', 'key chart factors', 'promise assessment', 'personal timeline',
+      'timing', 'transits & this year', 'transit strength', 'opportunity', 'risk',
+      'recommended alignment', 'traditional remedies', 'what you should do',
+      'yogas & special combinations', 'yogas & birth star', 'rahu–ketu guidance',
+      'rahu-ketu guidance', 'birth panchanga', 'annual chart', 'marriage layer',
+      'birth-time stability', 'confidence', 'remedy suitability',
+    ];
+    const EMOJI_HEAD = /^[\p{Extended_Pictographic}\uFE0F\u2600-\u27BF\s]+/u;
+
+    function extractPeriod(rawText) {
+      const text = rawText || '';
+      const monthYear = text.match(/\b(January|February|March|April|May|June|July|August|September|October|November|December)\s+(20\d{2})\b/);
+      if (monthYear) return `${monthYear[1]} ${monthYear[2]}`;
+      const span = text.match(/\b(20\d{2})\s*(?:to|–|—|-|and)\s*(20\d{2})\b/);
+      if (span) return `${span[1]}–${span[2]}`;
+      const year = text.match(/\b(20\d{2})\b/);
+      return year ? year[1] : '';
+    }
+
+    function sectionLabel(node) {
+      if (!['P', 'H1', 'H2', 'H3', 'H4'].includes(node.tagName)) return null;
+      const text = (node.textContent || '').trim();
+      if (!text || text.length > 52) return null;
+      const cleaned = text.replace(EMOJI_HEAD, '').replace(/[:：]$/, '').trim();
+      const lowered = cleaned.toLowerCase();
+      const hit = SECTION_HINTS.some(h => lowered === h || lowered.startsWith(h));
+      return hit ? cleaned : null;
+    }
+
+    function enhanceAnswer(bodyEl, rawText, context) {
+      if (!bodyEl || bodyEl.dataset.enhanced === '1') return;
+      bodyEl.dataset.enhanced = '1';
+      const nodes = Array.from(bodyEl.childNodes);
+
+      const sections = [];
+      const preamble = [];
+      let current = null;
+      for (const node of nodes) {
+        const label = sectionLabel(node);
+        if (label) {
+          current = { label, id: 'sec-' + label.toLowerCase().replace(/[^a-z0-9]+/g, '-'), nodes: [node] };
+          sections.push(current);
+        } else if (current) {
+          if (node.nodeType !== 3 || node.textContent.trim()) current.nodes.push(node);
+        } else if (node.nodeType !== 3 || node.textContent.trim()) {
+          preamble.push(node);
+        }
+      }
+
+      if (sections.length >= 3) {
+        const toc = document.createElement('nav');
+        toc.className = 'answer-toc';
+        toc.setAttribute('aria-label', 'Answer sections');
+        const container = document.createElement('div');
+        for (const p of preamble) container.appendChild(p);
+
+        for (const sec of sections) {
+          const details = document.createElement('details');
+          details.className = 'answer-section';
+          details.id = sec.id;
+          details.open = true;
+          const summary = document.createElement('summary');
+          summary.textContent = sec.label;
+          details.appendChild(summary);
+          const body = document.createElement('div');
+          body.className = 'answer-section-body';
+          for (const n of sec.nodes.slice(1)) body.appendChild(n);
+          details.appendChild(body);
+          container.appendChild(details);
+
+          const link = document.createElement('a');
+          link.href = '#' + sec.id;
+          link.textContent = sec.label;
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            details.open = true;
+            const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            details.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+          });
+          toc.appendChild(link);
+        }
+
+        bodyEl.innerHTML = '';
+        bodyEl.appendChild(toc);
+        bodyEl.appendChild(container);
+      }
+
+      const tools = document.createElement('div');
+      tools.className = 'answer-tools flex items-center gap-2';
+      const copyBtn = document.createElement('button');
+      copyBtn.type = 'button';
+      copyBtn.setAttribute('aria-label', 'Copy answer');
+      copyBtn.innerHTML = '<i class="fa-regular fa-copy mr-1"></i>Copy answer';
+      copyBtn.addEventListener('click', async () => {
+        const text = rawText || '';
+        try {
+          await navigator.clipboard.writeText(text);
+        } catch (e) {
+          const area = document.createElement('textarea');
+          area.value = text;
+          document.body.appendChild(area);
+          area.select();
+          try { document.execCommand('copy'); } catch (err) { /* ignore */ }
+          area.remove();
+        }
+        copyBtn.innerHTML = '<i class="fa-solid fa-check mr-1"></i>Copied';
+        setTimeout(() => {
+          copyBtn.innerHTML = '<i class="fa-regular fa-copy mr-1"></i>Copy answer';
+        }, 1600);
+      });
+      tools.appendChild(copyBtn);
+
+      const predictive = (rawText || '').length > 800 && /timing|window|dasha|transit/i.test(rawText || '');
+      if (predictive) {
+        const topic = (context && context.topic) ? context.topic : '';
+        const period = extractPeriod(rawText);
+        const scopeBits = [];
+        if (topic) scopeBits.push(topic);
+        if (period) scopeBits.push(`window around ${period}`);
+        const scope = scopeBits.length ? ` for the ${scopeBits.join(' ')}` : '';
+        const outcomeBtn = document.createElement('button');
+        outcomeBtn.type = 'button';
+        outcomeBtn.setAttribute('aria-label', 'Report the real outcome');
+        outcomeBtn.innerHTML = '<i class="fa-solid fa-flag-checkered mr-1"></i>Did this happen?';
+        outcomeBtn.addEventListener('click', () => {
+          tools.innerHTML = '';
+          const label = document.createElement('span');
+          label.className = 'text-[10px] text-slate-400';
+          label.textContent = `Log the real outcome${scope} (stored for calibration review):`;
+          tools.appendChild(label);
+          [['Yes, it happened', `it happened`],
+           ['Partly', `it partly happened`],
+           ['Not yet / no', `it did not happen`]].forEach(([text, value]) => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.textContent = text;
+            btn.addEventListener('click', () => {
+              sendMessage(`Outcome update${scope}: ${value}.`);
+              tools.innerHTML = '<span class="text-[10px] text-emerald-300/90">Outcome logged — thank you.</span>';
+            });
+            tools.appendChild(btn);
+          });
+        });
+        tools.appendChild(outcomeBtn);
+      }
+
+      bodyEl.insertBefore(tools, bodyEl.firstChild);
+    }
+
+    function addConfirmActions(turn) {
+      if (!turn) return;
+      const host = turn.body.closest('.flex-1') || turn.body.parentElement;
+      if (!host || host.querySelector('.confirm-actions')) return;
+      const row = document.createElement('div');
+      row.className = 'confirm-actions flex flex-wrap items-center gap-2 pt-1';
+      const yes = document.createElement('button');
+      yes.type = 'button';
+      yes.className = 'text-xs font-semibold text-slate-950 bg-amber-500 hover:bg-amber-400 px-3 py-1.5 rounded-lg transition';
+      yes.textContent = 'Yes, details are correct';
+      yes.addEventListener('click', () => { row.remove(); sendMessage('yes'); });
+      const fix = document.createElement('button');
+      fix.type = 'button';
+      fix.className = 'text-xs font-medium text-slate-300 border border-slate-700 hover:border-amber-500/50 px-3 py-1.5 rounded-lg transition';
+      fix.textContent = 'Fix birth details';
+      fix.addEventListener('click', () => {
+        composer.value = 'Correction to my birth details: ';
+        composer.focus();
+        autoGrow();
+      });
+      row.appendChild(yes);
+      row.appendChild(fix);
+      host.appendChild(row);
+    }
+
+    function finalizeTurn(turn, text, meta) {
+      if (!turn || turn.finalized) return;
+      turn.finalized = true;
+      if (renderTimer) { clearTimeout(renderTimer); renderTimer = null; }
+      turn.rendered = text || turn.rendered || '';
+      if (!turn.rendered.trim()) {
+        turn.rendered = '_No answer text was produced — the reasoning phase may have used the full budget. Please retry or ask a shorter question._';
+      }
+      turn.body.innerHTML = mdToHtml(turn.rendered);
+      wrapTables(turn.body);
+      enhanceAnswer(turn.body, turn.rendered, meta || {});
+      clearStatus(turn);
+      if (meta && meta.topic) {
+        const shapeLabels = {
+          verdict: 'direct answer', timing: 'timing window', analysis: 'chart analysis',
+          remedy: 'remedy guidance', report: 'full reading', lookup: 'quick lookup',
+        };
+        const modeLabel = meta.mode === 'muhurta' ? 'muhurta'
+          : meta.mode === 'vastu' ? 'vastu'
+          : meta.mode === 'panchanga' ? 'panchanga'
+          : (shapeLabels[meta.shape] || (meta.depth === 'lookup' ? 'quick lookup' : 'chart analysis'));
+        const tag = document.createElement('div');
+        tag.className = 'text-[10px] text-slate-500 pt-1';
+        tag.innerHTML = `<i class="fa-solid fa-tag mr-1"></i>${escapeHtml(meta.topic)} · ${modeLabel}${meta.dasha ? ` · ${escapeHtml(meta.dasha)}` : ''}`;
+        turn.body.appendChild(tag);
+      }
+      if (meta && meta.confirmation_required) addConfirmActions(turn);
+      scrollIfNearBottom();
+    }
+
+    function showError(turn, message) {
+      if (!turn) return;
+      turn.errorBox.classList.remove('hidden');
+      turn.errorBox.textContent = message || 'Something went wrong.';
+      clearStatus(turn);
+      scrollIfNearBottom();
+    }
+
+    // ---------------------------------------------------------------- stream
+    async function readSSE(body, onEvent) {
+      const reader = body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = '';
+      while (true) {
+        const { value, done } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+        let idx;
+        while ((idx = buffer.indexOf('\n\n')) >= 0) {
+          const chunk = buffer.slice(0, idx);
+          buffer = buffer.slice(idx + 2);
+          for (const line of chunk.split('\n')) {
+            if (!line.startsWith('data:')) continue;
+            const raw = line.slice(5).trim();
+            if (!raw) continue;
+            try { onEvent(JSON.parse(raw)); } catch (e) { /* ignore malformed */ }
+          }
+        }
+      }
+    }
+
+    async function sendMessage(text) {
+      if (streaming) return;
+      text = (text || '').trim();
+      if (!text) return;
+      hideWelcome();
+      addUserMessage(text);
+      composer.value = '';
+      autoGrow();
+
+      streaming = true;
+      sendBtn.disabled = true;
+      stopBtn.classList.remove('hidden');
+      stopBtn.classList.add('flex');
+
+      const turn = createAssistantTurn();
+      currentTurn = turn;
+      let content = '';
+      let reasoning = '';
+      let sawDone = false;
+      controller = new AbortController();
+
+      try {
+        let res = await fetch('/api/chat/stream', {
+          method: 'POST',
+          headers: apiHeaders(),
+          body: JSON.stringify({ session_id: sessionId, message: text, language: selectedLanguage() }),
+          signal: controller.signal,
+        });
+        if (res.status === 401) {
+          const stored = await promptForToken();
+          if (stored) {
+            res = await fetch('/api/chat/stream', {
+              method: 'POST',
+              headers: apiHeaders(),
+              body: JSON.stringify({ session_id: sessionId, message: text, language: selectedLanguage() }),
+              signal: controller.signal,
+            });
+          }
+        }
+        if (res.status === 429) {
+          const err = await res.json().catch(() => ({}));
+          showError(turn, err.detail || 'Rate limit reached — please wait a minute and try again.');
+          finalizeTurn(turn, content);
+          return;
+        }
+        if (!res.ok || !res.body) throw new Error(`Server responded ${res.status}`);
+
+        await readSSE(res.body, (ev) => {
+          if (ev.session_id) persistSession(ev.session_id);
+          switch (ev.type) {
+            case 'status': setStatus(turn, ev.text); break;
+            case 'meta': renderBirthCard(turn, ev.birth_data); clearStatus(turn); break;
+            case 'delta':
+              if (ev.channel === 'reasoning') {
+                reasoning += ev.text;
+                turn.thinking.classList.remove('hidden');
+                turn.thinkingText.textContent = reasoning;
+                turn.reasoningLabel.textContent = `Engine reasoning — ${(reasoning.length / 1000).toFixed(1)}k chars`;
+              } else {
+                if (!content) setStatus(turn, 'Writing your answer…');
+                content += ev.text;
+                scheduleRender(turn, content);
+              }
+              break;
+            case 'done':
+              sawDone = true;
+              finalizeTurn(turn, ev.content || content, ev);
+              break;
+            case 'error':
+              showError(turn, ev.message);
+              if (content) finalizeTurn(turn, content, ev);
+              break;
+          }
+        });
+        if (!turn.finalized) finalizeTurn(turn, content);
+        if (!sawDone && content) {
+          showError(turn, 'The connection ended before the full answer arrived — the partial text above is shown. '
+                        + 'You can send your question again.');
+        }
+      } catch (err) {
+        if (err.name === 'AbortError') {
+          finalizeTurn(turn, content || '_Stopped._');
+        } else {
+          showError(turn, `Connection problem: ${err.message}. Check that the server is running, then reload the page.`);
+          finalizeTurn(turn, content);
+        }
+      } finally {
+        streaming = false;
+        currentTurn = null;
+        controller = null;
+        sendBtn.disabled = false;
+        stopBtn.classList.add('hidden');
+        stopBtn.classList.remove('flex');
+      }
+    }
+
+    // ---------------------------------------------------------------- composer
+    function autoGrow() {
+      composer.style.height = 'auto';
+      composer.style.height = Math.min(composer.scrollHeight, 160) + 'px';
+    }
+    composer.addEventListener('input', autoGrow);
+    composer.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage(composer.value);
+      }
+    });
+    sendBtn.addEventListener('click', () => sendMessage(composer.value));
+    stopBtn.addEventListener('click', () => controller && controller.abort());
+
+    function bindSuggestions() {
+      document.querySelectorAll('.suggestion').forEach(btn => {
+        btn.addEventListener('click', () => sendMessage(btn.dataset.prompt));
+      });
+    }
+    const welcomeHTML = document.getElementById('welcome') ? document.getElementById('welcome').outerHTML : '';
+    bindSuggestions();
+
+    $('#new-chat-btn').addEventListener('click', () => {
+      if (controller) controller.abort();
+      toggleHistory(false);
+      sessionId = null;
+      localStorage.removeItem('sweetastro_session_id');
+      messagesEl.innerHTML = '';
+      if (!document.getElementById('welcome')) {
+        document.querySelector('main > div').insertAdjacentHTML('afterbegin', welcomeHTML);
+        bindSuggestions();
+      }
+      composer.focus();
+    });
+
+    // ---------------------------------------------------------------- history panel
+    const historyBtn = $('#history-btn');
+    const historyPanel = $('#history-panel');
+    const historyList = $('#history-list');
+    const historyEmpty = $('#history-empty');
+
+    function toggleHistory(show) {
+      historyPanel.classList.toggle('hidden', !show);
+      historyBtn.setAttribute('aria-expanded', show ? 'true' : 'false');
+    }
+
+    function relativeTime(ts) {
+      const seconds = Math.max(0, Math.floor(Date.now() / 1000 - ts));
+      if (seconds < 60) return 'just now';
+      const minutes = Math.floor(seconds / 60);
+      if (minutes < 60) return `${minutes}m ago`;
+      const hours = Math.floor(minutes / 60);
+      if (hours < 24) return `${hours}h ago`;
+      const days = Math.floor(hours / 24);
+      if (days < 7) return `${days}d ago`;
+      return new Date(ts * 1000).toLocaleDateString();
+    }
+
+    async function loadSessions() {
+      try {
+        const res = await fetch('/api/chat/sessions', { headers: apiHeaders() });
+        if (!res.ok) return;
+        const data = await res.json();
+        const sessions = data.sessions || [];
+        historyList.innerHTML = '';
+        historyEmpty.classList.toggle('hidden', sessions.length > 0);
+        for (const s of sessions) {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.setAttribute('role', 'menuitem');
+          btn.className = 'w-full text-left px-3 py-2 rounded-lg hover:bg-slate-800/80 transition flex items-start gap-2 ' +
+            (s.session_id === sessionId
+              ? 'bg-slate-800/60 border border-amber-500/30'
+              : 'border border-transparent');
+          const icon = document.createElement('i');
+          icon.className = 'fa-regular fa-comment-dots text-amber-400/80 mt-0.5';
+          const body = document.createElement('span');
+          body.className = 'flex-1 min-w-0';
+          const title = document.createElement('span');
+          title.className = 'block text-xs text-slate-200 truncate';
+          title.textContent = s.title || 'New chat';
+          const meta = document.createElement('span');
+          meta.className = 'block text-[10px] text-slate-500 mt-0.5';
+          const details = [
+            relativeTime(s.updated_at),
+            s.dob || '',
+            s.place || '',
+            `${s.message_count} message${s.message_count === 1 ? '' : 's'}`,
+          ].filter(Boolean);
+          meta.textContent = details.join(' · ');
+          body.append(title, meta);
+          btn.append(icon, body);
+          btn.addEventListener('click', () => openSession(s.session_id));
+          historyList.appendChild(btn);
+        }
+      } catch (e) { /* server offline */ }
+    }
+
+    async function openSession(id) {
+      toggleHistory(false);
+      if (id === sessionId) return;
+      if (controller) controller.abort();
+      sessionId = id;
+      localStorage.setItem('sweetastro_session_id', id);
+      messagesEl.innerHTML = '';
+      await restoreHistory();
+      scrollEl.scrollTop = scrollEl.scrollHeight;
+      composer.focus();
+    }
+
+    historyBtn.addEventListener('click', (event) => {
+      event.stopPropagation();
+      const show = historyPanel.classList.contains('hidden');
+      toggleHistory(show);
+      if (show) loadSessions();
+    });
+    document.addEventListener('click', (event) => {
+      if (!historyPanel.classList.contains('hidden') &&
+          !historyPanel.contains(event.target) && event.target !== historyBtn) {
+        toggleHistory(false);
+      }
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') toggleHistory(false);
+    });
+
+    // ---------------------------------------------------------------- history
+    async function restoreHistory() {
+      if (!sessionId) return;
+      try {
+        const res = await fetch(`/api/chat/session/${encodeURIComponent(sessionId)}`, { headers: apiHeaders() });
+        if (res.status === 404) {
+          sessionId = null;
+          localStorage.removeItem('sweetastro_session_id');
+          const welcome = document.getElementById('welcome');
+          if (welcome && !document.getElementById('session-expired-note')) {
+            const note = document.createElement('p');
+            note.id = 'session-expired-note';
+            note.className = 'text-[11px] text-amber-400/80';
+            note.textContent = 'Your previous chat expired on the server — starting a fresh session.';
+            welcome.appendChild(note);
+          }
+          return;
+        }
+        if (res.status === 401) {
+          sessionId = null;
+          localStorage.removeItem('sweetastro_session_id');
+          return;
+        }
+        if (!res.ok) return;
+        const data = await res.json();
+        const messages = data.messages || [];
+        if (!messages.length) return;
+        hideWelcome();
+        let lastAssistant = null;
+        for (const msg of messages) {
+          if (msg.role === 'user') {
+            addUserMessage(msg.content);
+            lastAssistant = null;
+          } else if (msg.role === 'assistant') {
+            const turn = createAssistantTurn();
+            finalizeTurn(turn, msg.content, { topic: data.topic });
+            lastAssistant = turn;
+          }
+        }
+        if (lastAssistant && data.chart_basis) renderBirthCard(lastAssistant, data.chart_basis);
+        scrollEl.scrollTop = scrollEl.scrollHeight;
+      } catch (e) { /* server offline — start fresh */ }
+    }
+
+    // ---------------------------------------------------------------- boot
+    (async function boot() {
+      if (!window.tailwind) document.body.classList.add('no-cdn');
+      try {
+        const res = await fetch('/api/chat/config');
+        const cfg = await res.json();
+        if (cfg.model) $('#model-badge').textContent = cfg.model;
+        if (cfg.api_key_configured === false) $('#key-warning').classList.remove('hidden');
+      } catch (e) { /* server offline */ }
+      await restoreHistory();
+      composer.focus();
+    })();
+  </script>
+</body>
+</html>

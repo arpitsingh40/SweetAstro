@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SweetAstro Marriage Timing Engine | Testing Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;500;600;700&display=swap');
+    .font-serif-title { font-family: 'Cinzel', serif; }
+    body { font-family: 'Inter', sans-serif; }
+    .gold-gradient { background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa771c 100%); }
+    .dark-card { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(12px); }
+    html { -webkit-text-size-adjust: 100%; }
+    @media (max-width: 640px) {
+      input, select, textarea { font-size: 16px; }
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-amber-500 selection:text-black">
+
+  <!-- TOP HEADER -->
+  <header class="border-b border-slate-800 bg-slate-900/60 sticky top-0 z-50 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-600 via-amber-400 to-amber-200 flex items-center justify-center text-slate-950 font-bold text-xl shadow-lg shadow-amber-500/20">
+          💍
+        </div>
+        <div>
+          <div class="flex items-center space-x-2">
+            <h1 class="text-xl font-bold tracking-tight text-white font-serif-title">SweetAstro</h1>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/30 font-semibold tracking-wide">Spec v1.0</span>
+          </div>
+          <p class="text-xs text-slate-400">Deterministic Vedic Calculation • Empirical Backtesting • Decisive Communication</p>
+        </div>
+      </div>
+
+      <!-- NAV TABS -->
+      <nav class="flex space-x-1 bg-slate-900 p-1 rounded-xl border border-slate-800 text-sm">
+        <button onclick="switchTab('predict')" id="tab-btn-predict" class="px-3.5 py-1.5 rounded-lg font-medium transition-all duration-150 bg-amber-500 text-slate-950 shadow">
+          <i class="fa-solid fa-wand-magic-sparkles mr-1.5"></i>Prediction
+        </button>
+        <button onclick="switchTab('backtest')" id="tab-btn-backtest" class="px-3.5 py-1.5 rounded-lg font-medium text-slate-400 hover:text-slate-200 transition-all duration-150">
+          <i class="fa-solid fa-flask mr-1.5"></i>Backtesting Lab
+        </button>
+        <button onclick="switchTab('tournament')" id="tab-btn-tournament" class="px-3.5 py-1.5 rounded-lg font-medium text-slate-400 hover:text-slate-200 transition-all duration-150">
+          <i class="fa-solid fa-trophy mr-1.5"></i>Tournament
+        </button>
+        <button onclick="switchTab('rules')" id="tab-btn-rules" class="px-3.5 py-1.5 rounded-lg font-medium text-slate-400 hover:text-slate-200 transition-all duration-150">
+          <i class="fa-solid fa-book-bookmark mr-1.5"></i>Rules
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+    <!-- TAB 1: MARRIAGE PREDICTOR -->
+    <div id="tab-predict" class="space-y-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- INPUT FORM -->
+        <div class="lg:col-span-4 space-y-6">
+          <div class="dark-card border border-slate-800/80 rounded-2xl p-6 shadow-xl relative overflow-hidden">
+            <div class="absolute -top-12 -right-12 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"></div>
+            
+            <h2 class="text-lg font-bold text-white mb-4 flex items-center space-x-2">
+              <i class="fa-regular fa-compass text-amber-400"></i>
+              <span>Birth Information</span>
+            </h2>
+
+            <form id="predict-form" class="space-y-4" onsubmit="handlePredictSubmit(event)">
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">Full Name</label>
+                <input type="text" id="p-name" value="Ananya Sharma" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3.5 py-2 text-sm text-white focus:outline-none focus:border-amber-400">
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">Date of Birth</label>
+                  <input type="date" id="p-dob" value="1995-05-15" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3.5 py-2 text-sm text-white focus:outline-none focus:border-amber-400">
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">Exact Time (24h)</label>
+                  <input type="time" step="1" id="p-tob" value="14:30:00" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3.5 py-2 text-sm text-white focus:outline-none focus:border-amber-400">
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">Birth Location</label>
+                <div class="flex gap-2 mb-2">
+                  <input type="text" id="p-place" placeholder="Type birth city / address…" autocomplete="off"
+                    class="flex-1 bg-slate-900 border border-slate-700 rounded-lg px-3.5 py-2 text-sm text-white focus:outline-none focus:border-amber-400">
+                  <button type="button" onclick="searchBirthPlace()" id="btn-place-search"
+                    class="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-sm text-amber-300 transition" title="Search coordinates">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </button>
+                </div>
+                <div id="p-place-results" class="space-y-1 mb-2"></div>
+                <div id="p-place-resolved" class="text-[11px] text-slate-500 mb-2">Using preset/manual coordinates below.</div>
+                <select id="p-preset-city" onchange="handleCityPreset(this.value)" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3.5 py-2 text-sm text-white focus:outline-none focus:border-amber-400 mb-2">
+                  <option value="delhi" selected>New Delhi, India (UTC +5.5)</option>
+                  <option value="mumbai">Mumbai, India (UTC +5.5)</option>
+                  <option value="london">London, UK (UTC +0.0 / +1.0)</option>
+                  <option value="newyork">New York, USA (UTC -5.0)</option>
+                  <option value="tokyo">Tokyo, Japan (UTC +9.0)</option>
+                </select>
+
+                <div class="grid grid-cols-3 gap-2">
+                  <div>
+                    <label class="block text-[10px] text-slate-400 mb-0.5">Latitude</label>
+                    <input type="number" step="0.0001" id="p-lat" value="28.6139" class="w-full bg-slate-900 border border-slate-800 rounded px-2 py-1 text-xs text-white">
+                  </div>
+                  <div>
+                    <label class="block text-[10px] text-slate-400 mb-0.5">Longitude</label>
+                    <input type="number" step="0.0001" id="p-lon" value="77.2090" class="w-full bg-slate-900 border border-slate-800 rounded px-2 py-1 text-xs text-white">
+                  </div>
+                  <div>
+                    <label class="block text-[10px] text-slate-400 mb-0.5">TZ Offset</label>
+                    <input type="number" step="0.5" id="p-tz" value="5.5" class="w-full bg-slate-900 border border-slate-800 rounded px-2 py-1 text-xs text-white">
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3 pt-2">
+                <div>
+                  <label class="block text-[11px] text-slate-400 mb-1">Search Min Age</label>
+                  <input type="number" id="p-min-age" value="20" class="w-full bg-slate-900 border border-slate-800 rounded px-2.5 py-1.5 text-xs text-white">
+                </div>
+                <div>
+                  <label class="block text-[11px] text-slate-400 mb-1">Search Max Age</label>
+                  <input type="number" id="p-max-age" value="38" class="w-full bg-slate-900 border border-slate-800 rounded px-2.5 py-1.5 text-xs text-white">
+                </div>
+              </div>
+
+              <button type="submit" id="btn-submit-predict" class="w-full mt-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold py-3 px-4 rounded-xl shadow-lg shadow-amber-500/25 transition-all duration-200 flex items-center justify-center space-x-2">
+                <i class="fa-solid fa-gem"></i>
+                <span>Predict Marriage Date</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- SYSTEM SPECS CARD -->
+          <div class="bg-slate-900/50 border border-slate-800 rounded-xl p-4 text-xs space-y-2 text-slate-400">
+            <div class="font-semibold text-slate-200 flex items-center space-x-1.5">
+              <i class="fa-solid fa-shield-halved text-amber-400"></i>
+              <span>Deterministic Specification v1.0</span>
+            </div>
+            <p>• Ayanamsha: <strong>Lahiri (Chitra Paksha)</strong></p>
+            <p>• Dasha Cycle: <strong>Vimshottari (365.2425 Days/Year)</strong></p>
+            <p>• Houses: <strong>Whole Sign (Rashi-as-House)</strong></p>
+            <p>• Transits: <strong>Double Transit (Jupiter + Saturn)</strong></p>
+          </div>
+        </div>
+
+        <!-- RESULTS DISPLAY -->
+        <div class="lg:col-span-8 space-y-6">
+          <div id="predict-placeholder" class="dark-card border border-dashed border-slate-800 rounded-2xl p-12 text-center flex flex-col items-center justify-center h-full min-h-[450px]">
+            <div class="w-16 h-16 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-3xl mb-4 text-amber-400 shadow-inner">
+              💍
+            </div>
+            <h3 class="text-lg font-semibold text-slate-200">No Prediction Generated Yet</h3>
+            <p class="text-sm text-slate-400 max-w-md mt-1">Enter birth details on the left and click "Predict Marriage Date" to run the deterministic calculation and progressive hierarchy.</p>
+          </div>
+
+          <div id="predict-result-card" class="hidden space-y-6">
+            <!-- CALIBRATED WINDOW BANNER (interpretive estimate — no date claims) -->
+            <div class="border border-amber-500/40 rounded-2xl p-6 bg-gradient-to-br from-amber-950/40 via-slate-900 to-slate-900 relative shadow-2xl overflow-hidden">
+              <div class="absolute -right-8 -bottom-8 w-44 h-44 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="text-xs uppercase tracking-widest font-semibold px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">Calibrated Window (interpretive)</span>
+                <div class="flex items-center space-x-2 text-xs">
+                  <span class="text-slate-400">Stability:</span>
+                  <span id="res-stability-badge" class="font-bold text-emerald-400">80% (High)</span>
+                </div>
+              </div>
+
+              <h2 id="res-headline" class="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-4 font-serif-title text-amber-200">
+                🪐 The clearest window this model indicates is around May 2024 (interpretive estimate — not a prediction).
+              </h2>
+
+              <!-- KEY METRICS GRID -->
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3 border-t border-slate-800">
+                <div class="bg-slate-950/60 p-2.5 rounded-lg border border-slate-800">
+                  <div class="text-[10px] text-slate-400 uppercase">Month Score</div>
+                  <div id="res-month-score" class="text-lg font-bold text-amber-400">83.2 / 100</div>
+                </div>
+                <div class="bg-slate-950/60 p-2.5 rounded-lg border border-slate-800">
+                  <div class="text-[10px] text-slate-400 uppercase">Year Score</div>
+                  <div id="res-year-score" class="text-lg font-bold text-slate-200">83.2 / 100</div>
+                </div>
+                <div class="bg-slate-950/60 p-2.5 rounded-lg border border-slate-800">
+                  <div class="text-[10px] text-slate-400 uppercase">Double Transit</div>
+                  <div id="res-transit-stat" class="text-xs font-semibold text-emerald-400 mt-1">Fulfilled</div>
+                </div>
+                <div class="bg-slate-950/60 p-2.5 rounded-lg border border-slate-800">
+                  <div class="text-[10px] text-slate-400 uppercase">Obstruction</div>
+                  <div id="res-neg-evidence" class="text-lg font-bold text-slate-400">0.0</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- EXPLAINABILITY CARDS -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <!-- WHY SAYING THIS -->
+              <div class="dark-card border border-slate-800 rounded-xl p-5 space-y-2">
+                <div class="flex items-center space-x-2 text-amber-400 font-semibold text-sm">
+                  <i class="fa-solid fa-circle-check"></i>
+                  <span>Why I'm Saying This</span>
+                </div>
+                <div id="res-why-text" class="text-xs text-slate-300 leading-relaxed whitespace-pre-line"></div>
+              </div>
+
+              <!-- WHAT HAPPENS BEFORE THEN -->
+              <div class="dark-card border border-slate-800 rounded-xl p-5 space-y-2">
+                <div class="flex items-center space-x-2 text-sky-400 font-semibold text-sm">
+                  <i class="fa-solid fa-hourglass-half"></i>
+                  <span>What Happens Before Then</span>
+                </div>
+                <div id="res-before-text" class="text-xs text-slate-300 leading-relaxed"></div>
+              </div>
+
+              <!-- PARTNER PROFILE -->
+              <div class="dark-card border border-slate-800 rounded-xl p-5 space-y-2">
+                <div class="flex items-center space-x-2 text-indigo-400 font-semibold text-sm">
+                  <i class="fa-solid fa-user-group"></i>
+                  <span>Indicated Partner & Marriage</span>
+                </div>
+                <div id="res-partner-text" class="text-xs text-slate-300 leading-relaxed"></div>
+              </div>
+
+              <!-- WHY THE DELAY -->
+              <div class="dark-card border border-slate-800 rounded-xl p-5 space-y-2">
+                <div class="flex items-center space-x-2 text-rose-400 font-semibold text-sm">
+                  <i class="fa-solid fa-clock-rotate-left"></i>
+                  <span>Why The Delay</span>
+                </div>
+                <div id="res-delay-text" class="text-xs text-slate-300 leading-relaxed"></div>
+              </div>
+            </div>
+
+            <!-- ACTIONABLE STEPS & QUESTION -->
+            <div class="dark-card border border-slate-800 rounded-xl p-5 space-y-3">
+              <div>
+                <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">What you should do now</div>
+                <p id="res-action-text" class="text-sm text-slate-200"></p>
+              </div>
+              <div class="pt-3 border-t border-slate-800/80">
+                <div class="text-xs font-semibold text-amber-400 uppercase tracking-wider mb-1">One question for you</div>
+                <p id="res-question-text" class="text-sm text-amber-200 font-medium italic"></p>
+              </div>
+            </div>
+
+            <!-- WHY NOT OTHER MONTHS VISUALIZATION -->
+            <div class="dark-card border border-slate-800 rounded-xl p-5 space-y-4">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h4 class="text-sm font-bold text-white flex items-center space-x-2">
+                    <i class="fa-solid fa-chart-column text-amber-400"></i>
+                    <span>Why Not Other Months? (Point 33 Internal Analysis)</span>
+                  </h4>
+                  <p id="res-monthly-summary" class="text-xs text-slate-400 mt-0.5"></p>
+                </div>
+              </div>
+
+              <div id="res-monthly-bars" class="space-y-2">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TAB 2: BACKTESTING LAB -->
+    <div id="tab-backtest" class="hidden space-y-8">
+      <div class="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-slate-800">
+        <div>
+          <h2 class="text-xl font-bold text-white font-serif-title">SweetAstro Backtesting Lab</h2>
+          <p class="text-sm text-slate-400">Machinery validation over verified historical marriage charts (Point 23: Strict Blind Testing)</p>
+        </div>
+        <button onclick="runBlindBacktest()" id="btn-run-backtest" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-4 py-2.5 rounded-xl shadow-lg flex items-center space-x-2 text-sm transition">
+          <i class="fa-solid fa-play"></i>
+          <span>Run Blind Backtest Suite</span>
+        </button>
+      </div>
+
+      <!-- ACCURACY-CLAIM GUARD -->
+      <div class="border border-amber-500/40 bg-amber-500/10 rounded-xl px-4 py-3 text-xs text-amber-200">
+        <i class="fa-solid fa-triangle-exclamation mr-1.5"></i>
+        <span id="bt-claim-note"><strong>Machinery validation only — not an accuracy claim.</strong> This seed dataset is far below the pre-registered 500-chart minimum (docs/accuracy_protocol.md), so no accuracy claim can be derived from these numbers.</span>
+      </div>
+
+      <!-- METRICS CARDS -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="dark-card border border-slate-800 p-4 rounded-xl">
+          <div class="text-xs text-slate-400 uppercase">Charts Evaluated</div>
+          <div id="bt-tested" class="text-2xl font-bold text-white mt-1">5</div>
+          <div class="text-[11px] text-slate-500 mt-0.5">Rodden Rating AA/A</div>
+        </div>
+        <div class="dark-card border border-slate-800 p-4 rounded-xl">
+          <div class="text-xs text-slate-400 uppercase">Mean Abs. Error (MAE)</div>
+          <div id="bt-mae" class="text-2xl font-bold text-amber-400 mt-1">89.6m</div>
+          <div class="text-[11px] text-slate-500 mt-0.5">Average timing delta</div>
+        </div>
+        <div class="dark-card border border-slate-800 p-4 rounded-xl">
+          <div class="text-xs text-slate-400 uppercase">95% Confidence Interval</div>
+          <div id="bt-ci" class="text-sm font-bold text-slate-200 mt-2">(33.86, 145.34)m</div>
+          <div class="text-[11px] text-slate-500 mt-0.5">Statistical margin</div>
+        </div>
+        <div class="dark-card border border-slate-800 p-4 rounded-xl">
+          <div class="text-xs text-slate-400 uppercase">Best Individual Fit</div>
+          <div id="bt-best-fit" class="text-2xl font-bold text-emerald-400 mt-1">17.0m</div>
+          <div class="text-[11px] text-slate-500 mt-0.5">Bill Gates (1994 vs 1995)</div>
+        </div>
+      </div>
+
+      <!-- RECORDS TABLE -->
+      <div class="dark-card border border-slate-800 rounded-xl overflow-hidden">
+        <div class="px-5 py-3.5 border-b border-slate-800 font-semibold text-sm flex items-center justify-between">
+          <span>Blind Historical Predictions & Outcomes</span>
+          <span class="text-xs text-slate-400">Prediction IDs are stamped prior to unblinding</span>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs">
+            <thead class="bg-slate-900/80 text-slate-400 uppercase tracking-wider">
+              <tr>
+                <th class="px-4 py-3">Prediction ID</th>
+                <th class="px-4 py-3">Subject / Chart</th>
+                <th class="px-4 py-3">Actual Marriage</th>
+                <th class="px-4 py-3">Blind Prediction</th>
+                <th class="px-4 py-3">Delta Error</th>
+                <th class="px-4 py-3">Confidence</th>
+                <th class="px-4 py-3">Stability</th>
+              </tr>
+            </thead>
+            <tbody id="bt-table-body" class="divide-y divide-slate-800 text-slate-300">
+              <tr>
+                <td colspan="7" class="px-4 py-8 text-center text-slate-500">Click "Run Blind Backtest Suite" to generate live benchmark records.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: METHOD TOURNAMENT -->
+    <div id="tab-tournament" class="hidden space-y-8">
+      <div class="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-slate-800">
+        <div>
+          <h2 class="text-xl font-bold text-white font-serif-title">Method Tournament (Point 39)</h2>
+          <p class="text-sm text-slate-400">Relative model comparison on a small seed dataset — machinery validation only, not an accuracy claim</p>
+        </div>
+        <button onclick="runTournament()" id="btn-run-tournament" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-4 py-2.5 rounded-xl shadow-lg flex items-center space-x-2 text-sm transition">
+          <i class="fa-solid fa-ranking-star"></i>
+          <span>Run Tournament</span>
+        </button>
+      </div>
+
+      <div id="tournament-results-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+
+    <!-- TAB 4: CLASSICAL RULES -->
+    <div id="tab-rules" class="hidden space-y-8">
+      <div class="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-slate-800">
+        <div>
+          <h2 class="text-xl font-bold text-white font-serif-title">Classical Rule Catalog</h2>
+          <p class="text-sm text-slate-400">Structured rules with book/chapter/verse provenance (Points 4, 5, 6)</p>
+        </div>
+      </div>
+
+      <div id="rules-catalog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    const CITIES = {
+      delhi: { lat: 28.6139, lon: 77.2090, tz: 5.5 },
+      mumbai: { lat: 19.0760, lon: 72.8777, tz: 5.5 },
+      london: { lat: 51.5074, lon: -0.1278, tz: 1.0 },
+      newyork: { lat: 40.7128, lon: -74.0060, tz: -5.0 },
+      tokyo: { lat: 35.6762, lon: 139.6503, tz: 9.0 }
+    };
+
+    function handleCityPreset(cityKey) {
+      if (CITIES[cityKey]) {
+        document.getElementById('p-lat').value = CITIES[cityKey].lat;
+        document.getElementById('p-lon').value = CITIES[cityKey].lon;
+        document.getElementById('p-tz').value = CITIES[cityKey].tz;
+        document.getElementById('p-place').value = '';
+        document.getElementById('p-place-resolved').innerText = 'Using preset: ' + cityKey + ' (manual coordinates).';
+        document.getElementById('p-place-results').innerHTML = '';
+      }
+    }
+
+    let placeSearchTimer = null;
+    document.getElementById('p-place').addEventListener('input', (e) => {
+      clearTimeout(placeSearchTimer);
+      const q = e.target.value.trim();
+      if (q.length < 3) { document.getElementById('p-place-results').innerHTML = ''; return; }
+      placeSearchTimer = setTimeout(() => searchBirthPlace(), 500);
+    });
+
+    async function searchBirthPlace() {
+      const q = document.getElementById('p-place').value.trim();
+      const box = document.getElementById('p-place-results');
+      if (q.length < 3) return;
+      box.innerHTML = '<div class="text-[11px] text-slate-500 px-1">Searching open-source map…</div>';
+      try {
+        const res = await fetch('/api/geocode?q=' + encodeURIComponent(q) + '&limit=5');
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          box.innerHTML = '<div class="text-[11px] text-rose-400 px-1">' + (err.detail || 'Place search failed.') + '</div>';
+          return;
+        }
+        const hits = await res.json();
+        if (!hits.length) {
+          box.innerHTML = '<div class="text-[11px] text-slate-500 px-1">No match — try "City, State, Country".</div>';
+          return;
+        }
+        box.innerHTML = '';
+        hits.forEach((h, i) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'w-full text-left text-[11px] px-2.5 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 transition truncate';
+          btn.title = h.display_name;
+          btn.innerHTML = '<i class="fa-solid fa-location-dot text-amber-400 mr-1.5"></i>' + h.display_name;
+          btn.onclick = () => selectBirthPlace(h);
+          box.appendChild(btn);
+        });
+      } catch (err) {
+        box.innerHTML = '<div class="text-[11px] text-rose-400 px-1">Search error: ' + err.message + '</div>';
+      }
+    }
+
+    function selectBirthPlace(h) {
+      document.getElementById('p-lat').value = h.lat;
+      document.getElementById('p-lon').value = h.lon;
+      document.getElementById('p-place-results').innerHTML = '';
+      document.getElementById('p-place-resolved').innerText = 'Resolved: ' + h.display_name + ' (' + h.lat + ', ' + h.lon + ' via ' + h.source + ').';
+    }
+
+    function switchTab(tab) {
+      const tabs = ['predict', 'backtest', 'tournament', 'rules'];
+      tabs.forEach(t => {
+        const el = document.getElementById(`tab-${t}`);
+        const btn = document.getElementById(`tab-btn-${t}`);
+        if (t === tab) {
+          el.classList.remove('hidden');
+          btn.className = 'px-3.5 py-1.5 rounded-lg font-medium transition-all duration-150 bg-amber-500 text-slate-950 shadow';
+        } else {
+          el.classList.add('hidden');
+          btn.className = 'px-3.5 py-1.5 rounded-lg font-medium text-slate-400 hover:text-slate-200 transition-all duration-150';
+        }
+      });
+      if (tab === 'rules') loadRules();
+      if (tab === 'backtest') runBlindBacktest();
+      if (tab === 'tournament') runTournament();
+    }
+
+    async function handlePredictSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('btn-submit-predict');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> Calculating...';
+
+      const payload = {
+        name: document.getElementById('p-name').value,
+        dob: document.getElementById('p-dob').value,
+        tob: document.getElementById('p-tob').value,
+        place: document.getElementById('p-place').value,
+        lat: parseFloat(document.getElementById('p-lat').value),
+        lon: parseFloat(document.getElementById('p-lon').value),
+        tz_offset: parseFloat(document.getElementById('p-tz').value),
+        search_start_age: parseInt(document.getElementById('p-min-age').value),
+        search_end_age: parseInt(document.getElementById('p-max-age').value)
+      };
+
+      try {
+        const res = await fetch('/api/predict', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        renderPrediction(data);
+      } catch (err) {
+        alert('Prediction error: ' + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-gem mr-2"></i> Predict Marriage Date';
+      }
+    }
+
+    function renderPrediction(data) {
+      document.getElementById('predict-placeholder').classList.add('hidden');
+      document.getElementById('predict-result-card').classList.remove('hidden');
+
+      const ans = data.user_answer;
+      const bkp = data.internal_bookkeeping;
+
+      if (data.resolved_location) {
+        document.getElementById('p-place-resolved').innerText =
+          'Chart calculated for ' + data.resolved_location.lat + ', ' + data.resolved_location.lon + ' — ' + data.resolved_location.note;
+      }
+
+      document.getElementById('res-headline').innerText = ans.headline;
+      document.getElementById('res-stability-badge').innerText = `${bkp.temporal_stability_pct}% (${bkp.stability_classification})`;
+      document.getElementById('res-month-score').innerText = `${bkp.month_score} / 100`;
+      document.getElementById('res-year-score').innerText = `${bkp.year_score} / 100`;
+      document.getElementById('res-transit-stat').innerText = bkp.transit === 'Strong' ? 'Fulfilled (Double Transit)' : bkp.transit;
+      document.getElementById('res-neg-evidence').innerText = `-${bkp.negative_evidence}`;
+
+      document.getElementById('res-why-text').innerText = ans.why_saying_this;
+      document.getElementById('res-before-text').innerText = ans.what_happens_before_then;
+      document.getElementById('res-partner-text').innerText = ans.partner_and_marriage_profile;
+      document.getElementById('res-delay-text').innerText = ans.why_the_delay;
+      document.getElementById('res-action-text').innerText = ans.what_to_do_now;
+      document.getElementById('res-question-text').innerText = `"${ans.closing_question}"`;
+
+      document.getElementById('res-monthly-summary').innerText = bkp.monthly_summary;
+
+      // Render monthly comparison bars
+      const barContainer = document.getElementById('res-monthly-bars');
+      barContainer.innerHTML = '';
+      bkp.monthly_breakdown.forEach(m => {
+        const isPeak = m.is_strongest;
+        const barWidth = Math.max(5, m.score);
+        const barColor = isPeak ? 'bg-amber-400' : 'bg-slate-700';
+        const badge = isPeak ? '<span class="text-[10px] px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-bold ml-2">PEAK CANDIDATE</span>' : `<span class="text-[10px] text-slate-500 ml-2">-${m.margin_from_peak} pts</span>`;
+
+        barContainer.innerHTML += `
+          <div>
+            <div class="flex justify-between text-xs mb-1">
+              <span class="font-medium text-slate-300">${m.month} ${badge}</span>
+              <span class="font-bold ${isPeak ? 'text-amber-400' : 'text-slate-400'}">${m.score} / 100</span>
+            </div>
+            <div class="w-full bg-slate-900 rounded-full h-2 overflow-hidden">
+              <div class="${barColor} h-2 rounded-full transition-all duration-500" style="width: ${barWidth}%"></div>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    async function runBlindBacktest() {
+      const btn = document.getElementById('btn-run-backtest');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-1.5"></i> Running Blind Test...';
+
+      try {
+        const res = await fetch('/api/backtest/run', { method: 'POST' });
+        const data = await res.json();
+
+        const claimNote = document.getElementById('bt-claim-note');
+        if (claimNote && data.metrics && data.metrics.claim_note) {
+          claimNote.innerHTML = '<strong>Machinery validation only — not an accuracy claim.</strong> ' + data.metrics.claim_note;
+        }
+
+        document.getElementById('bt-tested').innerText = data.metrics.total_charts_tested;
+        document.getElementById('bt-mae').innerText = data.metrics.mean_absolute_error_months + 'm';
+        document.getElementById('bt-ci').innerText = `(${data.metrics.confidence_interval_95[0]}, ${data.metrics.confidence_interval_95[1]})m`;
+
+        const tbody = document.getElementById('bt-table-body');
+        tbody.innerHTML = '';
+        data.records.forEach(r => {
+          const hitBadge = r.is_top_1 ? '<span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-semibold text-[10px]">Top-1 Hit</span>' : (r.is_top_3 ? '<span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 font-semibold text-[10px]">Top-3 Hit</span>' : '<span class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-400 font-semibold text-[10px]">Miss</span>');
+
+          tbody.innerHTML += `
+            <tr class="hover:bg-slate-900/40">
+              <td class="px-4 py-3 font-mono text-amber-400 font-bold">${r.prediction_id}</td>
+              <td class="px-4 py-3 font-semibold text-white">${r.chart_id}</td>
+              <td class="px-4 py-3 text-slate-300">${r.actual_date}</td>
+              <td class="px-4 py-3 font-medium text-slate-100">${r.predicted_period}</td>
+              <td class="px-4 py-3 font-bold ${r.month_error <= 24 ? 'text-emerald-400' : 'text-slate-300'}">${r.month_error} months</td>
+              <td class="px-4 py-3 text-slate-400">${r.confidence_score}/100</td>
+              <td class="px-4 py-3 text-slate-400">${r.stability_score}%</td>
+            </tr>
+          `;
+        });
+      } catch (err) {
+        alert('Backtest error: ' + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-play mr-1.5"></i> Run Blind Backtest Suite';
+      }
+    }
+
+    async function runTournament() {
+      const btn = document.getElementById('btn-run-tournament');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-1.5"></i> Running Tournament...';
+
+      try {
+        const res = await fetch('/api/tournament/run', { method: 'POST' });
+        const models = await res.json();
+
+        const grid = document.getElementById('tournament-results-grid');
+        grid.innerHTML = '';
+
+        models.forEach((m, idx) => {
+          const rankColor = idx === 0 ? 'text-amber-400 border-amber-500/40 bg-amber-500/5' : 'text-slate-400 border-slate-800';
+          const crown = idx === 0 ? '<i class="fa-solid fa-crown text-amber-400 ml-2"></i>' : '';
+
+          grid.innerHTML += `
+            <div class="dark-card border ${rankColor} rounded-2xl p-6 space-y-4 shadow-lg">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-slate-500">RANK #${idx + 1}</span>
+                <span class="text-xs px-2.5 py-0.5 rounded-full bg-slate-800 text-slate-300 font-semibold">MAE: ${m.mae_months}m</span>
+              </div>
+              <div>
+                <h3 class="text-base font-bold text-white flex items-center">${m.model_name} ${crown}</h3>
+                <p class="text-xs text-slate-400 mt-1">${m.description}</p>
+              </div>
+              <div class="border-t border-slate-800 pt-3 space-y-1.5 text-xs">
+                <div class="text-[10px] uppercase text-slate-500 font-semibold mb-1">Ensemble Weights</div>
+                <div class="flex justify-between text-slate-400"><span>Parashari:</span> <span class="text-slate-200 font-medium">${(m.weights.parashari * 100).toFixed(0)}%</span></div>
+                <div class="flex justify-between text-slate-400"><span>Navamsa D9:</span> <span class="text-slate-200 font-medium">${(m.weights.d9 * 100).toFixed(0)}%</span></div>
+                <div class="flex justify-between text-slate-400"><span>Vimshottari Dasha:</span> <span class="text-slate-200 font-medium">${(m.weights.dasha * 100).toFixed(0)}%</span></div>
+                <div class="flex justify-between text-slate-400"><span>Double Transit:</span> <span class="text-slate-200 font-medium">${(m.weights.transit * 100).toFixed(0)}%</span></div>
+                <div class="flex justify-between text-slate-400"><span>Jaimini:</span> <span class="text-slate-200 font-medium">${(m.weights.jaimini * 100).toFixed(0)}%</span></div>
+              </div>
+            </div>
+          `;
+        });
+      } catch (err) {
+        alert('Tournament error: ' + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-ranking-star mr-1.5"></i> Run Tournament';
+      }
+    }
+
+    async function loadRules() {
+      try {
+        const res = await fetch('/api/rules');
+        const rules = await res.json();
+        const grid = document.getElementById('rules-catalog-grid');
+        grid.innerHTML = '';
+        rules.forEach(r => {
+          grid.innerHTML += `
+            <div class="dark-card border border-slate-800 rounded-xl p-4 space-y-2 text-xs">
+              <div class="flex items-center justify-between">
+                <span class="font-mono font-bold text-amber-400">${r.rule_id}</span>
+                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 uppercase font-semibold text-[10px]">${r.category}</span>
+              </div>
+              <div class="text-[11px] text-slate-400 font-medium"><i class="fa-solid fa-book-open mr-1 text-slate-500"></i>${r.source}</div>
+              <p class="text-slate-200 leading-relaxed">${r.interpretation}</p>
+              <div class="text-[10px] text-slate-500 pt-1 border-t border-slate-800/80 flex justify-between">
+                <span>Base Weight: ${r.weight > 0 ? '+' : ''}${r.weight}</span>
+                <span>${r.timing_capability ? 'Timing Enabled' : 'Diagnostic'}</span>
+              </div>
+            </div>
+          `;
+        });
+      } catch (err) {
+        console.error('Failed to load rules:', err);
+      }
+    }
+  </script>
+</body>
+</html>

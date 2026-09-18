@@ -1,0 +1,110 @@
+[
+  {
+    "rule_id": "MAR-0010",
+    "domain": "Marriage",
+    "category": "delay",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "chapter": 18,
+      "verse": "21",
+      "commentary": "Saturn aspecting or occupying the 7th house delays marriage past early adulthood."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "Saturn",
+        "condition_type": "aspects_house",
+        "target": "7"
+      }
+    ],
+    "result": "marriage_delayed_maturity",
+    "base_weight": -18.0,
+    "timing_capability": true,
+    "timing_resolution": "age_range",
+    "interpretation": "Saturn's sobering aspect on the 7th house requires maturity, postponing marriage until age 28–32 or later.",
+    "exceptions": ["Saturn is 7th lord or exalted in Libra"],
+    "exception_conditions": [
+      {
+        "entity": "Saturn",
+        "condition_type": "is_lord_of_house",
+        "target": "7"
+      },
+      {
+        "entity": "Saturn",
+        "condition_type": "dignity_at_least",
+        "values": ["Moolatrikona"]
+      }
+    ]
+  },
+  {
+    "rule_id": "MAR-0011",
+    "domain": "Marriage",
+    "category": "delay",
+    "source": {
+      "book": "Phaladeepika",
+      "chapter": 10,
+      "verse": "4",
+      "commentary": "Saturn in the 7th house causes delay in wedlock."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "Saturn",
+        "condition_type": "in_house",
+        "values": ["7"]
+      }
+    ],
+    "result": "marriage_delayed_saturn_7th",
+    "base_weight": -20.0,
+    "timing_capability": true,
+    "timing_resolution": "age_range",
+    "interpretation": "Saturn occupying the 7th house causes postponement and brings a mature, dutiful spouse later in life."
+  },
+  {
+    "rule_id": "MAR-0012",
+    "domain": "Marriage",
+    "category": "delay",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "chapter": 18,
+      "verse": "23",
+      "commentary": "7th lord in 6th, 8th, or 12th house indicates delay and obstacles."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "7th_lord",
+        "condition_type": "in_house",
+        "values": ["6", "8", "12"]
+      }
+    ],
+    "result": "marriage_delay_dusthana",
+    "base_weight": -16.0,
+    "timing_capability": true,
+    "timing_resolution": "age_range",
+    "interpretation": "7th lord in a trik/dusthana house introduces delays, career-related postponements, or prolonged search for a partner."
+  },
+  {
+    "rule_id": "MAR-0013",
+    "domain": "Marriage",
+    "category": "delay",
+    "source": {
+      "book": "Sarvartha Chintamani",
+      "chapter": 6,
+      "verse": "18",
+      "commentary": "7th lord combust the Sun delays marital timing."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "7th_lord",
+        "condition_type": "is_combust"
+      }
+    ],
+    "result": "marriage_delay_combustion",
+    "base_weight": -14.0,
+    "timing_capability": true,
+    "timing_resolution": "age_range",
+    "interpretation": "Combustion of the 7th lord weakens early activation of marital karakatwas, requiring mature timing."
+  }
+]

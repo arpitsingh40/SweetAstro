@@ -1,0 +1,50 @@
+[
+  {
+    "rule_id": "MAR-0040",
+    "domain": "Marriage",
+    "category": "jaimini",
+    "source": {
+      "book": "Jaimini Sutras",
+      "chapter": 1,
+      "verse": "4:2",
+      "commentary": "Darakaraka (planet with lowest longitude) activates marriage during its operative period."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "active_dasha_lord",
+        "condition_type": "jaimini_karaka_is",
+        "target": "DK"
+      }
+    ],
+    "result": "darakaraka_activation",
+    "base_weight": 22.0,
+    "timing_capability": true,
+    "timing_resolution": "quarter",
+    "interpretation": "Darakaraka (DK), the supreme Jaimini significator of spouse and union, directly brings marriage when its period operates."
+  },
+  {
+    "rule_id": "MAR-0041",
+    "domain": "Marriage",
+    "category": "jaimini",
+    "source": {
+      "book": "Jaimini Sutras",
+      "chapter": 1,
+      "verse": "4:15",
+      "commentary": "Activation of Upapada Lagna (UL) lord or planets placed in Upapada."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "active_dasha_lord",
+        "condition_type": "is_lord_of_house",
+        "target": "upapada_lagna"
+      }
+    ],
+    "result": "upapada_activation",
+    "base_weight": 18.0,
+    "timing_capability": true,
+    "timing_resolution": "year",
+    "interpretation": "Upapada Lagna (UL) represents the physical manifestation of marriage; its lord's period brings formal wedding."
+  }
+]

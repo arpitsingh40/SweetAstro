@@ -1,0 +1,122 @@
+[
+  {
+    "rule_id": "MAR-0033",
+    "domain": "Marriage",
+    "category": "timing_transit",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "chapter": 66,
+      "verse": "5",
+      "commentary": "Transit Jupiter aspecting natal Lagna Lord strengthens marriage window."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "transit_jupiter",
+        "condition_type": "aspects_planet",
+        "target": "lagna_lord"
+      }
+    ],
+    "result": "jupiter_transit_lagna_lord",
+    "base_weight": 18.0,
+    "timing_capability": true,
+    "timing_resolution": "month",
+    "interpretation": "Transit Jupiter aspecting the Lagna lord strengthens the marriage window when combined with other factors."
+  },
+  {
+    "rule_id": "MAR-0034",
+    "domain": "Marriage",
+    "category": "timing_transit",
+    "source": {
+      "book": "Deva Keralam",
+      "chapter": 2,
+      "verse": "115",
+      "commentary": "Saturn transiting the 7th house or its lord activates marriage karma."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "transit_saturn",
+        "condition_type": "transit_aspects_house",
+        "target": "7"
+      }
+    ],
+    "result": "saturn_transit_7th_axis",
+    "base_weight": 15.0,
+    "timing_capability": true,
+    "timing_resolution": "month",
+    "interpretation": "Saturn transiting the 7th house axis activates marriage-related karma and timing."
+  },
+  {
+    "rule_id": "MAR-0035",
+    "domain": "Marriage",
+    "category": "timing_transit",
+    "source": {
+      "book": "Phaladeepika",
+      "chapter": 26,
+      "verse": "20",
+      "commentary": "Jupiter transit over natal Venus or 7th lord signals marriage timing."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "transit_jupiter",
+        "condition_type": "aspects_planet",
+        "target": "7th_lord"
+      }
+    ],
+    "result": "jupiter_transit_7th_lord",
+    "base_weight": 20.0,
+    "timing_capability": true,
+    "timing_resolution": "month",
+    "interpretation": "When transit Jupiter crosses or aspects the natal 7th lord, it activates the marriage house axis and signals timing."
+  },
+  {
+    "rule_id": "MAR-0036",
+    "domain": "Marriage",
+    "category": "timing_transit",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "chapter": 66,
+      "verse": "6",
+      "commentary": "Transit Rahu/Ketu axis activating 7th house or its lord adds urgency."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "transit_rahu",
+        "condition_type": "transit_aspects_house",
+        "target": "7"
+      }
+    ],
+    "result": "transit_activates_7th",
+    "base_weight": 12.0,
+    "timing_capability": true,
+    "timing_resolution": "month",
+    "interpretation": "Transit activations on the 7th house axis add timing significance when combined with Dasha support."
+  },
+  {
+    "rule_id": "MAR-0055",
+    "domain": "Marriage",
+    "category": "timing_transit",
+    "source": {
+      "book": "Deva Keralam",
+      "chapter": 2,
+      "verse": "120",
+      "commentary": "Jupiter transit aspecting natal D9 7th lord activates Navamsa confirmation."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "transit_jupiter",
+        "condition_type": "transit_aspects_house",
+        "target": "7_d9_lord"
+      }
+    ],
+    "result": "jupiter_transit_d9_confirmation",
+    "base_weight": 16.0,
+    "timing_capability": true,
+    "timing_resolution": "month",
+    "interpretation": "Transit Jupiter aspecting the 7th house confirms Navamsa promise and signals marriage timing."
+  }
+]

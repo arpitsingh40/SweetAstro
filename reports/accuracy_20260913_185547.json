@@ -1,0 +1,133 @@
+{
+  "protocol_version": "1.2.0",
+  "dataset_path": "C:\\Users\\Dell -\\Documents\\Code\\SweetAstro\\data\\test_charts\\historical_verified.json",
+  "manifest": {
+    "protocol_version": "1.2.0",
+    "created_utc": "2026-09-13T13:25:47+00:00",
+    "dataset_path": "C:\\Users\\Dell -\\Documents\\Code\\SweetAstro\\data\\test_charts\\historical_verified.json",
+    "dataset_sha256": "cd84d6ec8dcfcfda4ded258b7bc249b933e766cd4b19ee37b98d44ed24a65194",
+    "rules_sha256": "7f80d64d238c2846b147e9728e6b68e44879baea7b0c94e392b0550b57a9523a",
+    "search_window": {
+      "min_age": 18,
+      "max_age": 45
+    },
+    "split": {
+      "method": "sha256(chart_id + seed) ranked, exact train_pct/remainder",
+      "train_pct": 70,
+      "seed": 20260912
+    },
+    "primary_endpoint": "top1_year_exact",
+    "included_rodden": [
+      "AA",
+      "A"
+    ]
+  },
+  "validation": {
+    "n_records": 5,
+    "n_primary": 5,
+    "rodden_counts": {
+      "AA": 3,
+      "A": 2
+    },
+    "outside_window": [],
+    "duplicates": [],
+    "warnings": []
+  },
+  "n_train": 4,
+  "n_test": 1,
+  "coverage_pct": 100.0,
+  "engine_test": {
+    "n": 1,
+    "top1_year": 0.0,
+    "top3_year": 0.0,
+    "hit_within_12_months": 0.0,
+    "mae_months": 93.0,
+    "n_withheld": 0
+  },
+  "engine_test_ci": {
+    "top1_year": {
+      "lo": 0.0,
+      "hi": 0.0
+    },
+    "hit_12m": {
+      "lo": 0.0,
+      "hi": 0.0
+    },
+    "mae_months": {
+      "lo": 93.0,
+      "hi": 93.0
+    }
+  },
+  "engine_train": {
+    "n": 4,
+    "top1_year": 0.0,
+    "top3_year": 0.0,
+    "hit_within_12_months": 0.0,
+    "mae_months": 104.5,
+    "n_withheld": 0
+  },
+  "engine_test_all_ratings": {
+    "n": 1,
+    "top1_year": 0.0,
+    "top3_year": 0.0,
+    "hit_within_12_months": 0.0,
+    "mae_months": 93.0,
+    "n_withheld": 0
+  },
+  "uniform_baseline": {
+    "top1_year": 3.2,
+    "top1_lo": 0.0,
+    "top1_hi": 100.0,
+    "hit_12m": 7.6,
+    "hit_lo": 0.0,
+    "hit_hi": 100.0
+  },
+  "modal_baseline": {
+    "top1_year": 0.0,
+    "hit_12m": 0.0,
+    "modal_age": 24,
+    "modal_month": 3
+  },
+  "permutation": {
+    "p_value": 1.0,
+    "observed_top1_pct": 0.0
+  },
+  "calibration": [
+    {
+      "bin": "0-25",
+      "n": 0,
+      "top1_year": null,
+      "hit_12m": null
+    },
+    {
+      "bin": "25-50",
+      "n": 0,
+      "top1_year": null,
+      "hit_12m": null
+    },
+    {
+      "bin": "50-75",
+      "n": 0,
+      "top1_year": null,
+      "hit_12m": null
+    },
+    {
+      "bin": "75-100.01",
+      "n": 1,
+      "top1_year": 0.0,
+      "hit_12m": 0.0
+    }
+  ],
+  "per_chart_test": [
+    {
+      "chart_id": "CHART-004",
+      "rodden": "AA",
+      "predicted": "January 1985",
+      "actual": "1992-10",
+      "error_months": 93,
+      "top1": false
+    }
+  ],
+  "runtime_seconds": 0.19,
+  "generated_utc": "2026-09-13T13:25:47+00:00"
+}

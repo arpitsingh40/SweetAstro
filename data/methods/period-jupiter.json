@@ -1,0 +1,54 @@
+{
+  "version": "0.1.0",
+  "slug": "period-jupiter",
+  "method": "Jupiter Mahadasha is rarely good for Capricorn ascendant because Jupiter is the lord of the 12th house for Capricorn.",
+  "source": {
+    "teacher": "Swastik Global",
+    "channel": "Swastik Global",
+    "basis": "YouTube video research (evidence gate: see candidate report)",
+    "confidence": "modern",
+    "research_note": "docs/research/video_method_pipeline.md#candidate-VC-7f9d4a56aa",
+    "label": "Jupiter Mahadasha is rarely good for Capricorn ascendant bec (modern — Swastik Global)"
+  },
+  "enabled": false,
+  "allow_quotes": false,
+  "evidence": {
+    "candidate_id": "VC-7f9d4a56aa",
+    "video_id": "SCsOS6tQHUM",
+    "locator": "00:00:48-00:00:55",
+    "passes": 2,
+    "extractor_confidence": "high"
+  },
+  "source_videos": [
+    {
+      "id": "SCsOS6tQHUM",
+      "title": "Guru Mahadasha | Symptoms & Remedies | Disha aur Dasha | Ft: Astro Sharmistha | Swastik Global",
+      "locator": "00:00:48-00:00:55"
+    }
+  ],
+  "safety_rules": [
+    "Unvalidated modern method derived from video research; never presented as classical authority.",
+    "Optional, zero-cost, fallback-only: surfaced only when the engine cannot fully answer the question.",
+    "No guarantee language; verify worked examples before enabling."
+  ],
+  "topic_map": {
+    "general": {
+      "label": "Modern method for general (candidate VC-7f9d4a56aa)",
+      "formula": "describe the deterministic server computation here",
+      "steps": [
+        "describe step 1",
+        "describe step 2"
+      ],
+      "adapted": false,
+      "note": "",
+      "reason_tags": [
+        "dasha_lord_jupiter",
+        "jupiter",
+        "jupiter_house_12",
+        "jupiter_lord_12"
+      ],
+      "quote": "But for those people like Capricorn ascendant, Jupiter Mahadasha is rarely good because it is the lord of the 12th house.",
+      "locator": "00:00:48-00:00:55"
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "version": "1.0.0",
+  "domain": "Remedies",
+  "method": "Karma Alignment Technique (KAT)",
+  "source": {
+    "teacher": "Rahul Kaushik",
+    "channel": "Jyotish Vedang by Rahul Kaushik",
+    "technique": "Karma Alignment Technique (KAT)",
+    "basis": "Bhrigu Nandi Nadi (BNN), re-interpreted as causative elements",
+    "confidence": "modern",
+    "research_note": "docs/research/rahul_kaushik_kat.md",
+    "label": "KAT (modern method — Rahul Kaushik; based on Bhrigu Nandi Nadi)"
+  },
+  "safety_rules": [
+    "Optional, zero-cost conduct alignment only; never a guarantee of results.",
+    "No purchase, ritual, donation or external object is required by this module.",
+    "KAT is a modern interpretive method with no independent validation; present it as such.",
+    "Never drop the engine's non-certainty language when presenting KAT options.",
+    "This module encodes only the publicly taught domain-triangle framework; specific paid-course prescriptions are not encoded."
+  ],
+  "principle": "Diagnose the life domain, then work with only that domain-triangle's planets (plus the obstructing planet) through nature-aligned conduct, instead of attempting to strengthen all nine planets.",
+  "triangles": {
+    "dharma": {
+      "label": "Personality / Self (Dharma triangle)",
+      "houses": [1, 5, 9],
+      "planets": ["Mars", "Sun", "Jupiter"],
+      "focus_note": "For personality, confidence and vitality questions, work with Mars, Sun and Jupiter — plus whichever of them is obstructed — rather than all nine planets."
+    },
+    "artha": {
+      "label": "Work / Career / Resources (Artha triangle)",
+      "houses": [2, 6, 10],
+      "planets": ["Venus", "Mercury", "Saturn"],
+      "focus_note": "For work, career and earnings questions, work with Saturn, Mercury and Venus — plus the obstructing planet — not all nine planets."
+    },
+    "kama": {
+      "label": "Desire / Business / Relationships (Kama triangle)",
+      "houses": [3, 7, 11],
+      "planets": ["Mercury", "Venus", "Saturn"],
+      "focus_note": "For business growth and partnership questions, work with Mercury, Venus and Saturn — plus the obstructing planet."
+    },
+    "moksha": {
+      "label": "Liberation / Inner Growth (Moksha triangle)",
+      "houses": [4, 8, 12],
+      "planets": ["Moon", "Mars", "Jupiter"],
+      "focus_note": "For inner-growth and release questions, work with Moon, Mars and Jupiter — plus the obstructing planet."
+    }
+  },
+  "topic_map": {
+    "wealth": {"triangle": "artha", "adapted": false},
+    "career": {"triangle": "artha", "adapted": false},
+    "business": {"triangle": "kama", "adapted": false},
+    "marriage": {"triangle": "kama", "adapted": true, "note": "KAT frames desire and partnership under the Kama triangle; SweetAstro maps marriage there."},
+    "children": {"triangle": "dharma", "adapted": true, "note": "SweetAstro adaptation: progeny is treated under the Dharma/personality triangle; KAT does not enumerate this topic."},
+    "property": {"triangle": "artha", "adapted": true, "note": "SweetAstro adaptation: assets are treated under the Artha/resources triangle."},
+    "education": {"triangle": "dharma", "adapted": true, "note": "SweetAstro adaptation: learning is treated under the Dharma triangle (Jupiter)."},
+    "siblings": {"triangle": "kama", "adapted": true, "note": "SweetAstro adaptation: the 3rd house belongs to the Kama triangle."},
+    "health": {"triangle": "dharma", "adapted": true, "note": "KAT does not define a health triangle (health spans 6/8/12); SweetAstro adapts with the personality triangle and keeps confidence limited. Professional care always comes first."},
+    "spirituality": {"triangle": "moksha", "adapted": false},
+    "general": {"triangle": "dharma", "adapted": true, "note": "SweetAstro adaptation: general questions use the personality triangle."}
+  }
+}

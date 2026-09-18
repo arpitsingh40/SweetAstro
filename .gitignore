@@ -1,0 +1,27 @@
+# Secrets
+.env
+*.env.local
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Local data
+data/chat_sessions/
+data/server.pid
+data/logs/
+*.log
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+*.tsbuildinfo

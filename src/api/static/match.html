@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SweetAstro · Kundli Milan</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪐</text></svg>">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: Inter, system-ui, sans-serif; }
+    .brand-serif { font-family: Georgia, 'Times New Roman', serif; }
+    .ring { --pct: 0; --ring-color: #f59e0b; width: 148px; height: 148px; border-radius: 9999px;
+      background: conic-gradient(var(--ring-color) calc(var(--pct) * 1%), #1e293b 0);
+      display: flex; align-items: center; justify-content: center; margin: 0 auto; }
+    .ring > div { width: 118px; height: 118px; border-radius: 9999px; background: #020617; display: flex;
+      flex-direction: column; align-items: center; justify-content: center; }
+    .bar { height: 6px; border-radius: 9999px; background: #1e293b; overflow: hidden; }
+    .bar > span { display: block; height: 100%; background: linear-gradient(90deg, #b45309, #fbbf24); }
+    input, select { color-scheme: dark; }
+    html { -webkit-text-size-adjust: 100%; }
+    @media (max-width: 640px) {
+      input, select, textarea { font-size: 16px; }
+      h1 { font-size: 1rem; }
+    }
+    body.no-cdn header .inner, body.no-cdn main .inner { max-width: 56rem; margin: 0 auto; padding: 12px 16px; }
+    body.no-cdn .card { border: 1px solid #1e293b; border-radius: 16px; padding: 16px; background: #0f172a; }
+    body.no-cdn input, body.no-cdn select, body.no-cdn button { margin: 2px 0; }
+    #result { display: none; }
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .no-print { display: none !important; }
+      .card, .dark-card { background: #fff !important; border: 1px solid #999 !important; color: #000 !important; }
+      .text-slate-300, .text-slate-400, .text-slate-500 { color: #333 !important; }
+      .text-white, .text-amber-300, .text-amber-200 { color: #000 !important; }
+      .ring { background: conic-gradient(#f59e0b calc(var(--pct) * 1%), #ddd 0) !important; }
+      .ring > div { background: #fff !important; }
+      .bar { background: #ddd !important; }
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen antialiased">
+  <header class="no-print border-b border-slate-800 bg-slate-900/70 sticky top-0 z-40 backdrop-blur-md">
+    <div class="inner max-w-5xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-2 sm:gap-3">
+      <div class="flex items-center gap-3 min-w-0">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-600 via-amber-400 to-amber-200 flex items-center justify-center text-lg shrink-0">🪐</div>
+        <div class="min-w-0">
+          <h1 class="text-lg font-bold brand-serif truncate">SweetAstro · Kundli Milan</h1>
+          <p class="text-[11px] text-slate-400 hidden sm:block">Ashtakoota 36-point compatibility · deterministic charts · calibrated language</p>
+        </div>
+      </div>
+      <a href="/" class="text-xs font-semibold text-slate-900 bg-amber-500 hover:bg-amber-400 px-3 py-1.5 rounded-lg transition whitespace-nowrap">← Back to chat</a>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 py-6 space-y-6">
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="dark-card card border border-slate-800 rounded-2xl p-4 space-y-3">
+        <h2 class="text-sm font-semibold text-amber-300">Person A <span class="text-slate-500 font-normal">(traditionally the bride — labels are positional)</span></h2>
+        <label class="block text-[11px] text-slate-400">Name<input id="a-name" class="mt-1 w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm" placeholder="Name"></label>
+        <div class="grid grid-cols-2 gap-3">
+          <label class="block text-[11px] text-slate-400">Date of birth<input id="a-dob" type="date" class="mt-1 w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm" value="1995-05-15"></label>
+          <label class="block text-[11px] text-slate-400">Time<input id="a-tob" type="time" class="mt-1 w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm" value="14:30"></label>
+        </div>
+        <label class="block text-[11px] text-slate-400">Birth place<input id="a-place" class="mt-1 w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm" placeholder="City, State/Province, Country"></label>
+        <label class="block text-[11px] text-slate-400">UTC offset (hours)<input id="a-tz" type="number" step="0.25" value="5.5" class="mt-1 w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm"></label>
+      </div>
+      <div class="dark-card card border border-slate-800 rounded-2xl p-4 space-y-3">
+        <h2 class="text-sm font-semibold text-amber-300">Person B <span class="text-slate-500 font-normal">(traditionally the groom)</span></h2>
+        <label class="block text-[11px] text-slate-400">Name<input id="b-name" class="mt-1 w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm" placeholder="Name"></label>
+        <div class="grid grid-cols-2 gap-3">
+          <label class="block text-[11px] text-slate-400">Date of birth<input id="b-dob" type="date" class="mt-1 w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm" value="1992-11-03"></label>
+          <label class="block text-[11px] text-slate-400">Time<input id="b-tob" type="time" class="mt-1 w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm" value="09:15"></label>
+        </div>
+        <label class="block text-[11px] text-slate-400">Birth place<input id="b-place" class="mt-1 w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm" placeholder="City, State/Province, Country"></label>
+        <label class="block text-[11px] text-slate-400">UTC offset (hours)<input id="b-tz" type="number" step="0.25" value="5.5" class="mt-1 w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm"></label>
+      </div>
+    </section>
+
+    <div class="no-print flex flex-wrap items-center gap-2">
+      <button id="match-btn" class="text-sm font-semibold text-slate-950 bg-amber-500 hover:bg-amber-400 px-5 py-2.5 rounded-xl transition">Match charts</button>
+      <button id="print-btn" class="hidden text-sm text-slate-300 border border-slate-700 hover:border-amber-500/50 px-4 py-2.5 rounded-xl transition">Print / Save PDF</button>
+      <button id="copy-btn" class="hidden text-sm text-slate-300 border border-slate-700 hover:border-amber-500/50 px-4 py-2.5 rounded-xl transition">Copy summary</button>
+      <button id="share-btn" class="hidden text-sm text-slate-300 border border-slate-700 hover:border-amber-500/50 px-4 py-2.5 rounded-xl transition">Copy share link</button>
+      <span id="status" class="text-xs text-amber-300/90"></span>
+    </div>
+
+    <section id="result" class="space-y-5"></section>
+  </main>
+
+  <script>
+    const $ = (sel) => document.querySelector(sel);
+    function b64encode(str) { return btoa(String.fromCharCode(...new TextEncoder().encode(str))); }
+    function b64decode(str) { return new TextDecoder().decode(Uint8Array.from(atob(str), c => c.charCodeAt(0))); }
+    function personForm(prefix) {
+      return {
+        name: $(`#${prefix}-name`).value.trim() || (prefix === 'a' ? 'Person A' : 'Person B'),
+        dob: $(`#${prefix}-dob`).value,
+        tob: ($(`#${prefix}-tob`).value || '12:00') + ':00',
+        place: $(`#${prefix}-place`).value.trim(),
+        tz_offset: parseFloat($(`#${prefix}-tz`).value || '5.5'),
+      };
+    }
+    function fillForm(prefix, p) {
+      if (!p) return;
+      $(`#${prefix}-name`).value = p.name || '';
+      $(`#${prefix}-dob`).value = p.dob || '';
+      $(`#${prefix}-tob`).value = (p.tob || '').slice(0, 5);
+      $(`#${prefix}-place`).value = p.place || '';
+      $(`#${prefix}-tz`).value = p.tz_offset != null ? p.tz_offset : 5.5;
+    }
+    function headers() {
+      const h = { 'Content-Type': 'application/json' };
+      const token = localStorage.getItem('sweetastro_api_token') || '';
+      if (token) h['X-Auth-Token'] = token;
+      return h;
+    }
+    function kutaRow(k) {
+      const pct = k.max_points ? Math.round((k.points / k.max_points) * 100) : 0;
+      const color = k.points <= 0 ? 'text-rose-300' : (pct >= 70 ? 'text-emerald-300' : 'text-amber-300');
+      return `<div class="card dark-card border border-slate-800 rounded-xl p-3">
+        <div class="flex items-center justify-between text-xs mb-1">
+          <span class="font-semibold text-slate-200">${k.kuta}</span>
+          <span class="${color} font-semibold">${k.points}/${k.max_points}</span>
+        </div>
+        <div class="bar mb-1.5"><span style="width:${pct}%"></span></div>
+        <p class="text-[11px] text-slate-400">${k.detail}</p>
+      </div>`;
+    }
+    function mangalCard(label, m) {
+      const status = m.active
+        ? '<span class="text-rose-300 font-semibold">flagged</span>'
+        : '<span class="text-emerald-300 font-semibold">not indicated</span>';
+      const houses = `lagna: H${m.houses.from_lagna}, Moon: H${m.houses.from_moon}`;
+      const cancels = (m.cancellations || []).map(c => `<li>${c}</li>`).join('');
+      return `<div class="card dark-card border border-slate-800 rounded-xl p-3">
+        <div class="text-xs mb-1"><span class="font-semibold text-slate-200">${label}:</span> ${status}
+          <span class="text-slate-500">(${houses})</span></div>
+        <p class="text-[11px] text-slate-400">${m.note}</p>
+        ${cancels ? `<ul class="text-[11px] text-emerald-300/90 list-disc ml-4 mt-1">${cancels}</ul>` : ''}
+      </div>`;
+    }
+    function render(data) {
+      const r = data.result;
+      const pct = Math.round((r.total / r.max_total) * 100);
+      $('#result').innerHTML = `
+        <div class="card dark-card border border-amber-500/30 rounded-2xl p-5">
+          <div class="ring" style="--pct:${pct}"><div>
+            <div class="text-3xl font-bold text-amber-300">${r.total}</div>
+            <div class="text-[10px] uppercase tracking-wider text-slate-400">of ${r.max_total}</div>
+          </div></div>
+          <p class="text-center text-sm text-slate-300 mt-4 max-w-2xl mx-auto">${r.verdict}</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">${r.kutas.map(kutaRow).join('')}</div>
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold text-amber-300">Mangal Dosha (Manglik)</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            ${mangalCard(document.querySelector('#a-name').value || 'Person A', r.mangal_a)}
+            ${mangalCard(document.querySelector('#b-name').value || 'Person B', r.mangal_b)}
+          </div>
+        </div>
+        <div class="card dark-card border border-slate-800 rounded-xl p-4 space-y-1">
+          ${r.notes.map(n => `<p class="text-[11px] text-slate-400">› ${n}</p>`).join('')}
+          <p class="text-[11px] text-slate-500 pt-1">Traditional interpretive assessment — not established causation and not a guarantee. It does not replace the individuals' own judgement or professional advice.</p>
+        </div>`;
+      $('#result').style.display = 'block';
+      $('#print-btn').classList.remove('hidden');
+      $('#copy-btn').classList.remove('hidden');
+      $('#share-btn').classList.remove('hidden');
+    }
+    async function runMatch() {
+      const a = personForm('a');
+      const b = personForm('b');
+      if (!a.dob || !b.dob) { $('#status').textContent = 'Please provide both birth dates.'; return; }
+      $('#status').textContent = 'Computing charts and scoring…';
+      try {
+        const res = await fetch('/api/matching', { method: 'POST', headers: headers(),
+          body: JSON.stringify({ person_a: a, person_b: b }) });
+        const data = await res.json();
+        if (!res.ok) { $('#status').textContent = data.detail || `Request failed (${res.status})`; return; }
+        render(data);
+        window.__matchMarkdown = data.markdown;
+        window.__matchInputs = { person_a: a, person_b: b };
+        const url = new URL(window.location.href);
+        url.searchParams.set('a', b64encode(JSON.stringify(a)));
+        url.searchParams.set('b', b64encode(JSON.stringify(b)));
+        history.replaceState(null, '', url.toString());
+        $('#status').textContent = 'Done.';
+      } catch (e) {
+        $('#status').textContent = 'Connection problem: ' + e.message;
+      }
+    }
+    $('#match-btn').addEventListener('click', runMatch);
+    $('#print-btn').addEventListener('click', () => window.print());
+    $('#copy-btn').addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(window.__matchMarkdown || ''); $('#status').textContent = 'Summary copied.'; }
+      catch (e) { $('#status').textContent = 'Copy failed — use Print / Save PDF.'; }
+    });
+    $('#share-btn').addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(window.location.href); $('#status').textContent = 'Share link copied.'; }
+      catch (e) { $('#status').textContent = 'Copy failed — copy the URL from the address bar.'; }
+    });
+    (function boot() {
+      if (!window.tailwind) document.body.classList.add('no-cdn');
+      try {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('a')) fillForm('a', JSON.parse(b64decode(params.get('a'))));
+        if (params.get('b')) fillForm('b', JSON.parse(b64decode(params.get('b'))));
+        if (params.get('a') && params.get('b')) runMatch();
+      } catch (e) { /* ignore malformed share links */ }
+    })();
+  </script>
+</body>
+</html>

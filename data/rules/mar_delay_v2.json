@@ -1,0 +1,150 @@
+[
+  {
+    "rule_id": "MAR-0014",
+    "domain": "Marriage",
+    "category": "delay",
+    "source": {
+      "book": "Phaladeepika",
+      "chapter": 10,
+      "verse": "5",
+      "commentary": "Mars in the 7th house (Manglik Dosha) can delay or disturb marriage timing."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "Mars",
+        "condition_type": "in_house",
+        "values": ["7"]
+      }
+    ],
+    "result": "manglik_dosha",
+    "base_weight": -15.0,
+    "timing_capability": true,
+    "timing_resolution": "age_range",
+    "interpretation": "Mars in the 7th house (Manglik Dosha) requires careful matching and timing, often delaying marriage."
+  },
+  {
+    "rule_id": "MAR-0015",
+    "domain": "Marriage",
+    "category": "delay",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "chapter": 18,
+      "verse": "24",
+      "commentary": "Rahu or Ketu in the 7th house introduces unconventional elements and delay."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "Rahu",
+        "condition_type": "in_house",
+        "values": ["7"]
+      }
+    ],
+    "result": "rahu_in_7th",
+    "base_weight": -14.0,
+    "timing_capability": true,
+    "timing_resolution": "age_range",
+    "interpretation": "Rahu in the 7th house brings unconventional partnerships and delays in settling down."
+  },
+  {
+    "rule_id": "MAR-0016",
+    "domain": "Marriage",
+    "category": "delay",
+    "source": {
+      "book": "Sarvartha Chintamani",
+      "chapter": 6,
+      "verse": "20",
+      "commentary": "Saturn aspecting Venus delays romantic fulfillment."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "Saturn",
+        "condition_type": "aspects_planet",
+        "target": "Venus"
+      }
+    ],
+    "result": "saturn_aspects_venus",
+    "base_weight": -12.0,
+    "timing_capability": true,
+    "timing_resolution": "age_range",
+    "interpretation": "Saturn's aspect on Venus delays romantic fulfillment and marriage, requiring patience and maturity."
+  },
+  {
+    "rule_id": "MAR-0017",
+    "domain": "Marriage",
+    "category": "delay",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "chapter": 18,
+      "verse": "25",
+      "commentary": "7th lord retrograde in a dusthana house indicates delayed and challenging marriage."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "7th_lord",
+        "condition_type": "is_retrograde"
+      },
+      {
+        "entity": "7th_lord",
+        "condition_type": "in_house",
+        "values": ["6", "8", "12"]
+      }
+    ],
+    "result": "retrograde_7th_lord_dusthana",
+    "base_weight": -20.0,
+    "timing_capability": true,
+    "timing_resolution": "age_range",
+    "interpretation": "7th lord retrograde in a dusthana (6th/8th/12th) significantly delays marriage and brings challenges."
+  },
+  {
+    "rule_id": "MAR-0018",
+    "domain": "Marriage",
+    "category": "delay",
+    "source": {
+      "book": "Phaladeepika",
+      "chapter": 10,
+      "verse": "6",
+      "commentary": "Saturn aspecting 7th lord adds further delay to marriage."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "Saturn",
+        "condition_type": "aspects_planet",
+        "target": "7th_lord"
+      }
+    ],
+    "result": "saturn_aspects_7th_lord",
+    "base_weight": -18.0,
+    "timing_capability": true,
+    "timing_resolution": "age_range",
+    "interpretation": "Saturn aspecting the 7th lord creates delays and requires the native to develop patience and maturity first."
+  },
+  {
+    "rule_id": "MAR-0019",
+    "domain": "Marriage",
+    "category": "delay",
+    "source": {
+      "book": "Jataka Parijata",
+      "chapter": 14,
+      "verse": "20",
+      "commentary": "Mars aspecting 7th house indicates conflict in partnerships."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "Mars",
+        "condition_type": "aspects_house",
+        "target": "7"
+      }
+    ],
+    "result": "mars_aspects_7th",
+    "base_weight": -10.0,
+    "timing_capability": true,
+    "timing_resolution": "age_range",
+    "interpretation": "Mars aspecting the 7th house adds aggressive energy to partnerships, potentially causing delays."
+  }
+]

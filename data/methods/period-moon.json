@@ -1,0 +1,52 @@
+{
+  "version": "0.1.0",
+  "slug": "period-moon",
+  "method": "If the Moon is not well placed, a heavy loan may be involved in changing residence, and later eviction from the same hou",
+  "source": {
+    "teacher": "108 Astro",
+    "channel": "108 Astro",
+    "basis": "YouTube video research (evidence gate: see candidate report)",
+    "confidence": "modern",
+    "research_note": "docs/research/video_method_pipeline.md#candidate-VC-8bc8146d9d",
+    "label": "If the Moon is not well placed, a heavy loan may be involved (modern — 108 Astro)"
+  },
+  "enabled": false,
+  "allow_quotes": false,
+  "evidence": {
+    "candidate_id": "VC-8bc8146d9d",
+    "video_id": "kEM2zRB7yks",
+    "locator": "00:01:10-00:01:20",
+    "passes": 2,
+    "extractor_confidence": "high"
+  },
+  "source_videos": [
+    {
+      "id": "kEM2zRB7yks",
+      "title": "Moon Mahadasha Effects | What happens in Chandra Mahadasha by 108 Astro #chandra #moon",
+      "locator": "00:01:10-00:01:20"
+    }
+  ],
+  "safety_rules": [
+    "Unvalidated modern method derived from video research; never presented as classical authority.",
+    "Optional, zero-cost, fallback-only: surfaced only when the engine cannot fully answer the question.",
+    "No guarantee language; verify worked examples before enabling."
+  ],
+  "topic_map": {
+    "general": {
+      "label": "Modern method for general (candidate VC-8bc8146d9d)",
+      "formula": "describe the deterministic server computation here",
+      "steps": [
+        "describe step 1",
+        "describe step 2"
+      ],
+      "adapted": false,
+      "note": "",
+      "reason_tags": [
+        "moon",
+        "moon_weak"
+      ],
+      "quote": "if the Moon is not in a very well place then a very heavy loan can be involved in it and later you will be evicted from the same house",
+      "locator": "00:01:10-00:01:20"
+    }
+  }
+}

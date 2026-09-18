@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sweetastro.local/schemas/memory_schema.json",
+  "title": "SweetAstro Memory Store",
+  "description": "Long-term memory: one profile per birth fingerprint (person/kundali), linked session ids. Written to data/chat_sessions/memory.json when CHAT_PERSIST is enabled.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "updated_at", "profiles"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "profiles": {
+      "type": "array",
+      "maxItems": 500,
+      "items": { "$ref": "#/$defs/profile" }
+    }
+  },
+  "$defs": {
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["profile_id", "fingerprint", "name", "created_at", "updated_at", "birth", "kundali", "sessions"],
+      "properties": {
+        "profile_id": { "type": "string", "pattern": "^prof_[0-9a-f]{16}$" },
+        "fingerprint": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "name": { "type": "string" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" },
+        "birth": { "$ref": "#/$defs/birth" },
+        "kundali": { "$ref": "#/$defs/kundali" },
+        "sessions": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        }
+      }
+    },
+    "birth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dob", "tob", "tob_unknown", "place", "lat", "lon", "tz_offset", "tz_estimated"],
+      "properties": {
+        "dob": { "type": ["string", "null"] },
+        "tob": { "type": ["string", "null"] },
+        "tob_unknown": { "type": "boolean" },
+        "place": { "type": "string" },
+        "place_query": { "type": "string" },
+        "lat": { "type": ["number", "null"] },
+        "lon": { "type": ["number", "null"] },
+        "tz_offset": { "type": ["number", "null"] },
+        "tz_estimated": { "type": "boolean" }
+      }
+    },
+    "kundali": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ayanamsha", "ascendant", "moon_sign", "moon_nakshatra", "moon_nakshatra_pada", "dasha", "vargas"],
+      "properties": {
+        "ayanamsha": { "type": "string" },
+        "ascendant": { "type": "string" },
+        "moon_sign": { "type": "string" },
+        "moon_nakshatra": { "type": "string" },
+        "moon_nakshatra_pada": { "type": "integer", "minimum": 1, "maximum": 4 },
+        "dasha": { "type": "string" },
+        "vargas": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^D\\d+$" }
+        }
+      }
+    }
+  }
+}

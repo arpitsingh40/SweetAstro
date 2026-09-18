@@ -1,0 +1,736 @@
+{
+  "source": "DrikPanchang.com — Drik Panchang (drik ganita), Lahiri ayanamsha",
+  "source_url": "https://www.drikpanchang.com/panchang/day-panchang.html",
+  "fetched_utc": "2026-09-12T07:48:58+00:00",
+  "notes": [
+    "Times are local civil time at the stated location.",
+    "Panchang day starts/ends at sunrise (vara is sunrise-to-sunrise).",
+    "Values used only to verify the SweetAstro deterministic panchanga engine."
+  ],
+  "cases": [
+    {
+      "latitude": 28.635556,
+      "longitude": 77.224444,
+      "elevation_m": 212,
+      "sunrise": "06:04 AM",
+      "sunset": "06:30 PM",
+      "tithi": [
+        [
+          "Pratipada",
+          "07:46 AM"
+        ]
+      ],
+      "nakshatra": [
+        [
+          "Uttara Phalguni",
+          "12:55 PM"
+        ],
+        [
+          "Uttara Phalguni",
+          "06:57 AM"
+        ],
+        [
+          "Uttara Phalguni",
+          "12:55 PM"
+        ],
+        [
+          "Hasta",
+          "06:54 PM"
+        ]
+      ],
+      "yoga": [
+        [
+          "Shubha",
+          "03:09 PM"
+        ]
+      ],
+      "karana": [
+        [
+          "Bava",
+          "07:46 AM"
+        ],
+        [
+          "Balava",
+          "07:22 PM"
+        ]
+      ],
+      "rahu_kalam": [
+        "09:11 AM",
+        "10:44 AM"
+      ],
+      "yamaganda": [
+        "01:50 PM",
+        "03:24 PM"
+      ],
+      "gulika_kalam": [
+        "06:04 AM",
+        "07:38 AM"
+      ],
+      "abhijit": [
+        "11:52 AM",
+        "12:42 PM"
+      ],
+      "dinamana": "12 Hours 25 Mins 33 Secs",
+      "ayanamsha": 24.236749,
+      "moon_sign": "Kanya",
+      "sun_sign": "Simha",
+      "weekday": "Shaniwara",
+      "location": "New Delhi, India",
+      "location_key": "new_delhi",
+      "date": "2026-09-12",
+      "source_url": "https://www.drikpanchang.com/panchang/day-panchang.html?geoname-id=1261481&date=12/09/2026"
+    },
+    {
+      "latitude": 28.635556,
+      "longitude": 77.224444,
+      "elevation_m": 212,
+      "sunrise": "06:05 AM",
+      "sunset": "06:29 PM",
+      "tithi": [
+        [
+          "Dwitiya",
+          "07:08 AM"
+        ]
+      ],
+      "nakshatra": [
+        [
+          "Hasta",
+          "01:07 PM"
+        ],
+        [
+          "Hasta",
+          "07:00 AM"
+        ],
+        [
+          "Hasta",
+          "01:07 PM"
+        ],
+        [
+          "Chitra",
+          "07:15 PM"
+        ]
+      ],
+      "yoga": [
+        [
+          "Shukla",
+          "01:43 PM"
+        ]
+      ],
+      "karana": [
+        [
+          "Kaulava",
+          "07:08 AM"
+        ],
+        [
+          "Taitila",
+          "07:02 PM"
+        ]
+      ],
+      "rahu_kalam": [
+        "04:56 PM",
+        "06:29 PM"
+      ],
+      "yamaganda": [
+        "12:17 PM",
+        "01:50 PM"
+      ],
+      "gulika_kalam": [
+        "03:23 PM",
+        "04:56 PM"
+      ],
+      "abhijit": [
+        "11:52 AM",
+        "12:42 PM"
+      ],
+      "dinamana": "12 Hours 23 Mins 52 Secs",
+      "ayanamsha": 24.236787,
+      "moon_sign": "Kanya",
+      "sun_sign": "Simha",
+      "weekday": "Raviwara",
+      "location": "New Delhi, India",
+      "location_key": "new_delhi",
+      "date": "2026-09-13",
+      "source_url": "https://www.drikpanchang.com/panchang/day-panchang.html?geoname-id=1261481&date=13/09/2026"
+    },
+    {
+      "latitude": 28.635556,
+      "longitude": 77.224444,
+      "elevation_m": 212,
+      "sunrise": "06:05 AM",
+      "sunset": "06:28 PM",
+      "tithi": [
+        [
+          "Tritiya",
+          "07:06 AM"
+        ]
+      ],
+      "nakshatra": [
+        [
+          "Chitra",
+          "01:55 PM"
+        ],
+        [
+          "Chitra",
+          "07:39 AM"
+        ],
+        [
+          "Chitra",
+          "01:55 PM"
+        ],
+        [
+          "Swati",
+          "08:13 PM"
+        ]
+      ],
+      "yoga": [
+        [
+          "Brahma",
+          "12:47 PM"
+        ]
+      ],
+      "karana": [
+        [
+          "Garaja",
+          "07:06 AM"
+        ],
+        [
+          "Vanija",
+          "07:20 PM"
+        ]
+      ],
+      "rahu_kalam": [
+        "07:38 AM",
+        "09:11 AM"
+      ],
+      "yamaganda": [
+        "10:44 AM",
+        "12:16 PM"
+      ],
+      "gulika_kalam": [
+        "01:49 PM",
+        "03:22 PM"
+      ],
+      "abhijit": [
+        "11:52 AM",
+        "12:41 PM"
+      ],
+      "dinamana": "12 Hours 22 Mins 11 Secs",
+      "ayanamsha": 24.236825,
+      "moon_sign": "Tula",
+      "sun_sign": "Simha",
+      "weekday": "Somawara",
+      "location": "New Delhi, India",
+      "location_key": "new_delhi",
+      "date": "2026-09-14",
+      "source_url": "https://www.drikpanchang.com/panchang/day-panchang.html?geoname-id=1261481&date=14/09/2026"
+    },
+    {
+      "latitude": 28.635556,
+      "longitude": 77.224444,
+      "elevation_m": 212,
+      "sunrise": "06:06 AM",
+      "sunset": "06:26 PM",
+      "tithi": [
+        [
+          "Chaturthi",
+          "07:44 AM"
+        ]
+      ],
+      "nakshatra": [
+        [
+          "Swati",
+          "03:21 PM"
+        ],
+        [
+          "Swati",
+          "08:56 AM"
+        ],
+        [
+          "Swati",
+          "03:21 PM"
+        ],
+        [
+          "Vishakha",
+          "09:48 PM"
+        ]
+      ],
+      "yoga": [
+        [
+          "Indra",
+          "12:20 PM"
+        ],
+        [
+          "Siddha",
+          "03:21 PM"
+        ]
+      ],
+      "karana": [
+        [
+          "Vishti",
+          "07:44 AM"
+        ],
+        [
+          "Bava",
+          "08:17 PM"
+        ]
+      ],
+      "rahu_kalam": [
+        "03:21 PM",
+        "04:54 PM"
+      ],
+      "yamaganda": [
+        "09:11 AM",
+        "10:44 AM"
+      ],
+      "gulika_kalam": [
+        "12:16 PM",
+        "01:49 PM"
+      ],
+      "abhijit": [
+        "11:51 AM",
+        "12:41 PM"
+      ],
+      "dinamana": "12 Hours 20 Mins 30 Secs",
+      "ayanamsha": 24.236863,
+      "moon_sign": "Tula",
+      "sun_sign": "Simha",
+      "weekday": "Mangalawara",
+      "location": "New Delhi, India",
+      "location_key": "new_delhi",
+      "date": "2026-09-15",
+      "source_url": "https://www.drikpanchang.com/panchang/day-panchang.html?geoname-id=1261481&date=15/09/2026"
+    },
+    {
+      "latitude": 28.635556,
+      "longitude": 77.224444,
+      "elevation_m": 212,
+      "sunrise": "06:06 AM",
+      "sunset": "06:25 PM",
+      "tithi": [
+        [
+          "Panchami",
+          "08:59 AM"
+        ]
+      ],
+      "nakshatra": [
+        [
+          "Vishakha",
+          "05:22 PM"
+        ],
+        [
+          "Vishakha",
+          "10:49 AM"
+        ],
+        [
+          "Vishakha",
+          "05:22 PM"
+        ],
+        [
+          "Anuradha",
+          "11:57 PM"
+        ]
+      ],
+      "yoga": [
+        [
+          "Vaidhriti",
+          "12:23 PM"
+        ],
+        [
+          "Siddha",
+          "05:22 PM"
+        ]
+      ],
+      "karana": [
+        [
+          "Balava",
+          "08:59 AM"
+        ],
+        [
+          "Kaulava",
+          "09:49 PM"
+        ]
+      ],
+      "rahu_kalam": [
+        "12:16 PM",
+        "01:48 PM"
+      ],
+      "yamaganda": [
+        "07:39 AM",
+        "09:11 AM"
+      ],
+      "gulika_kalam": [
+        "10:43 AM",
+        "12:16 PM"
+      ],
+      "abhijit": null,
+      "dinamana": "12 Hours 18 Mins 48 Secs",
+      "ayanamsha": 24.236902,
+      "moon_sign": "Tula",
+      "sun_sign": "Simha",
+      "weekday": "Budhawara",
+      "location": "New Delhi, India",
+      "location_key": "new_delhi",
+      "date": "2026-09-16",
+      "source_url": "https://www.drikpanchang.com/panchang/day-panchang.html?geoname-id=1261481&date=16/09/2026"
+    },
+    {
+      "latitude": 28.635556,
+      "longitude": 77.224444,
+      "elevation_m": 212,
+      "sunrise": "06:04 AM",
+      "sunset": "06:31 PM",
+      "tithi": [
+        [
+          "Amavasya",
+          "08:56 AM"
+        ]
+      ],
+      "nakshatra": [
+        [
+          "Purva Phalguni",
+          "01:16 PM"
+        ],
+        [
+          "Purva Phalguni",
+          "07:25 AM"
+        ],
+        [
+          "Purva Phalguni",
+          "01:16 PM"
+        ],
+        [
+          "Uttara Phalguni",
+          "07:08 PM"
+        ]
+      ],
+      "yoga": [
+        [
+          "Sadhya",
+          "05:02 PM"
+        ],
+        [
+          "Siddhi",
+          "01:16 PM"
+        ]
+      ],
+      "karana": [],
+      "rahu_kalam": [
+        "10:44 AM",
+        "12:18 PM"
+      ],
+      "yamaganda": [
+        "03:24 PM",
+        "04:58 PM"
+      ],
+      "gulika_kalam": [
+        "07:37 AM",
+        "09:11 AM"
+      ],
+      "abhijit": [
+        "11:53 AM",
+        "12:42 PM"
+      ],
+      "dinamana": "12 Hours 27 Mins 14 Secs",
+      "ayanamsha": 24.23671,
+      "moon_sign": "Simha",
+      "sun_sign": "Simha",
+      "weekday": "Shukrawara",
+      "location": "New Delhi, India",
+      "location_key": "new_delhi",
+      "date": "2026-09-11",
+      "source_url": "https://www.drikpanchang.com/panchang/day-panchang.html?geoname-id=1261481&date=11/09/2026"
+    },
+    {
+      "latitude": 28.635556,
+      "longitude": 77.224444,
+      "elevation_m": 212,
+      "sunrise": "06:11 AM",
+      "sunset": "06:13 PM",
+      "tithi": [
+        [
+          "Purnima",
+          "10:18 PM"
+        ]
+      ],
+      "nakshatra": [
+        [
+          "Purva Bhadrapada",
+          "11:32 AM"
+        ],
+        [
+          "Purva Bhadrapada",
+          "11:32 AM"
+        ],
+        [
+          "Uttara Bhadrapada",
+          "05:29 PM"
+        ],
+        [
+          "Uttara Bhadrapada",
+          "11:23 PM"
+        ]
+      ],
+      "yoga": [
+        [
+          "Ganda",
+          "01:17 PM"
+        ]
+      ],
+      "karana": [
+        [
+          "Vishti",
+          "10:46 AM"
+        ],
+        [
+          "Bava",
+          "10:18 PM"
+        ]
+      ],
+      "rahu_kalam": [
+        "09:12 AM",
+        "10:42 AM"
+      ],
+      "yamaganda": [
+        "01:42 PM",
+        "03:13 PM"
+      ],
+      "gulika_kalam": [
+        "06:11 AM",
+        "07:42 AM"
+      ],
+      "abhijit": [
+        "11:48 AM",
+        "12:36 PM"
+      ],
+      "dinamana": null,
+      "ayanamsha": 24.237284,
+      "moon_sign": "Meena",
+      "sun_sign": "Kanya",
+      "weekday": "Shaniwara",
+      "location": "New Delhi, India",
+      "location_key": "new_delhi",
+      "date": "2026-09-26",
+      "source_url": "https://www.drikpanchang.com/panchang/day-panchang.html?geoname-id=1261481&date=26/09/2026"
+    },
+    {
+      "latitude": 28.635556,
+      "longitude": 77.224444,
+      "elevation_m": 212,
+      "sunrise": "06:01 AM",
+      "sunset": "06:38 PM",
+      "tithi": [
+        [
+          "Navami",
+          "09:53 PM"
+        ]
+      ],
+      "nakshatra": [
+        [
+          "Mrigashira",
+          "09:30 PM"
+        ],
+        [
+          "Mrigashira",
+          "10:18 AM"
+        ],
+        [
+          "Mrigashira",
+          "03:54 PM"
+        ],
+        [
+          "Mrigashira",
+          "09:30 PM"
+        ]
+      ],
+      "yoga": [
+        [
+          "Vajra",
+          "12:47 PM"
+        ],
+        [
+          "Vajra",
+          "09:30 PM"
+        ]
+      ],
+      "karana": [
+        [
+          "Taitila",
+          "11:04 AM"
+        ],
+        [
+          "Garaja",
+          "09:53 PM"
+        ]
+      ],
+      "rahu_kalam": [
+        "09:10 AM",
+        "10:45 AM"
+      ],
+      "yamaganda": [
+        "01:54 PM",
+        "03:29 PM"
+      ],
+      "gulika_kalam": [
+        "06:01 AM",
+        "07:36 AM"
+      ],
+      "abhijit": [
+        "11:54 AM",
+        "12:45 PM"
+      ],
+      "dinamana": "12 Hours 37 Mins 15 Secs",
+      "ayanamsha": 24.236481,
+      "moon_sign": "Vrishabha",
+      "sun_sign": "Simha",
+      "weekday": "Shaniwara",
+      "location": "New Delhi, India",
+      "location_key": "new_delhi",
+      "date": "2026-09-05",
+      "source_url": "https://www.drikpanchang.com/panchang/day-panchang.html?geoname-id=1261481&date=05/09/2026"
+    },
+    {
+      "latitude": 28.635556,
+      "longitude": 77.224444,
+      "elevation_m": 212,
+      "sunrise": "07:14 AM",
+      "sunset": "05:35 PM",
+      "tithi": [
+        [
+          "Trayodashi",
+          "10:22 PM"
+        ]
+      ],
+      "nakshatra": [
+        [
+          "Rohini",
+          "10:48 PM"
+        ],
+        [
+          "Rohini",
+          "12:10 PM"
+        ],
+        [
+          "Rohini",
+          "05:29 PM"
+        ],
+        [
+          "Rohini",
+          "10:48 PM"
+        ]
+      ],
+      "yoga": [
+        [
+          "Shubha",
+          "05:12 PM"
+        ]
+      ],
+      "karana": [
+        [
+          "Kaulava",
+          "12:05 PM"
+        ],
+        [
+          "Taitila",
+          "10:22 PM"
+        ]
+      ],
+      "rahu_kalam": [
+        "01:42 PM",
+        "03:00 PM"
+      ],
+      "yamaganda": [
+        "07:14 AM",
+        "08:32 AM"
+      ],
+      "gulika_kalam": [
+        "09:49 AM",
+        "11:07 AM"
+      ],
+      "abhijit": [
+        "12:04 PM",
+        "12:45 PM"
+      ],
+      "dinamana": "10 Hours 21 Mins 29 Secs",
+      "ayanamsha": 24.227035,
+      "moon_sign": "Vrishabha",
+      "sun_sign": "Dhanu",
+      "weekday": "Guruwara",
+      "location": "New Delhi, India",
+      "location_key": "new_delhi",
+      "date": "2026-01-01",
+      "source_url": "https://www.drikpanchang.com/panchang/day-panchang.html?geoname-id=1261481&date=01/01/2026"
+    },
+    {
+      "latitude": 20.713889,
+      "longitude": 70.982222,
+      "elevation_m": 17,
+      "sunrise": "06:32 AM",
+      "sunset": "06:52 PM",
+      "tithi": [
+        [
+          "Pratipada",
+          "07:46 AM"
+        ]
+      ],
+      "nakshatra": [
+        [
+          "Uttara Phalguni",
+          "12:55 PM"
+        ],
+        [
+          "Uttara Phalguni",
+          "06:57 AM"
+        ],
+        [
+          "Uttara Phalguni",
+          "12:55 PM"
+        ],
+        [
+          "Hasta",
+          "06:54 PM"
+        ]
+      ],
+      "yoga": [
+        [
+          "Shubha",
+          "03:09 PM"
+        ]
+      ],
+      "karana": [
+        [
+          "Bava",
+          "07:46 AM"
+        ],
+        [
+          "Balava",
+          "07:22 PM"
+        ]
+      ],
+      "rahu_kalam": [
+        "09:37 AM",
+        "11:10 AM"
+      ],
+      "yamaganda": [
+        "02:15 PM",
+        "03:47 PM"
+      ],
+      "gulika_kalam": [
+        "06:32 AM",
+        "08:05 AM"
+      ],
+      "abhijit": [
+        "12:18 PM",
+        "01:07 PM"
+      ],
+      "dinamana": "12 Hours 19 Mins 29 Secs",
+      "ayanamsha": 24.236749,
+      "moon_sign": "Kanya",
+      "sun_sign": "Simha",
+      "weekday": "Shaniwara",
+      "location": "Diu, India",
+      "location_key": "diu",
+      "date": "2026-09-12",
+      "source_url": "https://www.drikpanchang.com/panchang/day-panchang.html?geoname-id=1272502&date=12/09/2026"
+    }
+  ]
+}

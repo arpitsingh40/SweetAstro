@@ -1,0 +1,74 @@
+[
+  {
+    "rule_id": "MAR-0030",
+    "domain": "Marriage",
+    "category": "timing_transit",
+    "source": {
+      "book": "Phaladeepika",
+      "chapter": 26,
+      "verse": "15-18",
+      "commentary": "Double Transit Principle: Simultaneous transit sanction of Jupiter and Saturn on the marriage axis."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "transit_system",
+        "condition_type": "transit_aspects_house",
+        "target": "double_transit_marriage_axis"
+      }
+    ],
+    "result": "double_transit_sanction",
+    "base_weight": 35.0,
+    "timing_capability": true,
+    "timing_resolution": "month",
+    "interpretation": "When Saturn sanctions karma and Jupiter bestows divine grace upon the 7th house or its lord simultaneously, marriage fructifies."
+  },
+  {
+    "rule_id": "MAR-0031",
+    "domain": "Marriage",
+    "category": "timing_transit",
+    "source": {
+      "book": "Deva Keralam",
+      "chapter": 2,
+      "verse": "112",
+      "commentary": "Jupiter transiting through or aspecting the natal 7th house or natal 7th lord."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "transit_jupiter",
+        "condition_type": "transit_aspects_house",
+        "target": "7"
+      }
+    ],
+    "result": "jupiter_transit_blessing",
+    "base_weight": 25.0,
+    "timing_capability": true,
+    "timing_resolution": "month",
+    "interpretation": "Transit Jupiter blessing the natal 7th house directly enables marriage ceremony and celebrations."
+  },
+  {
+    "rule_id": "MAR-0032",
+    "domain": "Marriage",
+    "category": "timing_transit",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "chapter": 66,
+      "verse": "4",
+      "commentary": "Transit Jupiter aspecting natal Venus or D9 Lagna."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "transit_jupiter",
+        "condition_type": "aspects_planet",
+        "target": "Venus"
+      }
+    ],
+    "result": "jupiter_aspects_natal_venus",
+    "base_weight": 20.0,
+    "timing_capability": true,
+    "timing_resolution": "month",
+    "interpretation": "Transit Jupiter aspecting natal Venus awakens the karaka of marital union."
+  }
+]

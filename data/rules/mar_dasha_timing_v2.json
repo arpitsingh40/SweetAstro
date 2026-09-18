@@ -1,0 +1,146 @@
+[
+  {
+    "rule_id": "MAR-0026",
+    "domain": "Marriage",
+    "category": "timing_dasha",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "chapter": 18,
+      "verse": "33",
+      "commentary": "Operating Dasha of the planet placed in the 7th house activates marriage."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "active_dasha_lord",
+        "condition_type": "in_house",
+        "values": ["7"]
+      }
+    ],
+    "result": "dasha_of_7th_house_lord",
+    "base_weight": 28.0,
+    "timing_capability": true,
+    "timing_resolution": "year",
+    "interpretation": "The operating Dasha or Antardasha of the planet placed in the 7th house is the strongest trigger for marriage."
+  },
+  {
+    "rule_id": "MAR-0027",
+    "domain": "Marriage",
+    "category": "timing_dasha",
+    "source": {
+      "book": "Phaladeepika",
+      "chapter": 10,
+      "verse": "14",
+      "commentary": "Dasha of 1st lord (self) often brings personal milestones including marriage."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "active_dasha_lord",
+        "condition_type": "is_lord_of_house",
+        "target": "1"
+      }
+    ],
+    "result": "dasha_of_lagna_lord",
+    "base_weight": 15.0,
+    "timing_capability": true,
+    "timing_resolution": "year",
+    "interpretation": "Dasha/Antardasha of the Lagna lord often coincides with significant personal events including marriage."
+  },
+  {
+    "rule_id": "MAR-0028",
+    "domain": "Marriage",
+    "category": "timing_dasha",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "chapter": 18,
+      "verse": "35",
+      "commentary": "Dasha of the 9th lord (Dharma) can bring marriage if 9th house connects to 7th."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "active_dasha_lord",
+        "condition_type": "is_lord_of_house",
+        "target": "9"
+      }
+    ],
+    "result": "dasha_of_9th_lord",
+    "base_weight": 12.0,
+    "timing_capability": true,
+    "timing_resolution": "year",
+    "interpretation": "The 9th lord's period can bring marriage when connected to the 7th house axis through aspect or conjunction."
+  },
+  {
+    "rule_id": "MAR-0029",
+    "domain": "Marriage",
+    "category": "timing_dasha",
+    "source": {
+      "book": "Jataka Parijata",
+      "chapter": 14,
+      "verse": "30",
+      "commentary": "Dasha of a benefic planet posited in a Kendra or Trikona accelerates marriage."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "active_dasha_lord",
+        "condition_type": "dasha_lord_is",
+        "values": ["Jupiter", "Venus", "Mercury"]
+      }
+    ],
+    "result": "benefic_dasha_period",
+    "base_weight": 18.0,
+    "timing_capability": true,
+    "timing_resolution": "year",
+    "interpretation": "Periods of natural benefics (Jupiter, Venus, Mercury) generally support marriage when natal promise exists."
+  },
+  {
+    "rule_id": "MAR-0053",
+    "domain": "Marriage",
+    "category": "timing_dasha",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "chapter": 18,
+      "verse": "38",
+      "commentary": "Dasha of planet in Upapada Lagna lord's sign triggers marriage."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "active_dasha_lord",
+        "condition_type": "is_lord_of_house",
+        "target": "upapada_lagna"
+      }
+    ],
+    "result": "upapada_dasha_activation",
+    "base_weight": 20.0,
+    "timing_capability": true,
+    "timing_resolution": "year",
+    "interpretation": "Dasha of the Upapada Lagna lord strongly indicates marriage manifestation."
+  },
+  {
+    "rule_id": "MAR-0054",
+    "domain": "Marriage",
+    "category": "timing_dasha",
+    "source": {
+      "book": "Phaladeepika",
+      "chapter": 10,
+      "verse": "15",
+      "commentary": "Dasha of the planet aspecting Venus brings romantic fulfillment."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "active_dasha_lord",
+        "condition_type": "aspects_planet",
+        "target": "Venus"
+      }
+    ],
+    "result": "dasha_planet_aspects_venus",
+    "base_weight": 16.0,
+    "timing_capability": true,
+    "timing_resolution": "year",
+    "interpretation": "When a planet aspects Venus, its Dasha period can activate romantic and marital prospects."
+  }
+]

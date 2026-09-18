@@ -1,0 +1,19 @@
+{
+  "name": "SweetAstro — Vedic chart & timing",
+  "short_name": "SweetAstro",
+  "description": "Verified Vedic chart, dasha timeline and honest timing windows.",
+  "start_url": "/app/",
+  "scope": "/app/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#020617",
+  "theme_color": "#020617",
+  "icons": [
+    {
+      "src": "/static/app/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

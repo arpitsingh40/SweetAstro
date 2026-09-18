@@ -1,0 +1,21 @@
+{
+  "protocol_version": "1.2.0",
+  "created_utc": "2026-09-13T13:25:47+00:00",
+  "dataset_path": "C:\\Users\\Dell -\\Documents\\Code\\SweetAstro\\data\\test_charts\\historical_verified.json",
+  "dataset_sha256": "cd84d6ec8dcfcfda4ded258b7bc249b933e766cd4b19ee37b98d44ed24a65194",
+  "rules_sha256": "7f80d64d238c2846b147e9728e6b68e44879baea7b0c94e392b0550b57a9523a",
+  "search_window": {
+    "min_age": 18,
+    "max_age": 45
+  },
+  "split": {
+    "method": "sha256(chart_id + seed) ranked, exact train_pct/remainder",
+    "train_pct": 70,
+    "seed": 20260912
+  },
+  "primary_endpoint": "top1_year_exact",
+  "included_rodden": [
+    "AA",
+    "A"
+  ]
+}

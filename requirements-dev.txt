@@ -1,0 +1,5 @@
+# Development-only tools — not required by the runtime server.
+-r requirements.txt
+
+# Video research pipeline (dev-only): metadata + captions ingestion.
+yt-dlp>=2026.08.19

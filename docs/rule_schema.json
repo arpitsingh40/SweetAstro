@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SweetAstroClassicalMarriageRule",
+  "description": "Schema for machine-readable classical Vedic astrology marriage rules with rigorous source provenance.",
+  "type": "object",
+  "required": [
+    "rule_id",
+    "domain",
+    "category",
+    "source",
+    "conditions",
+    "required_charts",
+    "result",
+    "base_weight",
+    "timing_capability"
+  ],
+  "properties": {
+    "rule_id": {
+      "type": "string",
+      "pattern": "^MAR-\\d{4}$",
+      "description": "Unique identifier, e.g., MAR-0001"
+    },
+    "domain": {
+      "type": "string",
+      "enum": ["Marriage"]
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "promise",
+        "delay",
+        "timing_dasha",
+        "timing_transit",
+        "relationship_formation",
+        "marriage_type",
+        "stability",
+        "jaimini"
+      ]
+    },
+    "source": {
+      "type": "object",
+      "required": ["book", "chapter"],
+      "properties": {
+        "book": {
+          "type": "string",
+          "enum": [
+            "Brihat Parashara Hora Shastra",
+            "Phaladeepika",
+            "Brihat Jataka",
+            "Saravali",
+            "Jataka Parijata",
+            "Jaimini Sutras",
+            "Sarvartha Chintamani",
+            "Bhavartha Ratnakara",
+            "Uttara Kalamrita",
+            "Deva Keralam"
+          ]
+        },
+        "chapter": { "type": "integer" },
+        "verse": { "type": "string" },
+        "commentary": { "type": "string" }
+      }
+    },
+    "required_charts": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["D1", "D9"]
+      }
+    },
+    "conditions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["entity", "condition_type"],
+        "properties": {
+          "entity": { "type": "string" },
+          "condition_type": {
+            "type": "string",
+            "enum": [
+              "in_house",
+              "in_sign",
+              "is_lord_of_house",
+              "aspects_house",
+              "aspects_planet",
+              "conjunct_with",
+              "dignity_is",
+              "dignity_at_least",
+              "is_combust",
+              "is_retrograde",
+              "dasha_lord_is",
+              "transit_aspects_house",
+              "transit_in_house",
+              "jaimini_karaka_is",
+              "house_free_of_malefics"
+            ]
+          },
+          "target": { "type": "string" },
+          "values": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "result": {
+      "type": "string",
+      "description": "Categorical astrological outcome (e.g. marriage_promise, delay, early_marriage, timing_activation)"
+    },
+    "base_weight": {
+      "type": "number",
+      "description": "Baseline classical weight assigned to this rule prior to empirical training (e.g., +20 for strong benefic, -15 for malefic obstruction)"
+    },
+    "timing_capability": {
+      "type": "boolean",
+      "description": "Indicates whether this rule can activate or evaluate a candidate timing window"
+    },
+    "timing_resolution": {
+      "type": "string",
+      "enum": ["age_range", "year", "quarter", "month", "none"],
+      "default": "none"
+    },
+    "interpretation": {
+      "type": "string",
+      "description": "Human-readable interpretation of the classical shloka."
+    },
+    "exceptions": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

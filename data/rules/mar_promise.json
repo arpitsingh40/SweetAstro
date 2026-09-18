@@ -1,0 +1,98 @@
+[
+  {
+    "rule_id": "MAR-0001",
+    "domain": "Marriage",
+    "category": "promise",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "chapter": 18,
+      "verse": "3-4",
+      "commentary": "Lord of 7th in auspicious dignity or kendra/trikona indicates strong marriage promise."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "7th_lord",
+        "condition_type": "in_house",
+        "values": ["1", "4", "5", "7", "9", "10", "11", "2"]
+      }
+    ],
+    "result": "marriage_promise_strong",
+    "base_weight": 20.0,
+    "timing_capability": false,
+    "timing_resolution": "none",
+    "interpretation": "When the 7th lord is placed in a Kendra, Trikona, or 2nd/11th house, marriage promise is strong and traditionally occurs at a suitable time (interpretive indication, not a guarantee)."
+  },
+  {
+    "rule_id": "MAR-0002",
+    "domain": "Marriage",
+    "category": "promise",
+    "source": {
+      "book": "Phaladeepika",
+      "chapter": 10,
+      "verse": "1",
+      "commentary": "Venus in dignity with benefic association indicates marital happiness when other factors agree."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "Venus",
+        "condition_type": "dignity_is",
+        "values": ["Exalted", "Moolatrikona", "Own", "Friend"]
+      }
+    ],
+    "result": "marriage_promise_favorable",
+    "base_weight": 18.0,
+    "timing_capability": false,
+    "timing_resolution": "none",
+    "interpretation": "Venus in strength or dignity blesses the native with timely marriage and harmonious union."
+  },
+  {
+    "rule_id": "MAR-0003",
+    "domain": "Marriage",
+    "category": "promise",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "chapter": 18,
+      "verse": "7",
+      "commentary": "Benefic planets (Jupiter, Venus, Mercury) aspecting or occupying the 7th house."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "Jupiter",
+        "condition_type": "aspects_house",
+        "target": "7"
+      }
+    ],
+    "result": "divine_protection_marriage",
+    "base_weight": 22.0,
+    "timing_capability": false,
+    "timing_resolution": "none",
+    "interpretation": "Jupiter's auspicious aspect on the 7th house removes obstacles and solidifies the promise of marriage."
+  },
+  {
+    "rule_id": "MAR-0004",
+    "domain": "Marriage",
+    "category": "promise",
+    "source": {
+      "book": "Jataka Parijata",
+      "chapter": 14,
+      "verse": "12",
+      "commentary": "Navamsa 7th lord well-placed confirms D1 marriage promise."
+    },
+    "required_charts": ["D1", "D9"],
+    "conditions": [
+      {
+        "entity": "7th_lord_d9",
+        "condition_type": "dignity_is",
+        "values": ["Exalted", "Own", "Friend"]
+      }
+    ],
+    "result": "navamsa_confirmation_promise",
+    "base_weight": 20.0,
+    "timing_capability": false,
+    "timing_resolution": "none",
+    "interpretation": "The lord of the 7th house in the Navamsa chart placed in dignity confirms strong marital destiny."
+  }
+]

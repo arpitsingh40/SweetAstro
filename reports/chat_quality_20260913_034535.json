@@ -1,0 +1,56 @@
+{
+  "mode": "deterministic",
+  "golden": [
+    {
+      "key": "marriage-reading",
+      "passed": true,
+      "failures": []
+    },
+    {
+      "key": "wealth-reading",
+      "passed": true,
+      "failures": []
+    },
+    {
+      "key": "health-referral-reading",
+      "passed": true,
+      "failures": []
+    },
+    {
+      "key": "lookup-matrix",
+      "passed": true,
+      "failures": []
+    },
+    {
+      "key": "unknown-time",
+      "passed": true,
+      "failures": []
+    }
+  ],
+  "golden_passed": 5,
+  "golden_total": 5,
+  "engine": [
+    {
+      "topic": "marriage",
+      "score": 100,
+      "high_issues": []
+    },
+    {
+      "topic": "wealth",
+      "score": 100,
+      "high_issues": []
+    },
+    {
+      "topic": "health",
+      "score": 100,
+      "high_issues": []
+    },
+    {
+      "topic": "career",
+      "score": 100,
+      "high_issues": []
+    }
+  ],
+  "generated_utc": "2026-09-13T03:45:35+00:00",
+  "runtime_seconds": 0.47
+}

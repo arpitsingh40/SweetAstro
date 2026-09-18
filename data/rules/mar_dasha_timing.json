@@ -1,0 +1,146 @@
+[
+  {
+    "rule_id": "MAR-0020",
+    "domain": "Marriage",
+    "category": "timing_dasha",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "chapter": 18,
+      "verse": "30",
+      "commentary": "Marriage takes place in the Dasha or Antardasha of the 7th lord."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "active_dasha_lord",
+        "condition_type": "is_lord_of_house",
+        "target": "7"
+      }
+    ],
+    "result": "marriage_activation_7th_lord",
+    "base_weight": 30.0,
+    "timing_capability": true,
+    "timing_resolution": "year",
+    "interpretation": "The operating Dasha or Antardasha of the 7th house lord triggers primary marital activation."
+  },
+  {
+    "rule_id": "MAR-0021",
+    "domain": "Marriage",
+    "category": "timing_dasha",
+    "source": {
+      "book": "Phaladeepika",
+      "chapter": 10,
+      "verse": "11",
+      "commentary": "Operating Dasha/Antardasha of a planet posited in the 7th house."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "active_dasha_lord",
+        "condition_type": "in_house",
+        "values": ["7"]
+      }
+    ],
+    "result": "marriage_activation_planet_in_7th",
+    "base_weight": 25.0,
+    "timing_capability": true,
+    "timing_resolution": "year",
+    "interpretation": "A planet occupying the 7th house activates wedlock during its operative period."
+  },
+  {
+    "rule_id": "MAR-0022",
+    "domain": "Marriage",
+    "category": "timing_dasha",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "chapter": 18,
+      "verse": "32",
+      "commentary": "Dasha or Antardasha of the natural karaka Venus."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "active_dasha_lord",
+        "condition_type": "dasha_lord_is",
+        "values": ["Venus"]
+      }
+    ],
+    "result": "marriage_activation_venus",
+    "base_weight": 22.0,
+    "timing_capability": true,
+    "timing_resolution": "year",
+    "interpretation": "Venus as the universal significator of love, romance, and wedlock activates marriage during its sub-periods."
+  },
+  {
+    "rule_id": "MAR-0023",
+    "domain": "Marriage",
+    "category": "timing_dasha",
+    "source": {
+      "book": "Phaladeepika",
+      "chapter": 10,
+      "verse": "12",
+      "commentary": "Operating period of planet aspecting the 7th house."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "active_dasha_lord",
+        "condition_type": "aspects_house",
+        "target": "7"
+      }
+    ],
+    "result": "marriage_activation_aspecting_7th",
+    "base_weight": 20.0,
+    "timing_capability": true,
+    "timing_resolution": "quarter",
+    "interpretation": "A planet casting its glance (drishti) upon the 7th house fructifies marital unions during its dasha."
+  },
+  {
+    "rule_id": "MAR-0024",
+    "domain": "Marriage",
+    "category": "timing_dasha",
+    "source": {
+      "book": "Jataka Parijata",
+      "chapter": 14,
+      "verse": "28",
+      "commentary": "Dasha/Antardasha of the lord of the 7th house in the Navamsa chart (D9)."
+    },
+    "required_charts": ["D1", "D9"],
+    "conditions": [
+      {
+        "entity": "active_dasha_lord",
+        "condition_type": "is_lord_of_house",
+        "target": "7_d9"
+      }
+    ],
+    "result": "marriage_activation_d9_lord",
+    "base_weight": 24.0,
+    "timing_capability": true,
+    "timing_resolution": "quarter",
+    "interpretation": "The dasha/antardasha of the planet ruling the 7th house of Navamsa strongly precipitates marriage."
+  },
+  {
+    "rule_id": "MAR-0025",
+    "domain": "Marriage",
+    "category": "timing_dasha",
+    "source": {
+      "book": "Phaladeepika",
+      "chapter": 10,
+      "verse": "13",
+      "commentary": "Dasha/Antardasha of 2nd lord (family expansion) or Lagna lord."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "active_dasha_lord",
+        "condition_type": "is_lord_of_house",
+        "target": "2"
+      }
+    ],
+    "result": "marriage_activation_kutumba_lord",
+    "base_weight": 18.0,
+    "timing_capability": true,
+    "timing_resolution": "year",
+    "interpretation": "Operating period of the 2nd lord (Kutumbasthana) signifies expansion of the family through wedlock."
+  }
+]

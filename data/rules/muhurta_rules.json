@@ -1,0 +1,75 @@
+{
+  "version": "1.1.0",
+  "domain": "Muhurta",
+  "sources": [
+    "Muhurta Chintamani — Rama Daivajna (vivaha nakshatras, rikta-tithi avoidance)",
+    "Nirnaya Sindhu — Kamalakara Bhatta (general timing prohibitions)",
+    "Kalaprakasika (South Indian elective rules; Rahu Kala, Abhijit)"
+  ],
+  "common": {
+    "avoid_rahu_kalam": true,
+    "prefer_abhijit": true,
+    "avoid_karana": ["Vishti"],
+    "exclude_bhadra_windows": true,
+    "notes": "Vishti (Bhadra) is avoided for auspicious beginnings; Rahu Kala is avoided; Abhijit is preferred when free. Rikta tithis (4, 9, 14) and Amavasya are avoided by all events below. Tarabala and Chandrabala are personal filters used when birth data is available."
+  },
+  "events": {
+    "vivaha": {
+      "label": "Marriage (Vivaha)",
+      "source": "Muhurta Chintamani — nakshatra list and Rikta-tithi avoidance; lagna list widely published (requires edition verification)",
+      "avoid_tithis": [4, 9, 14, 30],
+      "recommended_nakshatras": [
+        "Rohini", "Mrigashira", "Magha", "Uttara Phalguni", "Hasta", "Swati",
+        "Anuradha", "Mula", "Uttara Ashadha", "Uttara Bhadrapada", "Revati"
+      ],
+      "recommended_lagnas": ["Taurus", "Gemini", "Virgo", "Libra", "Sagittarius", "Pisces"],
+      "require_tarabala": true,
+      "require_chandrabala": true
+    },
+    "griha_pravesh": {
+      "label": "Housewarming (Griha Pravesh)",
+      "source": "Nirnaya Sindhu / regional tradition — nakshatra and lagna lists require edition verification",
+      "avoid_tithis": [4, 9, 14, 30],
+      "recommended_nakshatras": [
+        "Rohini", "Mrigashira", "Uttara Phalguni", "Chitra", "Anuradha",
+        "Uttara Ashadha", "Uttara Bhadrapada", "Revati"
+      ],
+      "recommended_lagnas": ["Taurus", "Leo", "Scorpio", "Aquarius"],
+      "require_tarabala": true,
+      "require_chandrabala": false
+    },
+    "business": {
+      "label": "New venture / business",
+      "source": "Muhurta Chintamani — nakshatra list requires edition verification",
+      "avoid_tithis": [4, 9, 14, 30],
+      "recommended_nakshatras": [
+        "Ashwini", "Pushya", "Hasta", "Chitra", "Swati", "Anuradha",
+        "Shravana", "Dhanishta", "Revati"
+      ],
+      "recommended_lagnas": [],
+      "require_tarabala": false,
+      "require_chandrabala": false
+    },
+    "travel": {
+      "label": "Travel",
+      "source": "Kalaprakasika — nakshatra list requires edition verification",
+      "avoid_tithis": [4, 9, 14, 30],
+      "recommended_nakshatras": [
+        "Ashwini", "Mrigashira", "Pushya", "Hasta", "Anuradha",
+        "Shravana", "Dhanishta", "Revati"
+      ],
+      "recommended_lagnas": [],
+      "require_tarabala": false,
+      "require_chandrabala": false
+    },
+    "general": {
+      "label": "General auspicious beginning",
+      "source": "Nirnaya Sindhu (general prohibitions only; no event-specific list)",
+      "avoid_tithis": [4, 9, 14, 30],
+      "recommended_nakshatras": [],
+      "recommended_lagnas": [],
+      "require_tarabala": false,
+      "require_chandrabala": false
+    }
+  }
+}

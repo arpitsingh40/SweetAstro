@@ -1,0 +1,63 @@
+{
+  "version": "1.0.0",
+  "method": "Period alignment (dasha-lord direction)",
+  "source": {
+    "label": "Period alignment (modern conduct framework — SweetAstro adaptation of the KAT/BNN alignment principle)",
+    "confidence": "modern",
+    "basis": "Align daily conduct with the nature of the running Mahadasha/Antardasha/Pratyantardasha lord; work the obstructing planet instead of dismissing it.",
+    "research_note": "docs/research/video_method_pipeline.md#period-alignment"
+  },
+  "safety_rules": [
+    "Optional conduct guidance only; never a guarantee, prescription, or classical authority.",
+    "No cost, purchase, ritual or object is required by this module.",
+    "Traditional anchors (weekday service/mantra) are optional supports, never requirements.",
+    "Never drop the engine's non-certainty language when presenting this alignment."
+  ],
+  "planets": {
+    "Sun": {
+      "focus": "lead with integrity: accountable roles, kept commitments, steady morning discipline, respect for mentors and father figures",
+      "avoid": "ego clashes, credit-grabbing, display over duty",
+      "domains": "authority, vitality, government/administration, father"
+    },
+    "Moon": {
+      "focus": "stabilise mind and routine: sleep hygiene, emotional steadiness, care for mother and home",
+      "avoid": "mood-driven decisions, dependency, neglected rest",
+      "domains": "mind, mother, home, public life"
+    },
+    "Mars": {
+      "focus": "channel energy into disciplined effort: exercise, courage on hard tasks, finishing pending work",
+      "avoid": "anger, haste, conflict, risky shortcuts",
+      "domains": "courage, siblings/property, competition, technical work"
+    },
+    "Mercury": {
+      "focus": "study and communicate clearly: keep accounts and notes, verify before acting, honest speech",
+      "avoid": "gossip, exaggeration, scattered focus",
+      "domains": "learning, business, communication, skills"
+    },
+    "Jupiter": {
+      "focus": "learn and guide ethically: gratitude to teachers, moderation, counsel that is asked for",
+      "avoid": "over-promising, dogma, excess",
+      "domains": "wisdom, children, fortune/finance, guidance"
+    },
+    "Venus": {
+      "focus": "cultivate respectful relationships and balance: cleanliness, fair agreements, arts in proportion",
+      "avoid": "indulgence, vanity, escapism through comfort",
+      "domains": "partnership, comfort, arts, values"
+    },
+    "Saturn": {
+      "focus": "persevere and own responsibility: service to elders and workers, punctuality, patient long-horizon work",
+      "avoid": "blame, shortcuts, neglected duty, isolation",
+      "domains": "career discipline, longevity, service, maturing delays"
+    },
+    "Rahu": {
+      "focus": "keep rules transparent: digital discipline, structured experimentation, service without display",
+      "avoid": "shortcuts, deception, intoxicants, obsessive speculation",
+      "domains": "ambition, foreign/technology, unconventional gains"
+    },
+    "Ketu": {
+      "focus": "deep focused work: meditation, minimalism, finishing what is started",
+      "avoid": "abandoning mid-way, escapism, detachment from duties",
+      "domains": "insight, moksha, research, releasing what is outgrown"
+    }
+  }
+}

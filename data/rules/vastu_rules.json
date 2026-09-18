@@ -1,0 +1,265 @@
+{
+  "version": "1.0.0",
+  "domain": "Vastu",
+  "confidence_legend": {
+    "classical": "Documented in classical texts (Mayamata, Manasara, Samarangana Sutradhara, Brihat Samhita, Agni Purana, Vishvakarma Prakasha)",
+    "traditional": "Widely practised; texts/regions vary on details",
+    "modern": "Contemporary practice without classical textual basis",
+    "verify": "Real tradition, formulation needs edition check before quoting or computing"
+  },
+  "safety_rules": [
+    "Never advise demolition, structural alteration or unsafe works; refer to a qualified engineer/architect.",
+    "Remedies are optional and proportionate; zero-cost conduct/usage changes first.",
+    "No guarantees; no fear-based claims; no fabricated verse citations.",
+    "Ayadi measurement formulas remain disabled until edition-verified."
+  ],
+  "sources": [
+    "Mayamata (trans. B. Dagens) — classical",
+    "Manasara (trans. P.K. Acharya) — classical",
+    "Samarangana Sutradhara (King Bhoja) — classical",
+    "Brihat Samhita, architecture chapters (Varahamihira) — classical",
+    "Vishvakarma Prakasha — classical",
+    "Aparajitaprccha — classical",
+    "Yukti Kalpataru — classical",
+    "Vastu-Silpa Kosha (S.K. Ramachandra Rao) — reference",
+    "The Penguin Guide to Vaastu (Sashikala Ananth) — modern practice",
+    "Vaastu: The Indian Art of Placement (Rohit Arya) — modern practice",
+    "Vaastu: The Global Science (B. Niranjan Babu) — modern practice"
+  ],
+  "directions": {
+    "North": {
+      "element": "Water", "deity": "Kubera", "planet": "Mercury",
+      "qualities": ["wealth", "opportunity", "career", "clarity"],
+      "colors": ["blue", "green"], "confidence": "classical"
+    },
+    "North-East": {
+      "element": "Water/Ether", "deity": "Ishana", "planet": "Jupiter",
+      "qualities": ["wisdom", "spirituality", "clarity", "water", "openness"],
+      "colors": ["yellow", "light blue"], "confidence": "classical"
+    },
+    "East": {
+      "element": "Air", "deity": "Indra", "planet": "Sun",
+      "qualities": ["growth", "health", "new beginnings", "social life"],
+      "colors": ["white", "light yellow"], "confidence": "classical"
+    },
+    "South-East": {
+      "element": "Fire", "deity": "Agni", "planet": "Venus",
+      "qualities": ["fire", "energy", "cooking", "passion"],
+      "colors": ["red", "orange"], "confidence": "classical"
+    },
+    "South": {
+      "element": "Fire/Earth", "deity": "Yama", "planet": "Mars",
+      "qualities": ["discipline", "fame", "rest", "ancestors"],
+      "colors": ["red", "coral"], "confidence": "classical"
+    },
+    "South-West": {
+      "element": "Earth", "deity": "Pitru (Nairutya)", "planet": "Rahu",
+      "qualities": ["stability", "heaviness", "relationships", "savings"],
+      "colors": ["brown", "earthy"], "confidence": "classical"
+    },
+    "West": {
+      "element": "Water", "deity": "Varuna", "planet": "Saturn",
+      "qualities": ["gains", "movement away", "dining", "children"],
+      "colors": ["grey", "white"], "confidence": "classical"
+    },
+    "North-West": {
+      "element": "Air", "deity": "Vayu", "planet": "Moon",
+      "qualities": ["movement", "guests", "banking", "change"],
+      "colors": ["white", "silver"], "confidence": "classical"
+    },
+    "Center": {
+      "element": "Ether", "deity": "Brahma", "planet": null,
+      "qualities": ["void", "unity", "openness"],
+      "colors": ["white", "yellow"], "confidence": "classical"
+    }
+  },
+  "rooms": {
+    "puja": {
+      "label": "Puja / meditation room",
+      "best": ["North-East"], "acceptable": ["East", "North"],
+      "avoid": ["South", "South-West", "Center"],
+      "notes": "Never under a staircase; idols away from toilets; keep light and clean.",
+      "confidence": "classical"
+    },
+    "kitchen": {
+      "label": "Kitchen (fire)",
+      "best": ["South-East"], "acceptable": ["East"],
+      "avoid": ["North-East", "South-West", "Center"],
+      "notes": "Cooking platform in the SE of the kitchen; not facing the main door. A NW kitchen appears in some modern variants only.",
+      "confidence": "classical"
+    },
+    "master_bedroom": {
+      "label": "Master bedroom",
+      "best": ["South-West"], "acceptable": ["South", "West"],
+      "avoid": ["North-East", "South-East", "Center"],
+      "notes": "Head toward south or east; avoid head directly north and feet toward the door.",
+      "confidence": "classical"
+    },
+    "children_bedroom": {
+      "label": "Children's bedroom",
+      "best": ["West"], "acceptable": ["North-West", "East", "North"],
+      "avoid": ["South-West", "South-East"],
+      "notes": "West supports study and growth; avoid the SW authority zone.",
+      "confidence": "traditional"
+    },
+    "guest_room": {
+      "label": "Guest room",
+      "best": ["North-West"], "acceptable": ["West", "North"],
+      "avoid": ["North-East"],
+      "notes": "Keep transient; a NE guest room tends to become permanent clutter.",
+      "confidence": "traditional"
+    },
+    "living_room": {
+      "label": "Living / family room",
+      "best": ["East", "North-East", "North"], "acceptable": ["West"],
+      "avoid": ["South-West"],
+      "notes": "Morning light preferred; heavier seating toward S/W of the room.",
+      "confidence": "traditional"
+    },
+    "dining": {
+      "label": "Dining",
+      "best": ["West"], "acceptable": ["East", "North"],
+      "avoid": ["South", "South-West"],
+      "notes": "Face east or north while eating; dining west supports digestion per tradition.",
+      "confidence": "traditional"
+    },
+    "study": {
+      "label": "Study / office",
+      "best": ["North-East", "East", "North"], "acceptable": ["West"],
+      "avoid": ["South", "South-West", "Center"],
+      "notes": "Face north or east while working; not under a staircase.",
+      "confidence": "traditional"
+    },
+    "parents_room": {
+      "label": "Parents' / elders' room",
+      "best": ["South-West", "West"], "acceptable": ["South"],
+      "avoid": ["North-East"],
+      "notes": "Elders in the family-stability zone.",
+      "confidence": "traditional"
+    },
+    "store": {
+      "label": "Store room",
+      "best": ["South-West"], "acceptable": ["South", "West"],
+      "avoid": ["North-East", "North"],
+      "notes": "Heavy goods in the heavy zone; never in the wealth zones N/NE.",
+      "confidence": "traditional"
+    },
+    "staircase": {
+      "label": "Staircase",
+      "best": ["South", "South-West", "West"], "acceptable": [],
+      "avoid": ["North-East", "East", "North", "Center"],
+      "notes": "Rise clockwise seen from above; avoid directly facing the main door.",
+      "confidence": "traditional"
+    },
+    "toilet": {
+      "label": "Toilets / bathrooms",
+      "best": ["North-West", "West"], "acceptable": ["South-East"],
+      "avoid": ["North-East", "East", "North", "Center", "South-West"],
+      "notes": "Never sharing a wall with the puja room; keep doors closed and dry.",
+      "confidence": "traditional"
+    },
+    "utility": {
+      "label": "Washing / utility",
+      "best": ["North-West", "West"], "acceptable": ["South-East"],
+      "avoid": ["North-East", "Center"],
+      "notes": "Drainage away from the NE.",
+      "confidence": "traditional"
+    },
+    "garage": {
+      "label": "Garage / parking",
+      "best": ["North-West", "South-East"], "acceptable": ["West"],
+      "avoid": ["North-East", "Center"],
+      "notes": "Vehicles parked facing outward where practical.",
+      "confidence": "traditional"
+    }
+  },
+  "water": {
+    "underground_tank": {
+      "best": ["North-East"], "acceptable": ["North", "East"],
+      "avoid": ["South-West", "South", "West", "Center"],
+      "confidence": "classical"
+    },
+    "overhead_tank": {
+      "best": ["South-West", "West"], "acceptable": ["South"],
+      "avoid": ["North-East", "North", "East", "Center"],
+      "confidence": "traditional"
+    },
+    "drainage_flow": {
+      "best": ["North", "East", "North-East"],
+      "avoid": ["South", "West", "South-West"],
+      "confidence": "classical"
+    }
+  },
+  "stairs": {
+    "zone": {"best": ["South", "South-West", "West"], "avoid": ["North-East", "Center", "East", "North"]},
+    "direction": "clockwise when seen from above",
+    "door_facing": false,
+    "confidence": "traditional"
+  },
+  "main_door": {
+    "best": ["North", "East", "North-East"],
+    "acceptable": ["West", "South"],
+    "avoid_padas": ["Yama", "Roga", "Papayakshma", "Asura", "Shosha"],
+    "notes": "Opens inward; no pole/tree/toilet/staircase directly facing it; avoid exact alignment with a rear opening.",
+    "confidence": "traditional",
+    "pada_grid_confidence": "verify"
+  },
+  "compound": {
+    "wall_height": "higher/thicker on South and West; lower/lighter on North and East",
+    "setbacks": "more open space on North and East",
+    "building_heaviest_corner": "South-West",
+    "confidence": "classical"
+  },
+  "defects": [
+    {"id": "V-D01", "pattern": "Toilet or extended toilet in the North-East", "severity": "high", "remedies": ["Shift toilet use to NW/W over time", "Keep the NE room light, clean and dry", "Place a puja/meditation function in the NE space"], "confidence": "traditional"},
+    {"id": "V-D02", "pattern": "Kitchen in North-East or South-West", "severity": "high", "remedies": ["Relocate cooking platform to the SE of the existing kitchen if possible", "Use the SE corner as the primary fire zone", "Avoid storing heavy items in the NE"], "confidence": "traditional"},
+    {"id": "V-D03", "pattern": "Master bedroom in North-East or South-East", "severity": "medium", "remedies": ["Shift the primary bedroom to the SW over time", "If NE: keep the room light and use it for study/puja instead", "Rotate the bed head to south or east"], "confidence": "traditional"},
+    {"id": "V-D04", "pattern": "Overhead water tank in the North-East", "severity": "medium", "remedies": ["Move the tank to SW/W at the next plumbing change", "Keep the NE load light in the meantime"], "confidence": "traditional"},
+    {"id": "V-D05", "pattern": "Underground water tank in the South-West", "severity": "medium", "remedies": ["Prefer moving the source to N/NE/E when feasible", "Do not deepen the SW excavation"], "confidence": "classical"},
+    {"id": "V-D06", "pattern": "Site slopes or drains toward South/West", "severity": "medium", "remedies": ["Regrade surface drainage toward N/NE (engineer to confirm)", "Add planters/levels to slow water at the SW"], "confidence": "classical"},
+    {"id": "V-D07", "pattern": "Main door on an inauspicious pada (Yama/Roga/Asura/Shosha/Papayakshma)", "severity": "medium", "remedies": ["Keep the entrance well-lit, clean and unobstructed", "Use an auspicious secondary entrance for daily use if one exists", "Door-position changes require professional advice"], "confidence": "verify"},
+    {"id": "V-D08", "pattern": "Toilet, kitchen, staircase, bed or pillar at the Brahmasthan (centre)", "severity": "high", "remedies": ["Remove load/occupancy from the exact centre where possible", "Keep the centre open, light and uncluttered", "Never place a toilet at the centre; consult a professional for built obstructions"], "confidence": "classical"},
+    {"id": "V-D09", "pattern": "Staircase in the North-East or directly facing the main door", "severity": "medium", "remedies": ["Screen the view with a partition/plant", "Use a different staircase for daily movement if available", "Plan relocation at the next renovation with an architect"], "confidence": "traditional"},
+    {"id": "V-D10", "pattern": "Missing/cut North-East corner (truncated Ishana)", "severity": "medium", "remedies": ["Keep the NE area light, open and water-balanced", "Add a small water feature or light plants in the NE (modern practice)", "Do not add heavy storage in the NE"], "confidence": "traditional"},
+    {"id": "V-D11", "pattern": "South-West extension beyond proportional plot limits", "severity": "low", "remedies": ["Balance with open space and light in the NE", "Keep SW rooms heavy and stable", "Structural correction only via professionals"], "confidence": "traditional"},
+    {"id": "V-D12", "pattern": "Large tree at the centre or heavy trees in the North-East", "severity": "medium", "remedies": ["Remove only with municipal permission and arborist advice", "Thin branches rather than felling where possible", "Plant light, non-thorny plants in the NE"], "confidence": "traditional"},
+    {"id": "V-D13", "pattern": "T-junction or dead-end directly facing the entrance", "severity": "medium", "remedies": ["Keep the entrance lit and unobstructed", "Use a screen/planter to soften the direct line (safe, non-structural)", "Avoid mirrors directly facing the door"], "confidence": "traditional"},
+    {"id": "V-D14", "pattern": "Beam or heavy load directly over the bed head or puja place", "severity": "low", "remedies": ["Reposition the bed/idols away from under the beam", "Use a false ceiling to visually soften (professional)"], "confidence": "traditional"},
+    {"id": "V-D15", "pattern": "More open space on South/West than on North/East setbacks", "severity": "low", "remedies": ["Keep the N/E side light and open", "Add low planters rather than heavy construction on the N/E"], "confidence": "traditional"},
+    {"id": "V-D16", "pattern": "Toilet sharing a wall with the puja room", "severity": "high", "remedies": ["Relocate the shrine to the NE/E/N of another room", "Keep the shared wall dry and clean; no images on it", "Long-term: separate the uses at renovation"], "confidence": "traditional"}
+  ],
+  "construction_muhurta": {
+    "bhoomi_puja": {
+      "notes": "Auspicious day/lagna; avoid Rikta tithis (4/9/14), Amavasya and Bhadra; traditionally the NE corner is broken first.",
+      "use": "muhurta engine with event=general until an edition-verified bhoomi-puja list is added",
+      "confidence": "traditional"
+    },
+    "shilanyasa": {
+      "notes": "First stone/foundation block; construction sequence traditionally begins at the SW.",
+      "use": "muhurta engine with event=general",
+      "confidence": "traditional"
+    },
+    "main_door_installation": {
+      "notes": "Door frames set in an auspicious lagna, avoiding Rahu Kala and Bhadra.",
+      "use": "muhurta engine with event=general",
+      "confidence": "traditional"
+    },
+    "griha_pravesh": {
+      "notes": "Use the muhurta engine event=griha_pravesh (Rohini/Mrigashira/Uttara Phalguni/Chitra/Anuradha/Uttara Ashadha/Uttara Bhadrapada/Revati; fixed lagnas; personal tarabala).",
+      "use": "muhurta engine event=griha_pravesh",
+      "confidence": "traditional"
+    }
+  },
+  "planetary_directions": {
+    "Sun": "East", "Moon": "North-West", "Mars": "South", "Mercury": "North",
+    "Jupiter": "North-East", "Venus": "South-East", "Saturn": "West",
+    "Rahu": "South-West", "Ketu": "North-East",
+    "confidence": "traditional"
+  },
+  "ayadi": {
+    "units": {"angula": "~1.9 cm", "hasta": "24 angulas", "danda": "4 hastas"},
+    "limbs": ["Aya", "Vyaya", "Yoni", "Nakshatra", "Vara", "Amsa/Tithi"],
+    "status": "formulas disabled until edition-verified (Mayamata/Manasara)",
+    "confidence": "verify"
+  }
+}

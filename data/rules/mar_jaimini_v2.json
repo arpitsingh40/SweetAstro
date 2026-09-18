@@ -1,0 +1,74 @@
+[
+  {
+    "rule_id": "MAR-0042",
+    "domain": "Marriage",
+    "category": "jaimini",
+    "source": {
+      "book": "Jaimini Sutras",
+      "chapter": 1,
+      "verse": "4:5",
+      "commentary": "Darakaraka in Kendra or Trikona indicates timely marriage."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "darakaraka",
+        "condition_type": "in_house",
+        "values": ["1", "4", "5", "7", "9", "10"]
+      }
+    ],
+    "result": "dk_in_kendra",
+    "base_weight": 18.0,
+    "timing_capability": true,
+    "timing_resolution": "year",
+    "interpretation": "When the Darakaraka planet is placed in a Kendra or Trikona, marriage is strongly indicated."
+  },
+  {
+    "rule_id": "MAR-0043",
+    "domain": "Marriage",
+    "category": "jaimini",
+    "source": {
+      "book": "Jaimini Sutras",
+      "chapter": 1,
+      "verse": "4:8",
+      "commentary": "Darapada (7th from UL) connection with Arudha Lagna strengthens marriage."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "active_dasha_lord",
+        "condition_type": "is_lord_of_house",
+        "target": "upapada_lagna"
+      }
+    ],
+    "result": "darapada_connection",
+    "base_weight": 15.0,
+    "timing_capability": true,
+    "timing_resolution": "year",
+    "interpretation": "Dasha of the lord of the Upapada Lagna (Darapada axis) strongly indicates marriage manifestation."
+  },
+  {
+    "rule_id": "MAR-0044",
+    "domain": "Marriage",
+    "category": "jaimini",
+    "source": {
+      "book": "Jaimini Sutras",
+      "chapter": 1,
+      "verse": "4:10",
+      "commentary": "Atmakaraka's Dasha period often brings significant life events including marriage."
+    },
+    "required_charts": ["D1"],
+    "conditions": [
+      {
+        "entity": "active_dasha_lord",
+        "condition_type": "jaimini_karaka_is",
+        "target": "AK"
+      }
+    ],
+    "result": "ak_dasha_activation",
+    "base_weight": 12.0,
+    "timing_capability": true,
+    "timing_resolution": "year",
+    "interpretation": "Atmakaraka's operating period often coincides with significant milestones including marriage."
+  }
+]

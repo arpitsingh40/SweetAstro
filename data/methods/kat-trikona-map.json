@@ -1,0 +1,49 @@
+{
+  "version": "0.1.0",
+  "slug": "kat-trikona-map",
+  "method": "There are four triangles (trikonas): the first is the Dharma Trikona (1st, 5th, 9th houses) which informs about personal",
+  "source": {
+    "teacher": "Jyotish Vedang by Rahul Kaushik",
+    "channel": "Jyotish Vedang by Rahul Kaushik",
+    "basis": "YouTube video research (evidence gate: see candidate report)",
+    "confidence": "modern",
+    "research_note": "docs/research/video_method_pipeline.md#candidate-VC-3389b82acf",
+    "label": "There are four triangles (trikonas): the first is the Dharma (modern — Jyotish Vedang by Rahul Kaushik)"
+  },
+  "enabled": false,
+  "allow_quotes": false,
+  "evidence": {
+    "candidate_id": "VC-3389b82acf",
+    "video_id": "eqfD7AYSSMI",
+    "locator": "00:07:15-00:07:50",
+    "passes": 2,
+    "extractor_confidence": "high"
+  },
+  "source_videos": [
+    {
+      "id": "eqfD7AYSSMI",
+      "title": "Karma Alignment Technique: A Step-by-Step Guide|  KAT | Rahul Kaushik",
+      "locator": "00:07:15-00:07:50"
+    }
+  ],
+  "safety_rules": [
+    "Unvalidated modern method derived from video research; never presented as classical authority.",
+    "Optional, zero-cost, fallback-only: surfaced only when the engine cannot fully answer the question.",
+    "No guarantee language; verify worked examples before enabling."
+  ],
+  "topic_map": {
+    "spirituality": {
+      "label": "Modern method for spirituality (candidate VC-3389b82acf)",
+      "formula": "describe the deterministic server computation here",
+      "steps": [
+        "Identify the four trikonas.",
+        "Dharma Trikona: 1st, 5th, 9th houses — personality, knowledge, right path.",
+        "Moksha Trikona: 4th, 8th, 12th houses — liberation."
+      ],
+      "adapted": false,
+      "note": "",
+      "quote": "देखो हमें चार त्रिकोण मिले उन चार त्रिकोण में कौन है पहला है धर्म त्रिकोण जो हमें हमारी पर्सनालिटी के बारे में अवगत कराता है हमारे लिए ज्ञानवर्धक कौन सी चीजें हैं उसके बारे में अवगत कराता है हमें लाइफ में धर्म क्या फॉलो करना है राइच पाथ क्या फलो करना उसके बारे में अवगत कराता है तो ये किस त्रिकोण का कार्य हो गया एक पान का फिर एक त्रिकोण आ गया हमारा चा आ 12 वाला मोक्ष त्रिकोण मोक्ष त्रिकोण वाला जो त्रिकोण है वो हमें किस तरफ लेकर जा रहा है वो हमें यह बता रहा है कि वो कौन से कार्य ऐसे हैं जो हमें जीवन में मुक्ति की तरफ लेकर जाएंगे",
+      "locator": "00:07:15-00:07:50"
+    }
+  }
+}
