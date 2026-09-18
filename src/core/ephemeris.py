@@ -115,12 +115,18 @@ def calculate_sidereal_time(jd: float, longitude_east_deg: float) -> float:
     return lst
 
 
-def calculate_ascendant(jd: float, lat_deg: float, lon_deg: float, ayanamsha: float) -> float:
+def calculate_ascendant(jd: float, lat_deg: float, lon_deg: float, ayanamsha: float,
+                        sid_mode: Optional[int] = None) -> float:
     """
     Calculates the Sidereal Ascendant (Lagna) degree in [0, 360).
+
+    `ayanamsha` is the precomputed offset for the chosen zodiac origin and is
+    what the built-in fallback uses. `sid_mode` is the Swiss Ephemeris SIDM_*
+    constant for that same origin (see src.core.ayanamsha); it defaults to
+    Lahiri for backward compatibility.
     """
     if HAS_SWISSEPH:
-        swe.set_sid_mode(swe.SIDM_LAHIRI)
+        swe.set_sid_mode(sid_mode if sid_mode is not None else swe.SIDM_LAHIRI)
         cusps, ascmc = swe.houses_ex(jd, lat_deg, lon_deg, b'W', swe.FLG_SIDEREAL)
         return ascmc[0] % 360.0
 
@@ -220,15 +226,18 @@ def compute_heliocentric_planet(jd: float, planet: str) -> Tuple[float, float, f
     return x_ecl, y_ecl, z_ecl
 
 
-def calculate_planet_positions(jd: float, ayanamsha: float) -> Dict[str, Dict[str, float]]:
+def calculate_planet_positions(jd: float, ayanamsha: float,
+                               sid_mode: Optional[int] = None) -> Dict[str, Dict[str, float]]:
     """
     Computes geocentric sidereal longitudes and daily speeds for all 9 Navagrahas.
+    `sid_mode` selects the Swiss Ephemeris sidereal origin (defaults to Lahiri);
+    `ayanamsha` is the matching offset used by the built-in fallback.
     Returns: Dict[planet_name, {"longitude": deg, "speed": deg_per_day, "is_retrograde": bool}]
     """
     results: Dict[str, Dict[str, float]] = {}
 
     if HAS_SWISSEPH:
-        swe.set_sid_mode(swe.SIDM_LAHIRI)
+        swe.set_sid_mode(sid_mode if sid_mode is not None else swe.SIDM_LAHIRI)
         mapping = {
             "Sun": swe.SUN, "Moon": swe.MOON, "Mars": swe.MARS,
             "Mercury": swe.MERCURY, "Jupiter": swe.JUPITER,

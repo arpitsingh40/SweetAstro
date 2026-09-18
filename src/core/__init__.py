@@ -13,6 +13,10 @@ from .ephemeris import (
     calculate_ascendant, calculate_planet_positions,
     calculate_obliquity, calculate_sidereal_time,
 )
+from .ayanamsha import (
+    AYANAMSHAS, AyanamshaSpec, available_ayanamshas,
+    normalize_ayanamsha, ayanamsha_label, calculate_ayanamsha, swe_sid_mode,
+)
 from .chart import D1Chart, PlanetState, HouseState, calculate_d1_chart, _calculate_aspects, _calculate_dignity
 from .navamsa import NavamsaChart, NavamsaPlanetState, calculate_navamsa_chart
 from .dasha import (
@@ -93,6 +97,8 @@ __all__ = [
     "datetime_to_julian_day", "calculate_lahiri_ayanamsha",
     "calculate_ascendant", "calculate_planet_positions",
     "calculate_obliquity", "calculate_sidereal_time",
+    "AYANAMSHAS", "AyanamshaSpec", "available_ayanamshas",
+    "normalize_ayanamsha", "ayanamsha_label", "calculate_ayanamsha", "swe_sid_mode",
     "D1Chart", "PlanetState", "HouseState", "calculate_d1_chart",
     "_calculate_aspects", "_calculate_dignity",
     "NavamsaChart", "NavamsaPlanetState", "calculate_navamsa_chart",

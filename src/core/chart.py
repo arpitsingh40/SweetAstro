@@ -14,8 +14,11 @@ from .constants import (
     NAKSHATRAS
 )
 from .ephemeris import (
-    datetime_to_julian_day, calculate_lahiri_ayanamsha,
+    datetime_to_julian_day,
     calculate_ascendant, calculate_planet_positions
+)
+from .ayanamsha import (
+    calculate_ayanamsha, normalize_ayanamsha, swe_sid_mode,
 )
 
 
@@ -58,6 +61,7 @@ class D1Chart:
     ascendant_degree_in_sign: float
     planets: Dict[str, PlanetState]
     houses: Dict[int, HouseState]
+    ayanamsha_system: str = "lahiri"
 
     @property
     def seventh_house(self) -> HouseState:
@@ -166,19 +170,26 @@ def calculate_d1_chart(
     year: int, month: int, day: int,
     hour: int, minute: int, second: float = 0.0,
     tz_offset_hours: float = 5.5,
-    lat: float = 28.6139, lon: float = 77.2090
+    lat: float = 28.6139, lon: float = 77.2090,
+    ayanamsha: str = "lahiri"
 ) -> D1Chart:
     """
     Computes complete deterministic D1 natal chart.
     Default coords: New Delhi, India (+5.5 UTC).
+
+    `ayanamsha` selects the sidereal zodiac origin: any key of
+    ``src.core.ayanamsha.AYANAMSHAS`` (e.g. "lahiri", "krishnamurti",
+    "raman", "fagan_bradley"). Default Lahiri preserves all prior behavior.
     """
+    ayan_key = normalize_ayanamsha(ayanamsha)
+    sid_mode = swe_sid_mode(ayan_key)
     jd = datetime_to_julian_day(year, month, day, hour, minute, second, tz_offset_hours)
-    ayanamsha = calculate_lahiri_ayanamsha(jd)
-    asc_deg = calculate_ascendant(jd, lat, lon, ayanamsha)
+    ayan_value = calculate_ayanamsha(jd, ayan_key)
+    asc_deg = calculate_ascendant(jd, lat, lon, ayan_value, sid_mode)
     asc_sign, asc_sign_idx, asc_deg_in_sign = _get_sign_and_deg(asc_deg)
 
     # Calculate raw planetary positions
-    raw_planets = calculate_planet_positions(jd, ayanamsha)
+    raw_planets = calculate_planet_positions(jd, ayan_value, sid_mode)
 
     # Calculate Sun position for combustion checks
     sun_lon = raw_planets["Sun"]["longitude"]
@@ -251,11 +262,12 @@ def calculate_d1_chart(
 
     return D1Chart(
         jd=jd,
-        ayanamsha=ayanamsha,
+        ayanamsha=ayan_value,
         ascendant_deg=asc_deg,
         ascendant_sign=asc_sign,
         ascendant_sign_index=asc_sign_idx,
         ascendant_degree_in_sign=asc_deg_in_sign,
         planets=planets,
-        houses=houses
+        houses=houses,
+        ayanamsha_system=ayan_key
     )
